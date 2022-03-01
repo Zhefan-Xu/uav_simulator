@@ -177,11 +177,11 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   }
   
   if (!gt_pose_topic_.empty()){
-      pub_gt_pose_ = node_handle_->advertise<geometry_msgs::Pose>(gt_pose_topic_,1024);    
+      pub_gt_pose_ = node_handle_->advertise<geometry_msgs::PoseStamped>(gt_pose_topic_,1024);    
   }
   
-  pub_gt_vec_ = node_handle_->advertise<geometry_msgs::Twist>(gt_vel_topic_, 1024);
-  pub_gt_acc_ = node_handle_->advertise<geometry_msgs::Twist>(gt_acc_topic_, 1024);
+  pub_gt_vec_ = node_handle_->advertise<geometry_msgs::TwistStamped>(gt_vel_topic_, 1024);
+  pub_gt_acc_ = node_handle_->advertise<geometry_msgs::TwistStamped>(gt_acc_topic_, 1024);
   
   
   if (!switch_mode_topic_.empty()){
@@ -350,6 +350,7 @@ void DroneSimpleController::UpdateDynamics(double dt){
     
     
     //publish the ground truth pose of the drone to the ROS topic
+    geometry_msgs::PoseStamped gt_pose_stamped;
     geometry_msgs::Pose gt_pose;
     gt_pose.position.x = pose.Pos().X();
     gt_pose.position.y = pose.Pos().Y();
@@ -359,24 +360,39 @@ void DroneSimpleController::UpdateDynamics(double dt){
     gt_pose.orientation.x = pose.Rot().X();
     gt_pose.orientation.y = pose.Rot().Y();
     gt_pose.orientation.z = pose.Rot().Z();
-    pub_gt_pose_.publish(gt_pose);
+
+    gt_pose_stamped.pose = gt_pose;
+    gt_pose_stamped.header.frame_id = "map";
+    gt_pose_stamped.header.stamp = ros::Time::now();
+    pub_gt_pose_.publish(gt_pose_stamped);
     
     //convert the acceleration and velocity into the body frame
     ignition::math::Vector3d body_vel = pose.Rot().RotateVector(velocity);
+    ignition::math::Vector3d body_angular_vel = pose.Rot().RotateVector(angular_velocity);
     ignition::math::Vector3d body_acc = pose.Rot().RotateVector(acceleration);
     
     //publish the velocity
+    geometry_msgs::TwistStamped tw_stamped;
     geometry_msgs::Twist tw;
     tw.linear.x = body_vel.X();
     tw.linear.y = body_vel.Y();
     tw.linear.z = body_vel.Z();
-    pub_gt_vec_.publish(tw);
+    tw.angular.x = body_angular_vel.X();
+    tw.angular.y = body_angular_vel.Y();
+    tw.angular.z = body_angular_vel.Z();
+    tw_stamped.twist = tw;
+    tw_stamped.header.frame_id = "base_link";
+    tw_stamped.header.stamp = ros::Time::now();;
+    pub_gt_vec_.publish(tw_stamped);
     
     //publish the acceleration
     tw.linear.x = body_acc.X();
     tw.linear.y = body_acc.Y();
     tw.linear.z = body_acc.Z();
-    pub_gt_acc_.publish(tw);
+    tw_stamped.twist = tw;
+    tw_stamped.header.frame_id = "base_link";
+    tw_stamped.header.stamp = ros::Time::now();;
+    pub_gt_acc_.publish(tw_stamped);
     
             
     ignition::math::Vector3d poschange = pose.Pos() - position;
