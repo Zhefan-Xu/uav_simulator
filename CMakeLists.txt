@@ -21,6 +21,14 @@ find_package(gazebo REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(Protobuf REQUIRED)
 
+set(CMAKE_AUTOUIC ON)
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
+set(QT_LIBRARIES Qt5::Widgets)
+
+qt5_wrap_cpp(QT_MOC include/${PROJECT_NAME}/DialogKeyboard.h)
+qt5_add_resources(RESOURCES include/${PROJECT_NAME}/droneKeyboard.qrc)
+
+
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -130,7 +138,6 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${GAZEBO_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIR}
-
 )
 
 ## Declare a C++ library
@@ -152,6 +159,13 @@ add_library(quadcopterPlugin SHARED
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/uav_simulator_node.cpp)
+add_executable( keyboard_control
+  src/DialogKeyboard.cpp
+  src/droneObjectRos.cpp
+  src/droneKeyboard.cpp
+  ${RESOURCES}
+  ${QT_MOC}
+)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -179,6 +193,10 @@ target_link_libraries(quadcopterPlugin
    ${GAZEBO_LIBRARIES}
 )
 
+target_link_libraries( keyboard_control
+  ${QT_LIBRARIES}
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
