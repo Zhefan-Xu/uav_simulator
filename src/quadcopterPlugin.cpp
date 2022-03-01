@@ -49,7 +49,7 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   gt_vel_topic_ = "/CERLAB/quadcopter/vel";
   gt_acc_topic_ = "/CERLAB/quadcopter/acc";
   switch_mode_topic_ = "/CERLAB/quadcopter/vel_mode";
-  imu_topic_ = "/CERLAB/quadcopter/imu";
+  // imu_topic_ = "/CERLAB/quadcopter/imu";
   
   
   if (!_sdf->HasElement("bodyName"))
@@ -128,19 +128,19 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   
 
   // subscribe imu
-  if (!imu_topic_.empty())
-  {
-    ros::SubscribeOptions ops = ros::SubscribeOptions::create<sensor_msgs::Imu>(
-      imu_topic_, 1,
-      boost::bind(&DroneSimpleController::ImuCallback, this, _1),
-      ros::VoidPtr(), &callback_queue_);
-    imu_subscriber_ = node_handle_->subscribe(ops);
+  // if (!imu_topic_.empty())
+  // {
+  //   ros::SubscribeOptions ops = ros::SubscribeOptions::create<sensor_msgs::Imu>(
+  //     imu_topic_, 1,
+  //     boost::bind(&DroneSimpleController::ImuCallback, this, _1),
+  //     ros::VoidPtr(), &callback_queue_);
+  //   imu_subscriber_ = node_handle_->subscribe(ops);
     
-    if(imu_subscriber_.getTopic() !="")
-        ROS_INFO_NAMED("quadrotor_simple_controller", "Using imu information on topic %s as source of orientation and angular velocity.", imu_topic_.c_str());
-    else
-        ROS_INFO("cannot find the IMU topic!");
-  }
+  //   if(imu_subscriber_.getTopic() !="")
+  //       ROS_INFO_NAMED("quadrotor_simple_controller", "Using imu information on topic %s as source of orientation and angular velocity.", imu_topic_.c_str());
+  //   else
+  //       ROS_INFO("cannot find the IMU topic!");
+  // }
 
   // subscribe command: take off command
   if (!takeoff_topic_.empty())

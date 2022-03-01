@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.2.2)
 project(uav_simulator)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  sensor_msgs
   message_generation
 )
 
@@ -19,11 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(gazebo REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(Protobuf REQUIRED)
-include (FindPkgConfig)
-if (PKG_CONFIG_FOUND)
-    pkg_check_modules(OGRE OGRE)
-    pkg_check_modules(OGRE-Terrain OGRE-Terrain)
-endif()
+
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -118,7 +115,7 @@ catkin_package(
 )
 catkin_package(
    INCLUDE_DIRS include
-   CATKIN_DEPENDS roscpp rospy std_msgs geometry_msgs message_runtime gazebo_ros
+   CATKIN_DEPENDS roscpp rospy std_msgs sensor_msgs geometry_msgs message_runtime gazebo_ros
 )
 
 
@@ -133,6 +130,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${GAZEBO_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIR}
+
 )
 
 ## Declare a C++ library
@@ -144,10 +142,6 @@ add_library(quadcopterPlugin SHARED
 	src/pidController.cpp
 )
 
-add_library(quadcopterIMUPlugin SHARED
-  src/quadcopterIMU.cpp
-  src/quadcopterIMUNative.cpp
-)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -170,11 +164,7 @@ set_target_properties(quadcopterPlugin
     ${PROJECT_SOURCE_DIR}/plugins
 )
 
-set_target_properties(quadcopterIMUPlugin
-    PROPERTIES 
-    LIBRARY_OUTPUT_DIRECTORY
-    ${PROJECT_SOURCE_DIR}/plugins
-)
+
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -189,10 +179,6 @@ target_link_libraries(quadcopterPlugin
    ${GAZEBO_LIBRARIES}
 )
 
-target_link_libraries(quadcopterIMUPlugin
-   ${catkin_LIBRARIES}
-   ${GAZEBO_LIBRARIES}
-)
 
 #############
 ## Install ##
