@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 project(uav_simulator)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++17)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -11,11 +11,19 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-
+find_package(gazebo REQUIRED)
+find_package(Boost REQUIRED COMPONENTS system)
+find_package(Protobuf REQUIRED)
+include (FindPkgConfig)
+if (PKG_CONFIG_FOUND)
+    pkg_check_modules(OGRE OGRE)
+    pkg_check_modules(OGRE-Terrain OGRE-Terrain)
+endif()
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -108,6 +116,11 @@ catkin_package(
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
+catkin_package(
+   INCLUDE_DIRS include
+   CATKIN_DEPENDS roscpp rospy std_msgs geometry_msgs message_runtime gazebo_ros
+)
+
 
 ###########
 ## Build ##
@@ -116,14 +129,25 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
+  ${GAZEBO_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIR}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/uav_simulator.cpp
 # )
+add_library(quadcopterPlugin SHARED 
+	src/quadcopterPlugin.cpp
+	src/pidController.cpp
+)
+
+add_library(quadcopterIMUPlugin SHARED
+  src/quadcopterIMU.cpp
+  src/quadcopterIMUNative.cpp
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -140,6 +164,17 @@ include_directories(
 ## target back to the shorter version for ease of user use
 ## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
 # set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
+set_target_properties(quadcopterPlugin
+    PROPERTIES 
+    LIBRARY_OUTPUT_DIRECTORY
+    ${PROJECT_SOURCE_DIR}/plugins
+)
+
+set_target_properties(quadcopterIMUPlugin
+    PROPERTIES 
+    LIBRARY_OUTPUT_DIRECTORY
+    ${PROJECT_SOURCE_DIR}/plugins
+)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -149,6 +184,15 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+target_link_libraries(quadcopterPlugin
+   ${catkin_LIBRARIES}
+   ${GAZEBO_LIBRARIES}
+)
+
+target_link_libraries(quadcopterIMUPlugin
+   ${catkin_LIBRARIES}
+   ${GAZEBO_LIBRARIES}
+)
 
 #############
 ## Install ##

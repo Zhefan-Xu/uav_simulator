@@ -1,0 +1,560 @@
+<!-- Usage notes are located in this file, look for "Usage"-->
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <gui>
+      <camera name="user_camera">
+        <pose>0 0 40 0 1.57 1.57</pose>
+      </camera>
+    </gui>
+
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.002</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>500</real_time_update_rate>
+    </physics>
+
+    <light name="sun" type="directional">
+      <cast_shadows>0</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>0 0.5 -0.9</direction>
+    </light>
+
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+
+    <include>
+      <uri>model://floorplan_A</uri>
+    </include>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <name>box1</name>
+      <pose>-2.5 -4.3 0 0 0 0</pose>
+      <uri>model://big_box</uri>
+    </include>
+
+    <include>
+      <name>box2</name>
+      <pose>-6.1 -7.5 0 0 0 0</pose>
+      <uri>model://big_box</uri>
+    </include>
+
+    <include>
+      <name>box3</name>
+      <pose>6.35 -6.52 0 0 0 0</pose>
+      <uri>model://big_box</uri>
+    </include>
+
+    <include>
+      <name>box4</name>
+      <pose>2.1 0 0 0 0 0</pose>
+      <uri>model://big_box</uri>
+    </include>
+
+    <include>
+      <name>box5</name>
+      <pose>6.0 7.0 0 0 0 0</pose>
+      <uri>model://big_box</uri>
+    </include>
+    <actor name="actor1">
+      <pose>0 0 1.25 0 0 0</pose>
+      <skin>
+        <filename>walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0</time>
+            <pose>0 2 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>4</time>
+            <pose>0 -2 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>5</time>
+            <pose>0 -2 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>9</time>
+            <pose>0 2 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>10</time>
+            <pose>0 2 0 0 0 -1.57</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <actor name="actor2">
+      <pose>-8 8 0 0 0 0</pose>
+      <skin>
+        <filename>walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+
+      <script>
+        <trajectory id="1" type="walking">
+          <waypoint>
+            <time>0</time>
+            <pose>-8 8 0 0 0 -0.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>7</time>
+            <pose>-1 7 0 0 0 -0.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>10</time>
+            <pose>-1 7 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>24</time>
+            <pose>-1 -6 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>27.5</time>
+            <pose>-1 -6 0 0 0 -3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>34.5</time>
+            <pose>-7 -4 0 0 0 -3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>39</time>
+            <pose>-7 -4 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>44</time>
+            <pose>-7 2 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>47</time>
+            <pose>-7 2 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>56</time>
+            <pose>-7 -7 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>59</time>
+            <pose>-7 -7 0 0 0 0.54</pose>
+          </waypoint>
+          <waypoint>
+            <time>66</time>
+            <pose>-1 -6 0 0 0 0.54</pose>
+          </waypoint>
+          <waypoint>
+            <time>69</time>
+            <pose>-1 -6 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>82</time>
+            <pose>-1 7 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>82</time>
+            <pose>-1 7 0 0 0 3.00</pose>
+          </waypoint>
+          <waypoint>
+            <time>89</time>
+            <pose>-8 8 0 0 0 3.00</pose>
+          </waypoint>
+          <waypoint>
+            <time>92</time>
+            <pose>-8 8 0 0 0 -0.14</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <actor name="actor3">
+      <pose>8 -8 1.25 0 0 0</pose>
+      <skin>
+        <filename>walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+
+      <script>
+        <trajectory id="2" type="walking">
+          <waypoint>
+            <time>0</time>
+            <pose>8 -8 0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>4</time>
+            <pose>4 -8 0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>7</time>
+            <pose>4 -8 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>11</time>
+            <pose>4 -4 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>14</time>
+            <pose>4 -4 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>18</time>
+            <pose>8 -4 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>21</time>
+            <pose>8 -4 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>25</time>
+            <pose>8 -8 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>28</time>
+            <pose>8 -8 0 0 0 -3.14</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <actor name="actor4">
+      <pose>-4 -4 1.25 0 0 0</pose>
+      <skin>
+        <filename>moonwalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="RandomWalk1" filename="libRandomWalk.so">
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <xmin>-2.0</xmin>
+        <xmax>2.0</xmax>
+        <ymin>-3.0</ymin>
+        <ymax>3.0</ymax>
+      </plugin>
+    </actor>
+
+    <actor name="actor5">
+      <pose>-8 -8 1.25 0 0 0</pose>
+      <skin>
+        <filename>moonwalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="RandomWalk2" filename="libRandomWalk.so">
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <xmin>-9.0</xmin>
+        <xmax>-5.0</xmax>
+        <ymin>-9.0</ymin>
+        <ymax>-5.0</ymax>
+      </plugin>
+    </actor>
+
+    <actor name="actor6">
+      <pose>-8 0 1.25 0 0 0</pose>
+      <skin>
+        <filename>moonwalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="RandomWalk3" filename="libRandomWalk.so">
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <xmin>-9.0</xmin>
+        <xmax>-6.0</xmax>
+        <ymin>-1.0</ymin>
+        <ymax>5.0</ymax>
+      </plugin>
+    </actor>
+
+<!--     <actor name="actor7">
+      <pose>1.5 -6 1.25 0 0 0</pose>
+      <skin>
+        <filename>moonwalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="RandomWalk4" filename="libRandomWalk.so">
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <xmin>-7.0</xmin>
+        <xmax>1.5</xmax>
+        <ymin>-9.0</ymin>
+        <ymax>-5.0</ymax>
+      </plugin>
+    </actor>
+
+    <actor name="actor8">
+      <pose>-2 -6 1.25 0 0 0</pose>
+      <skin>
+        <filename>moonwalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="RandomWalk5" filename="libRandomWalk.so">
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <xmin>-7.0</xmin>
+        <xmax>1.5</xmax>
+        <ymin>-9.0</ymin>
+        <ymax>-5.0</ymax>
+      </plugin>
+    </actor>
+
+    <actor name="actor9">
+      <pose>1 9 1.25 0 0 0</pose>
+      <skin>
+        <filename>walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <trajectory id="3" type="walking">
+          <waypoint>
+            <time>0</time>
+            <pose>1 9 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>5</time>
+            <pose>8 9 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>7</time>
+            <pose>8 9 0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>12</time>
+            <pose>1 9 0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>14</time>
+            <pose>1 9 0 0 0 0</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <actor name="actor10">
+      <pose>6 -5 1.25 0 0 0</pose>
+      <skin>
+        <filename>moonwalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="RandomWalk5" filename="libRandomWalk.so">
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <xmin>4.0</xmin>
+        <xmax>9.0</xmax>
+        <ymin>-9.0</ymin>
+        <ymax>1.0</ymax>
+      </plugin>
+    </actor>
+
+    <actor name="actor11">
+      <pose>-9 -1 1.25 0 0 0</pose>
+      <skin>
+        <filename>moonwalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="RandomWalk6" filename="libRandomWalk.so">
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <xmin>-9.0</xmin>
+        <xmax>-6.0</xmax>
+        <ymin>-1.0</ymin>
+        <ymax>5.0</ymax>
+      </plugin>
+    </actor>
+
+    <actor name="actor12">
+      <pose>0 5 1.25 0 0 0</pose>
+      <skin>
+        <filename>moonwalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="RandomWalk7" filename="libRandomWalk.so">
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <xmin>-2.0</xmin>
+        <xmax>1.0</xmax>
+        <ymin>0.0</ymin>
+        <ymax>7.0</ymax>
+      </plugin>
+    </actor>
+
+    <actor name="actor13">
+      <pose>6 4 1.25 0 0 0</pose>
+      <skin>
+        <filename>moonwalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="RandomWalk8" filename="libRandomWalk.so">
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <xmin>3.0</xmin>
+        <xmax>9.0</xmax>
+        <ymin>5.0</ymin>
+        <ymax>9.0</ymax>
+      </plugin>
+    </actor>
+
+    <actor name="actor14">
+      <pose>-3 7 1.25 0 0 0</pose>
+      <skin>
+        <filename>walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <trajectory id="4" type="walking">
+          <waypoint>
+            <time>0</time>
+            <pose>-3 7 0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>5</time>
+            <pose>-9 7 0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>7</time>
+            <pose>-9 7 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>12</time>
+            <pose>-3 7 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>14</time>
+            <pose>-3 7 0 0 0 3.14</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <actor name="actor15">
+      <pose>2 -2 1.25 0 0 0</pose>
+      <skin>
+        <filename>walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+
+
+      <script>
+        <trajectory id="5" type="walking">
+          <waypoint>
+            <time>0</time>
+            <pose>2 -2 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>3</time>
+            <pose>8 -2 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>5</time>
+            <pose>8 -2 0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>8</time>
+            <pose>2 -2 0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>10</time>
+            <pose>2 -2 0 0 0 0</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor> -->
+  </world>
+</sdf>
