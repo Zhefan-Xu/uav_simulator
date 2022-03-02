@@ -1,14 +1,17 @@
 <launch>
   <arg name="paused" value="false"/>
-  <arg name="verbose" value="false"/>
+  <arg name="verbose" value="true"/>
   <arg name="use_sim_time" value="true"/>
+  <arg name="debug" value="false" />
+  <arg name="world_name" value="$(find uav_simulator)/worlds/square.world" />
 
   <!-- launch the custom world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch" >
         <arg name="paused" value="$(arg paused)"/>
-         <!-- <arg name="world_name" value="$(arg world_name)"/> -->
+        <arg name="world_name" value="$(arg world_name)"/>
         <arg name="verbose" value="$(arg verbose)"/>
         <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="debug" value="$(arg debug)" />
   </include>
 
 

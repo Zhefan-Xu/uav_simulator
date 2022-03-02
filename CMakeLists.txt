@@ -150,6 +150,7 @@ add_library(quadcopterPlugin SHARED
 	src/pidController.cpp
 )
 
+add_library(obstaclePathPlugin src/obstaclePathPlugin.cc)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -181,6 +182,11 @@ set_target_properties(quadcopterPlugin
     ${PROJECT_SOURCE_DIR}/plugins
 )
 
+set_target_properties(obstaclePathPlugin
+    PROPERTIES 
+    LIBRARY_OUTPUT_DIRECTORY
+    ${PROJECT_SOURCE_DIR}/plugins
+)
 
 
 ## Add cmake target dependencies of the executable
@@ -202,6 +208,11 @@ target_link_libraries(keyboard_control
 )
 
 target_link_libraries(quadcopterTFBroadcaster ${catkin_LIBRARIES})
+
+target_link_libraries(obstaclePathPlugin    
+   ${catkin_LIBRARIES}
+   ${GAZEBO_LIBRARIES}
+)
 
 #############
 ## Install ##
