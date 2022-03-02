@@ -1,0 +1,5 @@
+<launch>
+	<node name="quadcopterTF" pkg="uav_simulator" type="quadcopterTFBroadcaster" />
+	<node pkg="tf" type="static_transform_publisher" name="baselink_cameralink"
+      args="0.4 0.0 0.0 1.57 0 1.57 base_link camera_link 1000"/>
+</launch>

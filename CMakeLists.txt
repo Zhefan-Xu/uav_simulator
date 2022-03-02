@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   sensor_msgs
   message_generation
+  tf2_ros
 )
 
 ## System dependencies are found with CMake's conventions
@@ -159,13 +160,15 @@ add_library(quadcopterPlugin SHARED
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/uav_simulator_node.cpp)
-add_executable( keyboard_control
+add_executable(keyboard_control
   src/DialogKeyboard.cpp
   src/droneObjectRos.cpp
   src/droneKeyboard.cpp
   ${RESOURCES}
   ${QT_MOC}
 )
+
+add_executable(quadcopterTFBroadcaster src/quadcopterTFBroadcaster.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -193,10 +196,12 @@ target_link_libraries(quadcopterPlugin
    ${GAZEBO_LIBRARIES}
 )
 
-target_link_libraries( keyboard_control
+target_link_libraries(keyboard_control
   ${QT_LIBRARIES}
   ${catkin_LIBRARIES}
 )
+
+target_link_libraries(quadcopterTFBroadcaster ${catkin_LIBRARIES})
 
 #############
 ## Install ##
