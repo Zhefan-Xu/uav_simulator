@@ -5,6 +5,7 @@
 #include <gazebo/physics/physics.hh>
 #include <gazebo/common/common.hh>
 #include <stdio.h>
+#include <math.h>
 
 namespace gazebo
 {
@@ -17,13 +18,17 @@ namespace gazebo
   	// custom attr
   	sdf::ElementPtr sdf;
   	double velocity;
-  	double angularVelocity;
+  	bool orientation;
+    bool loop;
+    double angularVelocity;
+
   	std::vector<ignition::math::Vector3d> path;
   	std::vector<std::vector<double>> pathWithAngle;
-  	std::vector<int> timeKnot;
+  	std::vector<double> timeKnot;
 
   public: 
     void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf);
+    std::vector<double>& interpolateAngle(double start, double end, double dx);
   };
 
   // Register this plugin with the simulator

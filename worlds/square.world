@@ -12,7 +12,7 @@
         </collision>
 
         <visual name="visual">
-          <pose>0 0 -0.02 0 0 1.57</pose>
+          <pose>0 0 -0.5 0 0 1.57</pose>
           <geometry>
             <mesh>
               <uri>model://person/meshes/walking.dae</uri>
@@ -25,8 +25,9 @@
         </visual>
       </link>
       <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
+        <loop>1</loop>
         <velocity>2.0</velocity>
-        <angular_velocity>1.8</angular_velocity>
+        <angular_velocity>0.8</angular_velocity>
         <path>
           <waypoint>5.0 5.0 0.1</waypoint>
           <waypoint>5.0 -5.0 0.1</waypoint>
@@ -35,6 +36,158 @@
         </path>
       </plugin>
     </model>   
+
+    <model name="person2">
+      <pose>0 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <pose>0 0 -0.5 0 0 1.57</pose>
+          <geometry>
+            <mesh>
+              <uri>model://person/meshes/walking.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+            <!-- <box>
+              <size>1 1 1</size>
+            </box> -->
+          </geometry>
+        </visual>
+      </link>
+      <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
+        <loop>1</loop>
+        <velocity>1.5</velocity>
+        <angular_velocity>0.8</angular_velocity>
+        <path>
+          <waypoint>8.0 7.0 0.1</waypoint>
+          <waypoint>8.0 -7.0 0.1</waypoint>
+        </path>
+      </plugin>
+    </model>   
+
+    <model name="person3">
+      <pose>0 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <pose>0 0 -0.5 0 0 1.57</pose>
+          <geometry>
+            <mesh>
+              <uri>model://person/meshes/walking.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+            <!-- <box>
+              <size>1 1 1</size>
+            </box> -->
+          </geometry>
+        </visual>
+      </link>
+      <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
+        <loop>0</loop>
+        <velocity>1.5</velocity>
+        <angular_velocity>0.8</angular_velocity>
+        <path>
+          <waypoint>-8.0 7.0 0.1</waypoint>
+          <waypoint>-7.0 0.0 0.1</waypoint>
+          <waypoint>-8.0 -7.0 0.1</waypoint>
+        </path>
+      </plugin>
+    </model>   
+
+    <model name="obstacle1">
+      <pose>0 0 0.0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <pose>0 0 0 0 0 1.57</pose>
+          <geometry>
+            <box>
+              <size>1.5 1.5 1.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+      </link>
+      <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
+        <loop>1</loop>
+        <velocity>3</velocity>
+        <orientation>0</orientation>>
+        <path>
+          <waypoint>3.0 3.0 0.1</waypoint>
+          <waypoint>3.0 -2.0 0.1</waypoint>
+          <waypoint>0.0 -3.0 0.1</waypoint>
+          <waypoint>-3.0 -2.0 0.1</waypoint>
+          <waypoint>-2.0 3.0 0.1</waypoint>
+        </path>
+      </plugin>
+    </model>   
+
+    <model name="obstacle2">
+      <pose>0 0 0.0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <pose>0 0 0 0 0 1.57</pose>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+      </link>
+      <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
+        <loop>0</loop>
+        <velocity>3</velocity>
+        <orientation>0</orientation>>
+        <path>
+          <waypoint>-6.0 -8.0 0.1</waypoint>
+          <waypoint>-3.0 -7.0 0.1</waypoint>
+          <waypoint>0.0 -8.0 0.1</waypoint>
+          <waypoint>3.0 -9.0 0.1</waypoint>
+          <waypoint>6.0 -8.0 0.1</waypoint>
+        </path>
+      </plugin>
+    </model>  
+
 
     <light name='sun' type='directional'>
       <cast_shadows>1</cast_shadows>
