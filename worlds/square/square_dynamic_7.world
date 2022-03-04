@@ -203,11 +203,11 @@
       </link>
       <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
         <loop>0</loop>
-        <velocity>2</velocity>
+        <velocity>1</velocity>
         <orientation>0</orientation>>
         <path>
           <waypoint>1.0 7.0 0.1</waypoint>
-          <waypoint>1.0 3.5 0.1</waypoint>
+          <waypoint>1.0 -2 0.1</waypoint>
         </path>
       </plugin>
     </model>  
