@@ -8,7 +8,7 @@ void DroneObjectROS::initROSVars(ros::NodeHandle &node) {
   pubLand = node.advertise<std_msgs::Empty>("/CERLAB/quadcopter/land", 1024);
   pubReset = node.advertise<std_msgs::Empty>("/CERLAB/quadcopter/reset", 1024);
   pubPosCtrl = node.advertise<std_msgs::Bool>("/CERLAB/quadcopter/posctrl", 1024);
-  pubCmd = node.advertise<geometry_msgs::Twist>("/CERLAB/quadcopter/cmd_vel", 1024);
+  pubCmd = node.advertise<geometry_msgs::TwistStamped>("/CERLAB/quadcopter/cmd_vel", 1024);
   pubVelMode = node.advertise<std_msgs::Bool>("/CERLAB/quadcopter/vel_mode", 1024);
 }
 
@@ -38,12 +38,15 @@ bool DroneObjectROS::hover() {
   if (!isFlying)
     return false;
 
-  twist_msg.linear.x = 0;
-  twist_msg.linear.y = 0;
-  twist_msg.linear.z = 0;
-  twist_msg.angular.x = 0.0;
-  twist_msg.angular.y = 0.0;
-  twist_msg.angular.z = 0.0;
+  twist_msg.header.frame_id = "base_link";
+  twist_msg.header.stamp = ros::Time::now();
+
+  twist_msg.twist.linear.x = 0;
+  twist_msg.twist.linear.y = 0;
+  twist_msg.twist.linear.z = 0;
+  twist_msg.twist.angular.x = 0.0;
+  twist_msg.twist.angular.y = 0.0;
+  twist_msg.twist.angular.z = 0.0;
 
   pubCmd.publish(twist_msg);
   ROS_INFO("Hovering...");
@@ -76,12 +79,15 @@ bool DroneObjectROS::move(float lr, float fb, float ud, float w) {
   if (!isFlying)
     return false;
 
-  twist_msg.linear.x = 1.0;
-  twist_msg.linear.y = 1.0;
-  twist_msg.linear.z = ud;
-  twist_msg.angular.x = lr;
-  twist_msg.angular.y = fb;
-  twist_msg.angular.z = w;
+  twist_msg.header.frame_id = "base_link";
+  twist_msg.header.stamp = ros::Time::now();
+
+  twist_msg.twist.linear.x = 1.0;
+  twist_msg.twist.linear.y = 1.0;
+  twist_msg.twist.linear.z = ud;
+  twist_msg.twist.angular.x = lr;
+  twist_msg.twist.angular.y = fb;
+  twist_msg.twist.angular.z = w;
   pubCmd.publish(twist_msg);
   ROS_INFO("Moving...");
   return true;
@@ -90,13 +96,14 @@ bool DroneObjectROS::move(float lr, float fb, float ud, float w) {
 bool DroneObjectROS::moveTo(float x, float y, float z) {
   if (!isFlying)
     return false;
-
-  twist_msg.linear.x = x;
-  twist_msg.linear.y = y;
-  twist_msg.linear.z = z;
-  // twist_msg.angular.x = 0;
-  // twist_msg.angular.y = 0;
-  // twist_msg.angular.z = 0;
+  twist_msg.header.frame_id = "base_link";
+  twist_msg.header.stamp = ros::Time::now();
+  twist_msg.twist.linear.x = x;
+  twist_msg.twist.linear.y = y;
+  twist_msg.twist.linear.z = z;
+  // twist_msg.twist.angular.x = 0;
+  // twist_msg.twist.angular.y = 0;
+  // twist_msg.twist.angular.z = 0;
 
   pubCmd.publish(twist_msg);
   ROS_INFO("Moving...");
@@ -106,10 +113,11 @@ bool DroneObjectROS::moveTo(float x, float y, float z) {
 bool DroneObjectROS::pitch(float speed) {
   if (!isFlying)
     return false;
-
-  twist_msg.linear.x = speed;
-  // twist_msg.linear.y = 0.0;
-  // twist_msg.linear.z = 0;
+  twist_msg.header.frame_id = "base_link";
+  twist_msg.header.stamp = ros::Time::now();
+  twist_msg.twist.linear.x = speed;
+  // twist_msg.twist.linear.y = 0.0;
+  // twist_msg.twist.linear.z = 0;
   pubCmd.publish(twist_msg);
   ROS_INFO("Pitching...");
   return true;
@@ -117,10 +125,11 @@ bool DroneObjectROS::pitch(float speed) {
 bool DroneObjectROS::roll(float speed) {
   if (!isFlying)
     return false;
-
-  // twist_msg.linear.x = 0.0;
-  twist_msg.linear.y = speed;
-  // twist_msg.linear.z = 0;
+  twist_msg.header.frame_id = "base_link";
+  twist_msg.header.stamp = ros::Time::now();
+  // twist_msg.twist.linear.x = 0.0;
+  twist_msg.twist.linear.y = speed;
+  // twist_msg.twist.linear.z = 0;
   pubCmd.publish(twist_msg);
   ROS_INFO("Rolling...");
   return true;
@@ -129,13 +138,14 @@ bool DroneObjectROS::roll(float speed) {
 bool DroneObjectROS::rise(float speed) {
   if (!isFlying)
     return false;
-
-  // twist_msg.linear.x = 0.0;
-  // twist_msg.linear.y = 0.0;
-  twist_msg.linear.z = speed;
-  // twist_msg.angular.x = 0.0; // flag for preventing hovering
-  // twist_msg.angular.y = 0.0;
-  // twist_msg.angular.z = 0.0;
+  twist_msg.header.frame_id = "base_link";
+  twist_msg.header.stamp = ros::Time::now();
+  // twist_msg.twist.linear.x = 0.0;
+  // twist_msg.twist.linear.y = 0.0;
+  twist_msg.twist.linear.z = speed;
+  // twist_msg.twist.angular.x = 0.0; // flag for preventing hovering
+  // twist_msg.twist.angular.y = 0.0;
+  // twist_msg.twist.angular.z = 0.0;
   pubCmd.publish(twist_msg);
   ROS_INFO("Rising...");
   return true;
@@ -144,12 +154,14 @@ bool DroneObjectROS::rise(float speed) {
 bool DroneObjectROS::yaw(float speed) {
   if (!isFlying)
     return true;
-  // twist_msg.linear.x = 0.0;
-  // twist_msg.linear.y = 0.0;
-  // twist_msg.linear.z = 0;
-  // twist_msg.angular.x = 0.0; // flag for preventing hovering
-  // twist_msg.angular.y = 0.0;
-  twist_msg.angular.z = speed;
+  twist_msg.header.frame_id = "base_link";
+  twist_msg.header.stamp = ros::Time::now();
+  // twist_msg.twist.linear.x = 0.0;
+  // twist_msg.twist.linear.y = 0.0;
+  // twist_msg.twist.linear.z = 0;
+  // twist_msg.twist.angular.x = 0.0; // flag for preventing hovering
+  // twist_msg.twist.angular.y = 0.0;
+  twist_msg.twist.angular.z = speed;
   pubCmd.publish(twist_msg);
   ROS_INFO("Turning head...");
   return true;

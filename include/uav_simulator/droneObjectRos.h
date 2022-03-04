@@ -1,7 +1,7 @@
 #ifndef ARDRONE_ROS_H
 #define ARDRONE_ROS_H
 
-#include <geometry_msgs/Twist.h>
+#include <geometry_msgs/TwistStamped.h>
 #include <ros/ros.h>
 #include <std_msgs/Bool.h>
 #include <std_msgs/Empty.h>
@@ -29,7 +29,7 @@ public:
   ros::Publisher pubPosCtrl;
   ros::Publisher pubVelMode;
 
-  geometry_msgs::Twist twist_msg;
+  geometry_msgs::TwistStamped twist_msg;
 
   void initROSVars(ros::NodeHandle &node);
 

@@ -100,7 +100,7 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   // subscribe command: control command
   if (!cmd_normal_topic_.empty())
   {
-    ros::SubscribeOptions ops = ros::SubscribeOptions::create<geometry_msgs::Twist>(
+    ros::SubscribeOptions ops = ros::SubscribeOptions::create<geometry_msgs::TwistStamped>(
       cmd_normal_topic_, 1,
       boost::bind(&DroneSimpleController::CmdCallback, this, _1),
       ros::VoidPtr(), &callback_queue_);
@@ -220,9 +220,9 @@ void DroneSimpleController::LoadControllerSettings(physics::ModelPtr _model, sdf
 
 ////////////////////////////////////////////////////////////////////////////////
 // Callbacks
-void DroneSimpleController::CmdCallback(const geometry_msgs::TwistConstPtr& cmd)
+void DroneSimpleController::CmdCallback(const geometry_msgs::TwistStampedConstPtr& cmd)
 {
-  cmd_val = *cmd;
+  cmd_val = cmd->twist;
 
 
   static common::Time last_sim_time = world->SimTime();

@@ -73,7 +73,7 @@ private:
 
   geometry_msgs::Twist cmd_val;
   // callback functions for subscribers
-  void CmdCallback(const geometry_msgs::TwistConstPtr&);
+  void CmdCallback(const geometry_msgs::TwistStampedConstPtr&);
   void PosCtrlCallback(const std_msgs::BoolConstPtr&);
   void ImuCallback(const sensor_msgs::ImuConstPtr&);
   void TakeoffCallback(const std_msgs::EmptyConstPtr&);

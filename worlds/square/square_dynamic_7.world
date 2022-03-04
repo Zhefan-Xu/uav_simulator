@@ -1,18 +1,18 @@
 <sdf version='1.7'>
   <world name='default'>
     <model name="person1">
-      <pose>0 0 0.5 0 0 0</pose>
+      <pose>0 0 0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
             <box>
-              <size>0.5 1.5 0.5</size>
+              <size>0.5 0.5 1.5</size>
             </box>
           </geometry>
         </collision>
 
         <visual name="visual">
-          <pose>0 0 -0.5 0 0 1.57</pose>
+          <pose>0 0 0.75 0 0 1.57</pose>
           <geometry>
             <mesh>
               <uri>model://person/meshes/walking.dae</uri>
@@ -26,16 +26,16 @@
         <velocity>1.0</velocity>
         <angular_velocity>0.8</angular_velocity>
         <path>
-          <waypoint>-8.0 8.0 0.1</waypoint>
-          <waypoint>-1.0 8.0 0.1</waypoint>
-          <waypoint>-1.0 1.0 0.1</waypoint>
-          <waypoint>-8.0 1.0 0.1</waypoint>
+          <waypoint>-8.0 8.0 0.0</waypoint>
+          <waypoint>-1.0 8.0 0.0</waypoint>
+          <waypoint>-1.0 1.0 0.0</waypoint>
+          <waypoint>-8.0 1.0 0.0</waypoint>
         </path>
       </plugin>
     </model>   
 
     <model name="person2">
-      <pose>0 0 0.5 0 0 0</pose>
+      <pose>0 0 0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -46,7 +46,7 @@
         </collision>
 
         <visual name="visual">
-          <pose>0 0 -0.5 0 0 1.57</pose>
+          <pose>0 0 0.75 0 0 1.57</pose>
           <geometry>
             <mesh>
               <uri>model://person/meshes/walking.dae</uri>
@@ -60,8 +60,8 @@
         <velocity>1.5</velocity>
         <angular_velocity>0.8</angular_velocity>
         <path>
-          <waypoint>7.5 7.0 0.1</waypoint>
-          <waypoint>7.5 -4.0 0.1</waypoint>
+          <waypoint>7.5 7.0 0.0</waypoint>
+          <waypoint>7.5 -4.0 0.0</waypoint>
         </path>
       </plugin>
     </model>   
@@ -78,7 +78,7 @@
         </collision>
 
         <visual name="visual">
-          <pose>0 0 -0.5 0 0 1.57</pose>
+          <pose>0 0 0.75 0 0 1.57</pose>
           <geometry>
             <mesh>
               <uri>model://person/meshes/walking.dae</uri>
@@ -92,8 +92,8 @@
         <velocity>1.5</velocity>
         <angular_velocity>0.8</angular_velocity>
         <path>
-          <waypoint>-5.0 -7.0 0.1</waypoint>
-          <waypoint>5.0 -7.0 0.1</waypoint>
+          <waypoint>-5.0 -7.0 0.0</waypoint>
+          <waypoint>5.0 -7.0 0.0</waypoint>
         </path>
       </plugin>
     </model>   
