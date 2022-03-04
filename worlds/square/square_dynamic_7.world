@@ -3,20 +3,29 @@
     <model name="person1">
       <pose>0 0 0 0 0 0</pose>
       <link name="link">
-        <collision name="collision">
+        <collision name="bottom">
+          <pose>0 0 0.01 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.5 0.5 1.5</size>
+              <size>0.35 0.75 0.02</size>
             </box>
           </geometry>
         </collision>
 
-        <visual name="visual">
-          <pose>0 0 0.75 0 0 1.57</pose>
+        <collision name="person">
+          <pose>0 0 -0.02 0 0 1.57</pose>
           <geometry>
             <mesh>
               <uri>model://person/meshes/walking.dae</uri>
-              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <pose>0 0 -0.02 0 0 1.57</pose>
+          <geometry>
+            <mesh>
+              <uri>model://person/meshes/walking.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -36,21 +45,30 @@
 
     <model name="person2">
       <pose>0 0 0 0 0 0</pose>
-      <link name="link">
-        <collision name="collision">
+       <link name="link">
+        <collision name="bottom">
+          <pose>0 0 0.01 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.5 0.5 1.5</size>
+              <size>0.35 0.75 0.02</size>
             </box>
           </geometry>
         </collision>
 
-        <visual name="visual">
-          <pose>0 0 0.75 0 0 1.57</pose>
+        <collision name="person">
+          <pose>0 0 -0.02 0 0 1.57</pose>
           <geometry>
             <mesh>
               <uri>model://person/meshes/walking.dae</uri>
-              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <pose>0 0 -0.02 0 0 1.57</pose>
+          <geometry>
+            <mesh>
+              <uri>model://person/meshes/walking.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -67,22 +85,31 @@
     </model>   
 
     <model name="person3">
-      <pose>0 0 0.5 0 0 0</pose>
-      <link name="link">
-        <collision name="collision">
+      <pose>0 0 0 0 0 0</pose>
+       <link name="link">
+        <collision name="bottom">
+          <pose>0 0 0.01 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.5 0.5 1.5</size>
+              <size>0.35 0.75 0.02</size>
             </box>
           </geometry>
         </collision>
 
-        <visual name="visual">
-          <pose>0 0 0.75 0 0 1.57</pose>
+        <collision name="person">
+          <pose>0 0 -0.02 0 0 1.57</pose>
           <geometry>
             <mesh>
               <uri>model://person/meshes/walking.dae</uri>
-              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <pose>0 0 -0.02 0 0 1.57</pose>
+          <geometry>
+            <mesh>
+              <uri>model://person/meshes/walking.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -110,7 +137,7 @@
         </collision>
 
         <visual name="visual">
-          <pose>0 0 0 0 0 1.57</pose>
+          <pose>0 0 0 0 0 0</pose>
           <geometry>
             <box>
               <size>1 1 2</size>
@@ -147,7 +174,7 @@
         </collision>
 
         <visual name="visual">
-          <pose>0 0 0 0 0 1.57</pose>
+          <pose>0 0 0 0 0 0</pose>
           <geometry>
             <box>
               <size>0.5 0.5 1.8</size>
@@ -187,7 +214,7 @@
         </collision>
 
         <visual name="visual">
-          <pose>0 0 0 0 0 1.57</pose>
+          <pose>0 0 0 0 0 0</pose>
           <geometry>
             <box>
               <size>0.5 0.5 1.8</size>
