@@ -4,7 +4,8 @@
   <arg name="use_sim_time" value="true"/>
   <arg name="debug" value="false" />
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/square/square_static.world" /> -->
-  <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan1/floorplan1_static.world" />
+  <arg name="world_name" value="$(find uav_simulator)/worlds/square/square_dynamic_7.world" />
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan1/floorplan1_static.world" /> -->
 
   <!-- launch the custom world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch" >
