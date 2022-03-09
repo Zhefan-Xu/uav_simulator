@@ -10,6 +10,7 @@
 
 #include <geometry_msgs/TwistStamped.h>
 #include <geometry_msgs/PoseStamped.h>
+#include <nav_msgs/Odometry.h>
 
 #include <sensor_msgs/Imu.h>
 
@@ -69,6 +70,7 @@ private:
   ros::Publisher pub_gt_pose_;   //for publishing ground truth pose
   ros::Publisher pub_gt_vec_;   //ground truth velocity in the body frame
   ros::Publisher pub_gt_acc_;   //ground truth acceleration in the body frame
+  ros::Publisher pub_gt_odom_; // publish odometry
 
 
   geometry_msgs::Twist cmd_val;
@@ -97,6 +99,7 @@ private:
   std::string gt_pose_topic_;    //ground truth
   std::string gt_vel_topic_;
   std::string gt_acc_topic_;
+  std::string gt_odom_topic_;
   
   double max_force_;
   double motion_small_noise_;

@@ -48,6 +48,7 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   gt_pose_topic_ = "/CERLAB/quadcopter/pose";
   gt_vel_topic_ = "/CERLAB/quadcopter/vel";
   gt_acc_topic_ = "/CERLAB/quadcopter/acc";
+  gt_odom_topic_ = "/CERLAB/quadcopter/odom";
   switch_mode_topic_ = "/CERLAB/quadcopter/vel_mode";
   // imu_topic_ = "/CERLAB/quadcopter/imu";
   
@@ -180,9 +181,17 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
       pub_gt_pose_ = node_handle_->advertise<geometry_msgs::PoseStamped>(gt_pose_topic_,1024);    
   }
   
-  pub_gt_vec_ = node_handle_->advertise<geometry_msgs::TwistStamped>(gt_vel_topic_, 1024);
-  pub_gt_acc_ = node_handle_->advertise<geometry_msgs::TwistStamped>(gt_acc_topic_, 1024);
-  
+  if (!gt_vel_topic_.empty()){
+      pub_gt_vec_ = node_handle_->advertise<geometry_msgs::TwistStamped>(gt_vel_topic_, 1024);
+  }
+
+  if (!gt_vel_topic_.empty()){
+      pub_gt_acc_ = node_handle_->advertise<geometry_msgs::TwistStamped>(gt_acc_topic_, 1024);
+  }
+
+  if (!gt_odom_topic_.empty()){
+      pub_gt_odom_ = node_handle_->advertise<nav_msgs::Odometry>(gt_odom_topic_, 1024);
+  }
   
   if (!switch_mode_topic_.empty()){
       ros::SubscribeOptions ops = ros::SubscribeOptions::create<std_msgs::Bool>(
@@ -382,17 +391,28 @@ void DroneSimpleController::UpdateDynamics(double dt){
     tw.angular.z = body_angular_vel.Z();
     tw_stamped.twist = tw;
     tw_stamped.header.frame_id = "base_link";
-    tw_stamped.header.stamp = ros::Time::now();;
+    tw_stamped.header.stamp = ros::Time::now();
     pub_gt_vec_.publish(tw_stamped);
     
     //publish the acceleration
-    tw.linear.x = body_acc.X();
-    tw.linear.y = body_acc.Y();
-    tw.linear.z = body_acc.Z();
-    tw_stamped.twist = tw;
-    tw_stamped.header.frame_id = "base_link";
-    tw_stamped.header.stamp = ros::Time::now();;
-    pub_gt_acc_.publish(tw_stamped);
+    geometry_msgs::TwistStamped tw_acc_stamped;
+    geometry_msgs::Twist tw_acc;
+    tw_acc.linear.x = body_acc.X();
+    tw_acc.linear.y = body_acc.Y();
+    tw_acc.linear.z = body_acc.Z();
+    tw_acc_stamped.twist = tw_acc;
+    tw_acc_stamped.header.frame_id = "base_link";
+    tw_acc_stamped.header.stamp = ros::Time::now();
+    pub_gt_acc_.publish(tw_acc_stamped);
+
+    //publish odometry
+    nav_msgs::Odometry odom;
+    odom.header.frame_id = "map";
+    odom.child_frame_id = "base_link";
+    odom.header.stamp = ros::Time::now();
+    odom.pose.pose = gt_pose;
+    odom.twist.twist = tw;
+    pub_gt_odom_.publish(odom);
     
             
     ignition::math::Vector3d poschange = pose.Pos() - position;
