@@ -1,6 +1,6 @@
 <sdf version='1.7'>
   <world name='default'>
-    <model name="person1">
+    <model name="person1_0.5_0.5_1.8">
       <pose>0 0 0 0 0 0</pose>
       <link name="link">
         <collision name="bottom">
@@ -43,7 +43,7 @@
       </plugin>
     </model>   
 
-    <model name="person2">
+    <model name="person2_0.5_0.5_1.8">
       <pose>0 0 0 0 0 0</pose>
        <link name="link">
         <collision name="bottom">
@@ -84,7 +84,7 @@
       </plugin>
     </model>   
 
-    <model name="person3">
+    <model name="person3_0.5_0.5_1.8">
       <pose>0 0 0 0 0 0</pose>
        <link name="link">
         <collision name="bottom">
@@ -125,7 +125,7 @@
       </plugin>
     </model>   
 
-    <model name="obstacle1">
+    <model name="obstacle1_1.0_1.0_1.2">
       <pose>0 0 0.0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
@@ -162,7 +162,7 @@
       </plugin>
     </model>   
 
-    <model name="obstacle2">
+    <model name="obstacle2_0.5_0.5_1.8">
       <pose>0 0 0.0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
@@ -202,7 +202,7 @@
       </plugin>
     </model>  
 
-    <model name="obstacle3">
+    <model name="obstacle3_0.5_0.5_1.8">
       <pose>0 0 0.0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
@@ -239,7 +239,7 @@
       </plugin>
     </model>  
 
-    <model name="obstacle4">
+    <model name="obstacle4_0.8_0.8_1.8">
       <pose>0 0 0.0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
