@@ -376,9 +376,9 @@ void DroneSimpleController::UpdateDynamics(double dt){
     pub_gt_pose_.publish(gt_pose_stamped);
     
     //convert the acceleration and velocity into the body frame
-    ignition::math::Vector3d body_vel = pose.Rot().RotateVector(velocity);
-    ignition::math::Vector3d body_angular_vel = pose.Rot().RotateVector(angular_velocity);
-    ignition::math::Vector3d body_acc = pose.Rot().RotateVector(acceleration);
+    ignition::math::Vector3d body_vel = pose.Rot().RotateVectorReverse(velocity);
+    ignition::math::Vector3d body_angular_vel = pose.Rot().RotateVectorReverse(angular_velocity);
+    ignition::math::Vector3d body_acc = pose.Rot().RotateVectorReverse(acceleration);
     
     //publish the velocity
     geometry_msgs::TwistStamped tw_stamped;
