@@ -9,16 +9,21 @@
     <collision name="quadcotper__collision">
       <origin rpy="0 0 0" xyz="0   0   0.04"/>
       <geometry>
-        <mesh filename="package://uav_simulator/urdf/meshes/quadcopter.stl" scale="1.0 1.0 1.0"/>
+        <mesh filename="package://uav_simulator/urdf/quadcopter/meshes/quadcopter.stl" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <visual name="quadcotper__visual">
        <origin rpy="0 0 0" xyz="0   0   0.04"/>
         <geometry>
-          <mesh filename="package://uav_simulator/urdf/meshes/quadcopter.dae" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://uav_simulator/urdf/quadcopter/meshes/quadcopter.dae" scale="1.0 1.0 1.0"/>
+          <!-- <mesh filename="package://uav_simulator/urdf/quadcopter/meshes/quadcopter_material.dae" scale="1.0 1.0 1.0"/> -->
         </geometry>
     </visual>
   </link>
+
+  <gazebo reference="quadcopter">
+  	<material>quadcopter/Diffusion</material>
+  </gazebo>
 
   <gazebo>
     <plugin name='quadcopter_gazebo_plugin' filename='libquadcopterPlugin.so'>
