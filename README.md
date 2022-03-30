@@ -18,3 +18,4 @@ source path/to/uav_simulator/gazeboSetup.bash
 ```
 roslaunch uav_simulator test.launch
 ```
+making models
