@@ -234,30 +234,30 @@ void DroneSimpleController::CmdCallback(const geometry_msgs::TwistStampedConstPt
   cmd_val = cmd->twist;
 
 
-  static common::Time last_sim_time = world->SimTime();
-  static double time_counter_for_drift_noise = 0;
-  static double drift_noise[4] = {0.0, 0.0, 0.0, 0.0};
-  // Get simulator time
-  common::Time cur_sim_time = world->SimTime();
-  double dt = (cur_sim_time - last_sim_time).Double();
-  // save last time stamp
-  last_sim_time = cur_sim_time;
+  // static common::Time last_sim_time = world->SimTime();
+  // static double time_counter_for_drift_noise = 0;
+  // static double drift_noise[4] = {0.0, 0.0, 0.0, 0.0};
+  // // Get simulator time
+  // common::Time cur_sim_time = world->SimTime();
+  // double dt = (cur_sim_time - last_sim_time).Double();
+  // // save last time stamp
+  // last_sim_time = cur_sim_time;
 
   // generate noise
-  if(time_counter_for_drift_noise > motion_drift_noise_time_)
-  {
-    drift_noise[0] = 2*motion_drift_noise_*(drand48()-0.5);
-    drift_noise[1] = 2*motion_drift_noise_*(drand48()-0.5);
-    drift_noise[2] = 2*motion_drift_noise_*(drand48()-0.5);
-    drift_noise[3] = 2*motion_drift_noise_*(drand48()-0.5);
-    time_counter_for_drift_noise = 0.0;
-  }
-  time_counter_for_drift_noise += dt;
+  // if(time_counter_for_drift_noise > motion_drift_noise_time_)
+  // {
+  //   drift_noise[0] = 2*motion_drift_noise_*(drand48()-0.5);
+  //   drift_noise[1] = 2*motion_drift_noise_*(drand48()-0.5);
+  //   drift_noise[2] = 2*motion_drift_noise_*(drand48()-0.5);
+  //   drift_noise[3] = 2*motion_drift_noise_*(drand48()-0.5);
+  //   time_counter_for_drift_noise = 0.0;
+  // }
+  // time_counter_for_drift_noise += dt;
 
-  cmd_val.angular.x += drift_noise[0] + 2*motion_small_noise_*(drand48()-0.5);
-  cmd_val.angular.y += drift_noise[1] + 2*motion_small_noise_*(drand48()-0.5);
-  cmd_val.angular.z += drift_noise[3] + 2*motion_small_noise_*(drand48()-0.5);
-  cmd_val.linear.z += drift_noise[2] + 2*motion_small_noise_*(drand48()-0.5);
+  // cmd_val.angular.x += drift_noise[0] + 2*motion_small_noise_*(drand48()-0.5);
+  // cmd_val.angular.y += drift_noise[1] + 2*motion_small_noise_*(drand48()-0.5);
+  // cmd_val.angular.z += drift_noise[3] + 2*motion_small_noise_*(drand48()-0.5);
+  // cmd_val.linear.z += drift_noise[2] + 2*motion_small_noise_*(drand48()-0.5);
 
 }
 

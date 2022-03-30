@@ -63,7 +63,7 @@ Visualization Manager:
       Axes Radius: 0.10000000149011612
       Class: rviz/Pose
       Color: 255; 25; 0
-      Enabled: true
+      Enabled: false
       Head Length: 0.30000001192092896
       Head Radius: 0.10000000149011612
       Name: Pose
@@ -73,7 +73,7 @@ Visualization Manager:
       Shape: Axes
       Topic: /CERLAB/quadcopter/pose
       Unreliable: false
-      Value: true
+      Value: false
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
@@ -149,13 +149,7 @@ Visualization Manager:
       Marker Topic: /onboard_vision/obstacle_bbox
       Name: MarkerArray
       Namespaces:
-        obstacle1_1.0_1.0_1.2: true
-        obstacle2_0.5_0.5_1.8: true
-        obstacle3_0.5_0.5_1.8: true
-        obstacle4_0.8_0.8_1.8: true
-        person1_0.5_0.5_1.8: true
-        person2_0.5_0.5_1.8: true
-        person3_0.5_0.5_1.8: true
+        {}
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -202,7 +196,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 16.846452713012695
+      Distance: 4.6241912841796875
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -210,17 +204,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 1.0993642807006836
-        Y: -3.835320234298706
-        Z: 0.748887300491333
+        X: -0.7237671613693237
+        Y: -1.198359489440918
+        Z: 1.4520970582962036
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.855398416519165
+      Pitch: 1.290398120880127
       Target Frame: <Fixed Frame>
-      Yaw: 4.001699447631836
+      Yaw: 3.201697587966919
     Saved: ~
 Window Geometry:
   Displays:
