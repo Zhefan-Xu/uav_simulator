@@ -1,4 +1,4 @@
-<sdf version='1.7'>
+<sdf version='1.6'>
   <world name='default'>
     <model name="person1_0.5_0.5_1.8">
       <pose>0 0 0 0 0 0</pose>

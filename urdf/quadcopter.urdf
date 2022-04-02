@@ -56,7 +56,7 @@
 
   <gazebo reference="base_link">
     <sensor name="camera" type="depth">
-        <alwaysOn>true</alwaysOn>
+        <!-- <alwaysOn>true</alwaysOn> -->
         <update_rate>20</update_rate>
         <camera>
           <horizontal_fov>1.047198</horizontal_fov>

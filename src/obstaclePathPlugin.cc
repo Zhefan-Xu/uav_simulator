@@ -143,8 +143,8 @@ namespace gazebo
       double totalTime = 0.0;
       this->timeKnot.push_back(totalTime);
       for (int i=0; i<this->pathWithAngle.size()-1; ++i){
-        std::vector poseCurr = this->pathWithAngle[i];
-        std::vector poseNext = this->pathWithAngle[i+1];
+        std::vector<double> poseCurr = this->pathWithAngle[i];
+        std::vector<double> poseNext = this->pathWithAngle[i+1];
 
         bool rotation = ((poseCurr[0] == poseNext[0]) and (poseCurr[1] == poseNext[1]) and (poseCurr[2] == poseNext[2]));
 
