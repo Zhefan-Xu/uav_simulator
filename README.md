@@ -16,6 +16,6 @@ source path/to/uav_simulator/gazeboSetup.bash
 
 ### Run
 ```
-roslaunch uav_simulator test.launch
+roslaunch uav_simulator start.launch
 ```
 making models
