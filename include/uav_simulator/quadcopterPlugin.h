@@ -20,7 +20,9 @@
 #include <nav_msgs/Odometry.h>
 
 #include <uav_simulator/pidController.h>
-
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
+#include <geometry_msgs/Quaternion.h>
 #define LANDED_MODEL        0
 #define FLYING_MODEL        1
 #define TAKINGOFF_MODEL     2
@@ -61,6 +63,7 @@ private:
   ros::Subscriber cmd_subscriber_;
   ros::Subscriber posctrl_subscriber_;
   ros::Subscriber imu_subscriber_;
+  ros::Subscriber target_pose_subscriber_;
   
   // extra robot control command
   ros::Subscriber takeoff_subscriber_;
@@ -75,8 +78,10 @@ private:
 
 
   geometry_msgs::Twist cmd_val;
+  geometry_msgs::Pose pose_setpoint;
   // callback functions for subscribers
   void CmdCallback(const geometry_msgs::TwistStampedConstPtr&);
+  void TargetPoseCallback(const geometry_msgs::PoseStampedConstPtr&);
   void PosCtrlCallback(const std_msgs::BoolConstPtr&);
   void ImuCallback(const sensor_msgs::ImuConstPtr&);
   void TakeoffCallback(const std_msgs::EmptyConstPtr&);
@@ -91,6 +96,7 @@ private:
 
   std::string link_name_;
   std::string cmd_normal_topic_;
+  std::string target_pose_topic_;
   std::string switch_mode_topic_;
   std::string posctrl_topic_;
   std::string imu_topic_;
@@ -129,6 +135,33 @@ private:
   // Pointer to the update event connection
   event::ConnectionPtr updateConnection;
 };
+
+inline geometry_msgs::Quaternion quaternion_from_rpy(double roll, double pitch, double yaw)
+{
+  if (yaw > M_PI){
+    yaw = yaw - 2*M_PI;
+  }
+    tf2::Quaternion quaternion_tf2;
+    quaternion_tf2.setRPY(roll, pitch, yaw);
+    geometry_msgs::Quaternion quaternion = tf2::toMsg(quaternion_tf2);
+    return quaternion;
+}
+
+inline double rpy_from_quaternion(const geometry_msgs::Quaternion& quat){
+  // return is [0, 2pi]
+  tf2::Quaternion tf_quat;
+  tf2::convert(quat, tf_quat);
+  double roll, pitch, yaw;
+  tf2::Matrix3x3(tf_quat).getRPY(roll, pitch, yaw);
+  return yaw;
+}
+
+inline void rpy_from_quaternion(const geometry_msgs::Quaternion& quat, double &roll, double &pitch, double &yaw){
+  tf2::Quaternion tf_quat;
+  tf2::convert(quat, tf_quat);
+  tf2::Matrix3x3(tf_quat).getRPY(roll, pitch, yaw);
+}
+
 
 }
 

@@ -41,6 +41,7 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   
   //load parameters
   cmd_normal_topic_ = "/CERLAB/quadcopter/cmd_vel";
+  target_pose_topic_ = "/CERLAB/quadcopter/setpoint_pose";
   takeoff_topic_ = "/CERLAB/quadcopter/takeoff";
   land_topic_ = "/CERLAB/quadcopter/land";
   reset_topic_ = "/CERLAB/quadcopter/reset";
@@ -111,6 +112,21 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
         ROS_INFO_NAMED("quadrotor_simple_controller", "Using cmd_topic %s.", cmd_normal_topic_.c_str());
     else
         ROS_INFO("cannot find the command topic!");
+  }
+
+  if (!target_pose_topic_.empty())
+  {
+    ros::SubscribeOptions ops = ros::SubscribeOptions::create<geometry_msgs::PoseStamped>(
+      target_pose_topic_, 1,
+      boost::bind(&DroneSimpleController::TargetPoseCallback, this, _1),
+      ros::VoidPtr(), &callback_queue_);
+    target_pose_subscriber_ = node_handle_->subscribe(ops);
+    if (cmd_subscriber_.getTopic() != ""){
+        ROS_INFO_NAMED("quadrotor_simple_controller", "Using target pose topic %s.", target_pose_topic_.c_str());
+    }
+    else{
+        ROS_INFO("cannot find the command topic!");
+    }
   }
   
   if (!posctrl_topic_.empty())
@@ -234,7 +250,7 @@ void DroneSimpleController::LoadControllerSettings(physics::ModelPtr _model, sdf
 void DroneSimpleController::CmdCallback(const geometry_msgs::TwistStampedConstPtr& cmd)
 {
   cmd_val = cmd->twist;
-
+  m_posCtrl = false;
 
   // static common::Time last_sim_time = world->SimTime();
   // static double time_counter_for_drift_noise = 0;
@@ -261,6 +277,11 @@ void DroneSimpleController::CmdCallback(const geometry_msgs::TwistStampedConstPt
   // cmd_val.angular.z += drift_noise[3] + 2*motion_small_noise_*(drand48()-0.5);
   // cmd_val.linear.z += drift_noise[2] + 2*motion_small_noise_*(drand48()-0.5);
 
+}
+
+void DroneSimpleController::TargetPoseCallback(const geometry_msgs::PoseStampedConstPtr& setpoint){
+  pose_setpoint = setpoint->pose;
+  m_posCtrl = true;
 }
 
 void DroneSimpleController::PosCtrlCallback(const std_msgs::BoolConstPtr& cmd){
@@ -439,10 +460,17 @@ void DroneSimpleController::UpdateDynamics(double dt){
     if( m_posCtrl){
         //position control
         if(navi_state == FLYING_MODEL){
-            double vx = controllers_.pos_x.update(cmd_val.linear.x, position.X(), poschange.X(), dt);
-            double vy = controllers_.pos_y.update(cmd_val.linear.y, position.Y(), poschange.Y(), dt);
-            double vz = controllers_.pos_z.update(cmd_val.linear.z, position.Z(), poschange.Z(), dt);
-            double yaw_rate = controllers_.yaw_angle.update(cmd_val.angular.z, euler.Z(), cmd_val.angular.z - euler.Z(), dt);
+            // double vx = controllers_.pos_x.update(cmd_val.linear.x, position.X(), poschange.X(), dt);
+            // double vy = controllers_.pos_y.update(cmd_val.linear.y, position.Y(), poschange.Y(), dt);
+            // double vz = controllers_.pos_z.update(cmd_val.linear.z, position.Z(), poschange.Z(), dt);
+            // double yaw_rate = controllers_.yaw_angle.update(cmd_val.angular.z, euler.Z(), cmd_val.angular.z - euler.Z(), dt);
+
+            double vx = controllers_.pos_x.update(pose_setpoint.position.x, position.X(), poschange.X(), dt);
+            double vy = controllers_.pos_y.update(pose_setpoint.position.y, position.Y(), poschange.Y(), dt);
+            double vz = controllers_.pos_z.update(pose_setpoint.position.z, position.Z(), poschange.Z(), dt);
+            double yawAngleSetpoint = rpy_from_quaternion(pose_setpoint.orientation);
+            double yaw_rate = controllers_.yaw_angle.update(yawAngleSetpoint, euler.Z(), yawAngleSetpoint - euler.Z(), dt);
+
 
             ignition::math::Vector3d vb = heading_quaternion.RotateVectorReverse(ignition::math::Vector3d(vx,vy,vz));
             
