@@ -19,3 +19,5 @@ source path/to/uav_simulator/gazeboSetup.bash
 roslaunch uav_simulator start.launch
 ```
 making models
+
+To implement the pose control
