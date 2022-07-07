@@ -111,6 +111,7 @@ private:
     PIDController roll;
     PIDController pitch;
     PIDController yaw;
+    PIDController yaw_angle;
     PIDController velocity_x;
     PIDController velocity_y;
     PIDController velocity_z;

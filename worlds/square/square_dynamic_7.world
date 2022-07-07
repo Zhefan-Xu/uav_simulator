@@ -32,7 +32,7 @@
       </link>
       <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
         <loop>1</loop>
-        <velocity>1.0</velocity>
+        <velocity>0.5</velocity>
         <angular_velocity>0.8</angular_velocity>
         <path>
           <waypoint>-8.0 8.0 0.0</waypoint>
@@ -75,7 +75,7 @@
       </link>
       <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
         <loop>0</loop>
-        <velocity>1.5</velocity>
+        <velocity>0.5</velocity>
         <angular_velocity>0.8</angular_velocity>
         <path>
           <waypoint>7.5 7.0 0.0</waypoint>
@@ -116,7 +116,7 @@
       </link>
       <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
         <loop>0</loop>
-        <velocity>1.5</velocity>
+        <velocity>0.5</velocity>
         <angular_velocity>0.8</angular_velocity>
         <path>
           <waypoint>-5.0 -7.0 0.0</waypoint>
@@ -153,7 +153,7 @@
       </link>
       <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
         <loop>1</loop>
-        <velocity>1.5</velocity>
+        <velocity>0.5</velocity>
         <orientation>0</orientation>>
         <path>
           <waypoint>5.0 8.0 0.1</waypoint>
@@ -190,7 +190,7 @@
       </link>
       <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
         <loop>0</loop>
-        <velocity>2</velocity>
+        <velocity>0.5</velocity>
         <orientation>0</orientation>>
         <path>
           <waypoint>-6.0 -5.0 0.1</waypoint>
@@ -230,7 +230,7 @@
       </link>
       <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
         <loop>0</loop>
-        <velocity>1</velocity>
+        <velocity>0.5</velocity>
         <orientation>0</orientation>>
         <path>
           <waypoint>1.0 7.0 0.1</waypoint>
@@ -267,7 +267,7 @@
       </link>
       <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
         <loop>0</loop>
-        <velocity>1.5</velocity>
+        <velocity>0.5</velocity>
         <orientation>0</orientation>>
         <path>
           <waypoint>-8.0 0.0 0.1</waypoint>

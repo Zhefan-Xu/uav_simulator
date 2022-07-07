@@ -217,6 +217,8 @@ void DroneSimpleController::LoadControllerSettings(physics::ModelPtr _model, sdf
     controllers_.roll.Load(_sdf, "rollpitch");
     controllers_.pitch.Load(_sdf, "rollpitch");
     controllers_.yaw.Load(_sdf, "yaw");
+    bool is_yaw = true;
+    controllers_.yaw_angle.Load(_sdf, "yawAngle", is_yaw);
     controllers_.velocity_x.Load(_sdf, "velocityXY");
     controllers_.velocity_y.Load(_sdf, "velocityXY");
     controllers_.velocity_z.Load(_sdf, "velocityZ");
@@ -440,6 +442,7 @@ void DroneSimpleController::UpdateDynamics(double dt){
             double vx = controllers_.pos_x.update(cmd_val.linear.x, position.X(), poschange.X(), dt);
             double vy = controllers_.pos_y.update(cmd_val.linear.y, position.Y(), poschange.Y(), dt);
             double vz = controllers_.pos_z.update(cmd_val.linear.z, position.Z(), poschange.Z(), dt);
+            double yaw_rate = controllers_.yaw_angle.update(cmd_val.angular.z, euler.Z(), cmd_val.angular.z - euler.Z(), dt);
 
             ignition::math::Vector3d vb = heading_quaternion.RotateVectorReverse(ignition::math::Vector3d(vx,vy,vz));
             
@@ -448,6 +451,8 @@ void DroneSimpleController::UpdateDynamics(double dt){
             torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
             torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
             force.Z()  = mass      * (controllers_.velocity_z.update(vz,  velocity.Z(), acceleration.Z(), dt) + load_factor * gravity);
+            torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), 0, dt);
+
         }
     }else{
         //normal control
@@ -497,6 +502,7 @@ void DroneSimpleController::Reset()
   controllers_.roll.reset();
   controllers_.pitch.reset();
   controllers_.yaw.reset();
+  controllers_.yaw_angle.reset();
   controllers_.velocity_x.reset();
   controllers_.velocity_y.reset();
   controllers_.velocity_z.reset();

@@ -10,13 +10,15 @@ PIDController::~PIDController(){
 }
 
 
-void PIDController::Load(sdf::ElementPtr _sdf, const std::string& prefix)
+void PIDController::Load(sdf::ElementPtr _sdf, const std::string& prefix, bool _is_yaw)
 {
   gain_p = 5.0;
   gain_d = 1.0;
   gain_i = 0.0;
   time_constant = 0.0;
   limit = -1.0;
+
+  is_yaw = _is_yaw;
 
   if (!_sdf) return;
   if (_sdf->HasElement(prefix + "ProportionalGain")) gain_p = _sdf->GetElement(prefix + "ProportionalGain")->Get<double>();
@@ -29,23 +31,59 @@ void PIDController::Load(sdf::ElementPtr _sdf, const std::string& prefix)
 
 double PIDController::update(double new_input, double x, double dx, double dt)
 {
+  if (is_yaw){
+    dx = wrapAngle(dx);
+    new_input = wrapAngle(new_input);
+    x = wrapAngle(x);
+  }
+
   // limit command
   if (limit > 0.0 && fabs(new_input) > limit) new_input = (new_input < 0 ? -1.0 : 1.0) * limit;
 
   // filter command
   if (dt + time_constant > 0.0) {
-    input  = (dt * new_input + time_constant * input) / (dt + time_constant);
-    dinput = (new_input - input) / (dt + time_constant);
+    if (not is_yaw){
+      input  = (dt * new_input + time_constant * input) / (dt + time_constant);
+      dinput = (new_input - input) / (dt + time_constant);
+    }
+    else{
+      input  = wrapAngle(dt * new_input + time_constant * input) / (dt + time_constant);
+      dinput = wrapAngle(new_input - input) / (dt + time_constant);      
+    }
   }
 
   // update proportional, differential and integral errors
-  p = input - x;
-  d = dinput - dx;
-  i = i + dt * p;
+  
+  if (not is_yaw){
+    p = input - x;
+    d = dinput - dx;
+    i = i + dt * p;
+  }
+  else{
+    p = wrapAngle(input - x);
+    d = wrapAngle(dinput - dx);
+    i = wrapAngle(i + dt * p);
+  }
 
   // update control output
-  output = gain_p * p + gain_d * d + gain_i * i;
+  if (not is_yaw){
+    output = gain_p * p + gain_d * d + gain_i * i;
+  }
+  else{
+    output = gain_p * p + gain_d * d + gain_i * i;
+  }
   return output;
+}
+
+double PIDController::wrapAngle(double angle){
+  while (angle > M_PI){
+    angle -= 2 * M_PI;
+  }
+
+  while (angle < -M_PI){
+    angle += 2 * M_PI;
+  }
+  return angle;
 }
 
 void PIDController::reset()

@@ -3,12 +3,13 @@
 
 
 #include <gazebo/gazebo.hh>
+#include <math.h>
 
 class PIDController {
 public:
   PIDController();
   virtual ~PIDController();
-  virtual void Load(sdf::ElementPtr _sdf, const std::string& prefix = "");
+  virtual void Load(sdf::ElementPtr _sdf, const std::string& prefix = "", bool _is_yaw=false);
 
   double gain_p;
   double gain_i;
@@ -20,8 +21,10 @@ public:
   double dinput;
   double output;
   double p, i, d;
+  bool is_yaw;
 
   double update(double input, double x, double dx, double dt);
+  double wrapAngle(double angle);
   void reset();
 };
 
