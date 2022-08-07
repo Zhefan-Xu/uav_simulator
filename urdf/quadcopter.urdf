@@ -50,8 +50,8 @@
         <positionZDifferentialGain>0.2</positionZDifferentialGain>
         <positionZLimit>-1</positionZLimit>
         <maxForce>30</maxForce>
-        <motionSmallNoise>0.00</motionSmallNoise>
-        <motionDriftNoise>0.00</motionDriftNoise>
+        <motionSmallNoise>0.05</motionSmallNoise>
+        <motionDriftNoise>0.03</motionDriftNoise>
         <motionDriftNoiseTime>5.0</motionDriftNoiseTime>
     </plugin>
   </gazebo>

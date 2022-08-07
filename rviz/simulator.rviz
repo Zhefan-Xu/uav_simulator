@@ -170,13 +170,13 @@ Visualization Manager:
       Unreliable: false
       Value: true
     - Class: rviz/MarkerArray
-      Enabled: true
+      Enabled: false
       Marker Topic: /pwl_traj
       Name: MarkerArray
       Namespaces:
         {}
       Queue Size: 100
-      Value: true
+      Value: false
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -206,13 +206,13 @@ Visualization Manager:
       Marker Topic: /bspline_traj/control_points
       Name: MarkerArray
       Namespaces:
-        {}
+        control_points: true
       Queue Size: 100
       Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 2.049999952316284
+        Max Value: 1.5499999523162842
         Min Value: -0.05000000074505806
         Value: true
       Axis: Z
@@ -236,6 +236,24 @@ Visualization Manager:
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /bspline_traj/astar_path
+      Name: MarkerArray
+      Namespaces:
+        astar_path: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /bspline_traj/guide_points_and_directions
+      Name: MarkerArray
+      Namespaces:
+        collision_control_point: true
+        guide_direction: true
+        guide_points: true
+      Queue Size: 100
       Value: true
   Enabled: true
   Global Options:
@@ -265,7 +283,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 17.15542221069336
+      Distance: 4.525062561035156
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -273,17 +291,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 2.3173820972442627
-        Y: 0.9096485376358032
-        Z: 1.4757980108261108
+        X: 2.277864933013916
+        Y: 0.48206838965415955
+        Z: 0.9230413436889648
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7497968673706055
+      Pitch: 0.7947970628738403
       Target Frame: <Fixed Frame>
-      Yaw: 4.706700325012207
+      Yaw: 1.8866803646087646
     Saved: ~
 Window Geometry:
   Displays:
