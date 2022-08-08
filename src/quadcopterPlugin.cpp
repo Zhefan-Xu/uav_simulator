@@ -252,36 +252,12 @@ void DroneSimpleController::CmdCallback(const geometry_msgs::TwistStampedConstPt
   cmd_val = cmd->twist;
   m_posCtrl = false;
 
-  // static common::Time last_sim_time = world->SimTime();
-  // static double time_counter_for_drift_noise = 0;
-  // static double drift_noise[4] = {0.0, 0.0, 0.0, 0.0};
-  // // Get simulator time
-  // common::Time cur_sim_time = world->SimTime();
-  // double dt = (cur_sim_time - last_sim_time).Double();
-  // // save last time stamp
-  // last_sim_time = cur_sim_time;
-
-  // generate noise
-  // if(time_counter_for_drift_noise > motion_drift_noise_time_)
-  // {
-  //   drift_noise[0] = 2*motion_drift_noise_*(drand48()-0.5);
-  //   drift_noise[1] = 2*motion_drift_noise_*(drand48()-0.5);
-  //   drift_noise[2] = 2*motion_drift_noise_*(drand48()-0.5);
-  //   drift_noise[3] = 2*motion_drift_noise_*(drand48()-0.5);
-  //   time_counter_for_drift_noise = 0.0;
-  // }
-  // time_counter_for_drift_noise += dt;
-
-  // cmd_val.angular.x += drift_noise[0] + 2*motion_small_noise_*(drand48()-0.5);
-  // cmd_val.angular.y += drift_noise[1] + 2*motion_small_noise_*(drand48()-0.5);
-  // cmd_val.angular.z += drift_noise[3] + 2*motion_small_noise_*(drand48()-0.5);
-  // cmd_val.linear.z += drift_noise[2] + 2*motion_small_noise_*(drand48()-0.5);
-
 }
 
 void DroneSimpleController::TargetPoseCallback(const geometry_msgs::PoseStampedConstPtr& setpoint){
   pose_setpoint = setpoint->pose;
   m_posCtrl = true;
+  navi_state = FLYING_MODEL;
 }
 
 void DroneSimpleController::PosCtrlCallback(const std_msgs::BoolConstPtr& cmd){
@@ -471,16 +447,16 @@ void DroneSimpleController::UpdateDynamics(double dt){
             double yawAngleSetpoint = rpy_from_quaternion(pose_setpoint.orientation);
             double yaw_rate = controllers_.yaw_angle.update(yawAngleSetpoint, euler.Z(), yawAngleSetpoint - euler.Z(), dt);
 
-
             ignition::math::Vector3d vb = heading_quaternion.RotateVectorReverse(ignition::math::Vector3d(vx,vy,vz));
-            
             double pitch_command =  controllers_.velocity_x.update(vb.X(), velocity_xy.X(), acceleration_xy.X(), dt) / gravity;
             double roll_command  = -controllers_.velocity_y.update(vb.Y(), velocity_xy.Y(), acceleration_xy.Y(), dt) / gravity;
             torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
             torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
             force.Z()  = mass      * (controllers_.velocity_z.update(vz,  velocity.Z(), acceleration.Z(), dt) + load_factor * gravity);
             torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), 0, dt);
-
+            if (isnan(torque.Z())){
+              torque.Z() = 0.0; // this means yaw angle target is not valid
+            }
         }
     }else{
         //normal control
@@ -503,6 +479,7 @@ void DroneSimpleController::UpdateDynamics(double dt){
             torque.X() = inertia.X() *  controllers_.roll.update(cmd_val.angular.x, euler.X(), angular_velocity_body.X(), dt);
             torque.Y() = inertia.Y() *  controllers_.pitch.update(cmd_val.angular.y, euler.Y(), angular_velocity_body.Y(), dt);
           }
+
         }
         torque.Z() = inertia.Z() *  controllers_.yaw.update(cmd_val.angular.z, angular_velocity.Z(), 0, dt);
         force.Z()  = mass      * (controllers_.velocity_z.update(cmd_val.linear.z,  velocity.Z(), acceleration.Z(), dt) + load_factor * gravity);
@@ -515,6 +492,7 @@ void DroneSimpleController::UpdateDynamics(double dt){
     if (navi_state == FLYING_MODEL) {
       link->AddRelativeForce(force);
       link->AddRelativeTorque(torque);
+
     } else if (navi_state == TAKINGOFF_MODEL) {
       link->AddRelativeForce(force * 1.5);
       link->AddRelativeTorque(torque * 1.5);
