@@ -22,7 +22,9 @@
   <param name="robot_description" command="cat '$(find uav_simulator)/urdf/quadcopter.urdf'" />
 
   <!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
-  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model quadcopter -x 0 -y 0 -z 0" respawn="false" />
+<!--   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model quadcopter -x 0 -y 0 -z 0" respawn="false" /> -->
+
+<node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model quadcopter -x -0.3 -y 0.0 -z 0 -Y 0.5" respawn="false" />
 
   <!-- TF -->
   <include file="$(find uav_simulator)/launch/setupTF.launch" />
