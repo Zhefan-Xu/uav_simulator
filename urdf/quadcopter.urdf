@@ -34,7 +34,7 @@
         <yawProportionalGain>2.0</yawProportionalGain>
         <yawDifferentialGain>1.0</yawDifferentialGain>
         <yawLimit>1.5</yawLimit>
-        <yawAnglePropotionalGain>1.0</yawAnglePropotionalGain>
+        <yawAngleProportionalGain>3.0</yawAngleProportionalGain>
         <yawAngleLimit>3.15</yawAngleLimit>
         <velocityXYProportionalGain>5.0</velocityXYProportionalGain>
         <velocityXYDifferentialGain>2.3</velocityXYDifferentialGain>
