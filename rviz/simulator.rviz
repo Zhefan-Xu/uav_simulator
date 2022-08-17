@@ -27,7 +27,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud2
+    SyncSource: ""
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -212,7 +212,18 @@ Visualization Manager:
       Marker Topic: /bspline_traj/control_points
       Name: MarkerArray
       Namespaces:
-        control_points: true
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /onboard_vision/obstacle_bbox
+      Name: MarkerArray
+      Namespaces:
+        person1_0.5_0.5_1.8: true
+        person2_0.5_0.5_1.8: true
+        person3_0.5_0.5_1.8: true
+        person4_0.5_0.5_1.8: true
       Queue Size: 100
       Value: true
   Enabled: true
@@ -243,7 +254,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 20.456317901611328
+      Distance: 36.051021575927734
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -259,9 +270,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5697963237762451
+      Pitch: 0.5997968912124634
       Target Frame: <Fixed Frame>
-      Yaw: 3.261676073074341
+      Yaw: 3.011674165725708
     Saved: ~
 Window Geometry:
   Displays:
