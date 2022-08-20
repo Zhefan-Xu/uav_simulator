@@ -16,11 +16,13 @@
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan2/floorplan2_dynamic_5.world" /> -->
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan3/floorplan3_static.world" /> -->
-  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan3/floorplan3_dynamic_8.world" /> -->
+  <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan3/floorplan3_dynamic_8.world" />
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan3/floorplan3_box_static.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan3/floorplan3_box_dynamic_4.world" /> -->
 
-  <arg name="world_name" value="$(find uav_simulator)/worlds/test/test.world" />
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/test/test.world" /> -->
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/test/test2.world" /> -->
+
 
   <!-- launch the custom world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch" >
