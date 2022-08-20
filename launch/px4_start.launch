@@ -5,15 +5,18 @@
     <!-- vehicle pose -->
     <arg name="x" default="0"/>
     <arg name="y" default="0"/>
-    <arg name="z" default="0"/>
+    <arg name="z" default="0.1"/>
     <arg name="R" default="0"/>
     <arg name="P" default="0"/>
     <arg name="Y" default="0"/>
     <!-- vehicle model and world -->
     <arg name="est" default="ekf2"/>
     <arg name="vehicle" default="iris"/>
-    <arg name="world" default="$(find uav_simulator)/worlds/floorplan2/floorplan2_static.world"/>
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/square/square_box.world" /> -->
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan2/floorplan2_static.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan3/floorplan3_dynamic_8.world"/> -->
+    <arg name="world" default="$(find uav_simulator)/worlds/test/test2.world"/>
+
     <arg name="sdf" default="$(find uav_simulator)/urdf/px4_quadcopter.sdf"/>
     <!-- <arg name="sdf" default="$(find mavlink_sitl_gazebo)/models/$(arg vehicle)/$(arg vehicle).sdf"/> -->
 
@@ -59,6 +62,6 @@
         <arg name="pose_topic" value="/mavros/local_position/pose" />
     </include>
 
-    <include file="$(find uav_simulator)/launch/px4_rviz.launch"></include>
+    <include file="$(find uav_simulator)/launch/rviz_px4.launch"></include>
 
 </launch>

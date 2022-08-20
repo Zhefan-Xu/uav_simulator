@@ -42,7 +42,7 @@
         <velocityZProportionalGain>5.0</velocityZProportionalGain>
         <velocityZDifferentialGain>0.5</velocityZDifferentialGain>
         <velocityZLimit>-1</velocityZLimit>
-        <positionXYProportionalGain>0.9</positionXYProportionalGain>
+        <positionXYProportionalGain>1.2</positionXYProportionalGain>
         <positionXYDifferentialGain>0.1</positionXYDifferentialGain>
         <positionXYIntegralGain>0.0</positionXYIntegralGain>
         <positionXYLimit>-1</positionXYLimit>
