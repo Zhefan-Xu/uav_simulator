@@ -43,7 +43,9 @@
 <!-- <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model quadcopter -x -0.3 -y 0.0 -z 0 -Y 0.5" respawn="false" /> -->
 
   <!-- TF -->
-  <include file="$(find uav_simulator)/launch/setupTF.launch" />
+  <include file="$(find uav_simulator)/launch/setupTF.launch" >
+    <arg name="pose_topic" value="/CERLAB/quadcopter/pose" />
+  </include>
 
   <node name="keyboard_control" pkg="uav_simulator" type="keyboard_control" />
 

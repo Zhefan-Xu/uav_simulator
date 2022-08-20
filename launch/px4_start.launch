@@ -15,6 +15,8 @@
     <arg name="world" default="$(find uav_simulator)/worlds/floorplan2/floorplan2_static.world"/>
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan3/floorplan3_dynamic_8.world"/> -->
     <arg name="sdf" default="$(find uav_simulator)/urdf/px4_quadcopter.sdf"/>
+    <!-- <arg name="sdf" default="$(find mavlink_sitl_gazebo)/models/$(arg vehicle)/$(arg vehicle).sdf"/> -->
+
 
     <!-- gazebo configs -->
     <arg name="gui" default="true"/>
@@ -52,6 +54,11 @@
         <arg name="fcu_url" value="$(arg fcu_url)"/>
         <arg name="respawn_mavros" value="$(arg respawn_mavros)"/>
     </include>
+    
+    <include file="$(find uav_simulator)/launch/setupTF.launch" >
+        <arg name="pose_topic" value="/mavros/local_position/pose" />
+    </include>
+
     <include file="$(find uav_simulator)/launch/px4_rviz.launch"></include>
 
 </launch>

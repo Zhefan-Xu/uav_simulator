@@ -3,6 +3,7 @@
 #include <geometry_msgs/PoseStamped.h>
 
 ros::Time lastStamp;
+using std::cout; using std::endl;
 void poseCallback(const geometry_msgs::PoseStampedConstPtr& msg){
 	static tf2_ros::TransformBroadcaster br;	
 	geometry_msgs::TransformStamped transformStamped;
@@ -29,7 +30,10 @@ void poseCallback(const geometry_msgs::PoseStampedConstPtr& msg){
 int main(int argc, char** argv){
 	ros::init(argc, argv, "quadcopter_tf_broadcaster");
 	ros::NodeHandle nh;
-	ros::Subscriber sub = nh.subscribe("/CERLAB/quadcopter/pose", 1, &poseCallback);
+	std::string poseTopic = "/CERLAB/quadcopter/pose";
+	if (argc > 1)  poseTopic = argv[1];
+	cout << "poseTopic: " << poseTopic << endl;
+	ros::Subscriber sub = nh.subscribe(poseTopic, 1, &poseCallback);
 	ros::spin();
 	return 0;
 }
