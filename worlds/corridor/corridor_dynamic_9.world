@@ -279,7 +279,7 @@
       </plugin>
     </model> 
 
-    <light name='sun' type='directional'>
+   <light name='sun' type='directional'>
       <cast_shadows>1</cast_shadows>
       <pose>0 0 10 0 -0 0</pose>
       <diffuse>0.8 0.8 0.8 1</diffuse>
@@ -648,55 +648,6 @@
       </link>
       <static>1</static>
     </model>
-    <model name='box_1.8_1_2_0'>
-      <pose>15.8294 1.54558 0 0 -0 0</pose>
-      <link name='Wall_0'>
-        <collision name='Wall_0_Collision'>
-          <geometry>
-            <box>
-              <size>1.8 1 2</size>
-            </box>
-          </geometry>
-          <pose>0 0 1 0 -0 0</pose>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='Wall_0_Visual'>
-          <pose>0 0 1 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>1.8 1 2</size>
-            </box>
-          </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/CeilingTiled</name>
-            </script>
-            <ambient>0.921569 0.807843 0.615686 1</ambient>
-          </material>
-          <meta>
-            <layer>0</layer>
-          </meta>
-        </visual>
-        <pose>-0.455 -1.44 0 0 -0 0</pose>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <static>1</static>
-    </model>
     <model name='box_1_1_2_0'>
       <pose>23.4315 2.54399 0 0 -0 0</pose>
       <link name='Wall_0'>
@@ -994,23 +945,13 @@
     <state world_name='default'>
       <sim_time>0 0</sim_time>
       <real_time>0 0</real_time>
-      <wall_time>1662141407 591670959</wall_time>
+      <wall_time>1662172509 884315462</wall_time>
       <iterations>0</iterations>
       <model name='box_1.8_1_2'>
         <pose>10.0521 0.448709 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='Wall_0'>
           <pose>9.5971 -0.991291 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_1.8_1_2_0'>
-        <pose>17.3871 -0.310767 0 0 0 -1.58243</pose>
-        <scale>1 1 1</scale>
-        <link name='Wall_0'>
-          <pose>15.9524 0.160953 0 0 0 -1.58243</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -1047,7 +988,7 @@
         </link>
       </model>
       <model name='box_1_1_2_1'>
-        <pose>23.3781 0.152992 0 0 -0 0</pose>
+        <pose>23.3781 0.15299 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='Wall_0'>
           <pose>22.5281 -1.28701 0 0 -0 0</pose>
@@ -1067,7 +1008,7 @@
         </link>
       </model>
       <model name='box_1_1_2_3'>
-        <pose>4.17173 0.229552 0 0 -0 0</pose>
+        <pose>4.17173 0.22955 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='Wall_0'>
           <pose>3.32173 -1.21045 0 0 -0 0</pose>
@@ -1081,6 +1022,16 @@
         <scale>1 1 1</scale>
         <link name='Wall_0'>
           <pose>26.5002 0.75131 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='box_1_1_2_5'>
+        <pose>17.5017 1.47953 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='Wall_0'>
+          <pose>16.6517 0.03953 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -1130,10 +1081,59 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-4.73972 -3.63231 31.9729 0 0.933796 0.232144</pose>
+        <pose>3.57299 -7.51318 70.6839 -0 1.3178 0.788145</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
     </gui>
+    <model name='box_1_1_2_5'>
+      <pose>17.5017 1.47953 0 0 -0 0</pose>
+      <link name='Wall_0'>
+        <collision name='Wall_0_Collision'>
+          <geometry>
+            <box>
+              <size>1.01 1 2</size>
+            </box>
+          </geometry>
+          <pose>0 0 1 0 -0 0</pose>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Wall_0_Visual'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.01 1 2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/CeilingTiled</name>
+            </script>
+            <ambient>0.921569 0.807843 0.615686 1</ambient>
+          </material>
+          <meta>
+            <layer>0</layer>
+          </meta>
+        </visual>
+        <pose>-0.85 -1.44 0 0 -0 0</pose>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>1</static>
+    </model>
   </world>
 </sdf>
