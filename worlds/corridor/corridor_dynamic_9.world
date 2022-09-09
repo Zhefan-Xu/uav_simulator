@@ -119,7 +119,7 @@
         <angular_velocity>0.8</angular_velocity>
         <path>
           <waypoint>20.5 0.0 0.0</waypoint>
-          <waypoint>20.5 1.5 0.0</waypoint>
+          <waypoint>20.5 -1.5 0.0</waypoint>
         </path>
       </plugin>
     </model> 
@@ -649,7 +649,7 @@
       <static>1</static>
     </model>
     <model name='box_1_1_2_0'>
-      <pose>23.4315 2.54399 0 0 -0 0</pose>
+      <pose>23.4315 3.3 0 0 -0 0</pose>
       <link name='Wall_0'>
         <collision name='Wall_0_Collision'>
           <geometry>
@@ -747,7 +747,7 @@
       <static>1</static>
     </model>
     <model name='box_1_1_2_2'>
-      <pose>31.1332 1.1987 0 0 -0 0</pose>
+      <pose>31.1332 1.5 0 0 -0 0</pose>
       <link name='Wall_0'>
         <collision name='Wall_0_Collision'>
           <geometry>
@@ -977,7 +977,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='box_1_1_2_0'>
+<!--       <model name='box_1_1_2_0'>
         <pose>23.4315 2.54399 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='Wall_0'>
@@ -986,22 +986,12 @@
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
-      </model>
+      </model> -->
       <model name='box_1_1_2_1'>
         <pose>23.3781 0.15299 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='Wall_0'>
           <pose>22.5281 -1.28701 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_1_1_2_2'>
-        <pose>31.1332 1.1987 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='Wall_0'>
-          <pose>30.2832 -0.2413 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
