@@ -24,7 +24,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: PointCloud2
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -83,7 +83,7 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 7.949999809265137
+        Max Value: 3.25
         Min Value: -0.05000000074505806
         Value: true
       Axis: Z
@@ -259,6 +259,22 @@ Visualization Manager:
       Shape: Axes
       Topic: /CERLAB/quadcopter/setpoint_pose
       Unreliable: false
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /dynamic_map/box_visualization_marker
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /dynamic_map/fused_box_visualization_marker
+      Name: MarkerArray
+      Namespaces:
+        box3D: true
+      Queue Size: 100
       Value: true
   Enabled: true
   Global Options:
