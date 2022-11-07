@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="tunnel_straight">
+    <static>true</static>
+    <link name="tunnel_straight">
+      <collision name="collision">
+        <geometry>
+          <mesh>
+          <scale>1.00 1.00 1.00</scale>
+            <uri>model://tunnel_straight/meshes/tunnel_straight.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+          <scale>1.00 1.00 1.00</scale>
+            <uri>model://tunnel_straight/meshes/tunnel_straight.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
+
