@@ -29,8 +29,11 @@
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_basic_static.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_static.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_static_long.world" /> -->
+  <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_dynamic_1.world" />
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_straight_basic_static.world" /> -->
-  <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_c_shape_basic_static.world" />
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_c_shape_basic_static.world" /> -->
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_s_shape_basic_static.world" /> -->
+
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/test/test.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/test/test2.world" /> -->
@@ -52,7 +55,7 @@
   <!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
   <!-- <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model quadcopter -x 0 -y 0 -z 0.1" respawn="false" /> -->
 
-<node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model quadcopter -x -0.0 -y 0.0 -z 0.1 -Y 0.0" respawn="false" />
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model quadcopter -x -0.0 -y 0.0 -z 0.1 -Y 0.0" respawn="false" />
 
   <!-- TF -->
   <include file="$(find uav_simulator)/launch/setupTF.launch" >

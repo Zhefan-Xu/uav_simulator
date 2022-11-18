@@ -24,7 +24,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: Dynamic Map
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -62,7 +62,7 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 7.949999809265137
+        Max Value: 3.450000047683716
         Min Value: -0.05000000074505806
         Value: true
       Axis: Z
@@ -92,7 +92,7 @@ Visualization Manager:
       Marker Topic: /dynamic_map/box_visualization_marker
       Name: Obstacle Boxes
       Namespaces:
-        {}
+        box3D: true
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -100,7 +100,7 @@ Visualization Manager:
       Marker Topic: /dynamic_map/raw_box_visualization_marker
       Name: UV Boxes
       Namespaces:
-        {}
+        box3D: true
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -291,7 +291,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 23.124202728271484
+      Distance: 49.6585807800293
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -299,17 +299,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 3.902151584625244
-        Y: -2.453578472137451
-        Z: -2.8972978591918945
+        X: 15.982307434082031
+        Y: -2.9900171756744385
+        Z: 1.4791101217269897
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5797972679138184
+      Pitch: 0.9397969245910645
       Target Frame: <Fixed Frame>
-      Yaw: 2.6416704654693604
+      Yaw: 3.1116783618927
     Saved: ~
 Window Geometry:
   Displays:
