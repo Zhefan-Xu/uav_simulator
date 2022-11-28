@@ -18,9 +18,9 @@
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/test/test2.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/simple_box/simple_box_static.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/simple_box/simple_box_dynamic_3.world"/> -->
-    <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_basic_static.world"/> -->
+    <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_basic_static.world"/>
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_static.world"/> -->
-    <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_dynamic_1.world"/>
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_dynamic_1.world"/> -->
 
 
 
