@@ -24,7 +24,7 @@
 
 
 
-    <arg name="sdf" default="$(find uav_simulator)/urdf/px4_quadcopter.sdf"/>
+    <arg name="sdf" default="$(find uav_simulator)/urdf/px4_iris.sdf"/>
     <!-- <arg name="sdf" default="$(find mavlink_sitl_gazebo)/models/$(arg vehicle)/$(arg vehicle).sdf"/> -->
 
 
