@@ -3,7 +3,7 @@
     <!-- MAVROS posix SITL environment launch script -->
     <!-- launches MAVROS, PX4 SITL, Gazebo environment, and spawns vehicle -->
     <!-- vehicle pose -->
-    <arg name="x" default="-6"/>
+    <arg name="x" default="0"/>
     <arg name="y" default="0"/>
     <arg name="z" default="0.1"/>
     <arg name="R" default="0"/>
@@ -15,13 +15,15 @@
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/square/square_box.world" /> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan2/floorplan2_static.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan3/floorplan3_dynamic_8.world"/> -->
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/test/test.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/test/test2.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/simple_box/simple_box_static.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/simple_box/simple_box_dynamic_3.world"/> -->
-    <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_basic_static.world"/>
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_basic_static.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_static.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_dynamic_1.world"/> -->
-
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/square/square_box.world"/> -->
+    <arg name="world" default="$(find uav_simulator)/worlds/test/test_mill19_1.world"/>
 
 
     <arg name="sdf" default="$(find uav_simulator)/urdf/px4_iris.sdf"/>
