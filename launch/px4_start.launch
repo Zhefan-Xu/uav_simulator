@@ -23,7 +23,9 @@
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_static.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_dynamic_1.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/square/square_box.world"/> -->
-    <arg name="world" default="$(find uav_simulator)/worlds/test/test_mill19_1.world"/>
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/test/test_mill19_1.world"/> -->
+    <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_straight_static.world"/>
+    
 
 
     <arg name="sdf" default="$(find uav_simulator)/urdf/px4_iris.sdf"/>
@@ -71,6 +73,6 @@
         <arg name="pose_topic" value="/mavros/local_position/pose" />
     </include>
 
-    <include file="$(find uav_simulator)/launch/rviz_px4.launch"></include>
+    <!-- <include file="$(find uav_simulator)/launch/rviz_px4.launch"></include> -->
 
 </launch>
