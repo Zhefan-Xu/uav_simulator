@@ -453,7 +453,7 @@ void DroneSimpleController::UpdateDynamics(double dt){
     ignition::math::Vector3d angular_velocity_body = pose.Rot().RotateVectorReverse(angular_velocity);
   
     // update controllers
-    force.Set(0.0, 0.0, 0.0);
+    force.Set(0.0, 0.0, 0.0); 
     torque.Set(0.0, 0.0, 0.0);
     
     if (acc_control){
