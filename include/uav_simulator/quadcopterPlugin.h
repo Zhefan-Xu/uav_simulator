@@ -18,6 +18,7 @@
 #include <std_msgs/Empty.h>
 #include <std_msgs/Bool.h>
 #include <nav_msgs/Odometry.h>
+#include <uav_simulator/CmdInput.h>
 
 #include <uav_simulator/pidController.h>
 #include <tf2/LinearMath/Quaternion.h>
@@ -49,6 +50,7 @@ private:
   double m_timeAfterCmd;
   bool m_posCtrl;
   bool m_velMode;
+  bool acc_control =  false;
   unsigned int navi_state;
   
   
@@ -61,6 +63,8 @@ private:
   ros::NodeHandle* node_handle_;
   ros::CallbackQueue callback_queue_;
   ros::Subscriber cmd_subscriber_;
+  ros::Subscriber cmd_acc_subscriber_;
+  ros::Subscriber acc_subscriber_;
   ros::Subscriber posctrl_subscriber_;
   ros::Subscriber imu_subscriber_;
   ros::Subscriber target_pose_subscriber_;
@@ -78,9 +82,11 @@ private:
 
 
   geometry_msgs::Twist cmd_val;
+  uav_simulator::CmdInput cmd_acc;
   geometry_msgs::Pose pose_setpoint;
   // callback functions for subscribers
   void CmdCallback(const geometry_msgs::TwistStampedConstPtr&);
+  void CmdAccCallback(const uav_simulator::CmdInputConstPtr&);
   void TargetPoseCallback(const geometry_msgs::PoseStampedConstPtr&);
   void PosCtrlCallback(const std_msgs::BoolConstPtr&);
   void ImuCallback(const sensor_msgs::ImuConstPtr&);
@@ -96,6 +102,7 @@ private:
 
   std::string link_name_;
   std::string cmd_normal_topic_;
+  std::string cmd_acc_topic_;
   std::string target_pose_topic_;
   std::string switch_mode_topic_;
   std::string posctrl_topic_;

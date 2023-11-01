@@ -41,6 +41,7 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   
   //load parameters
   cmd_normal_topic_ = "/CERLAB/quadcopter/cmd_vel";
+  cmd_acc_topic_ = "/CERLAB/quadcopter/cmd_acc";
   target_pose_topic_ = "/CERLAB/quadcopter/setpoint_pose";
   takeoff_topic_ = "/CERLAB/quadcopter/takeoff";
   land_topic_ = "/CERLAB/quadcopter/land";
@@ -112,6 +113,20 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
         ROS_INFO_NAMED("quadrotor_simple_controller", "Using cmd_topic %s.", cmd_normal_topic_.c_str());
     else
         ROS_INFO("cannot find the command topic!");
+  }
+
+  // subscrbe command: acceleratioin command
+  if (!cmd_acc_topic_.empty()){
+    ros::SubscribeOptions ops = ros::SubscribeOptions::create<uav_simulator::CmdInput>(
+      cmd_normal_topic_, 1,
+      boost::bind(&DroneSimpleController::CmdAccCallback, this, _1),
+      ros::VoidPtr(), &callback_queue_);
+    cmd_acc_subscriber_ = node_handle_->subscribe(ops);
+    
+    if( cmd_acc_subscriber_.getTopic() != "")
+        ROS_INFO_NAMED("quadrotor_acceleraton_controller", "Using cmd_acc_topic %s.", cmd_acc_topic_.c_str());
+    else
+        ROS_INFO("cannot find the command topic!");    
   }
 
   if (!target_pose_topic_.empty())
@@ -251,12 +266,20 @@ void DroneSimpleController::CmdCallback(const geometry_msgs::TwistStampedConstPt
 {
   cmd_val = cmd->twist;
   m_posCtrl = false;
+  acc_control =  false;
+}
 
+void DroneSimpleController::CmdAccCallback(const uav_simulator::CmdInputConstPtr& cmd_acc_msg)
+{
+  cmd_acc = *cmd_acc_msg;
+  m_posCtrl = false;
+  acc_control = true;
 }
 
 void DroneSimpleController::TargetPoseCallback(const geometry_msgs::PoseStampedConstPtr& setpoint){
   pose_setpoint = setpoint->pose;
   m_posCtrl = true;
+  acc_control =  false;
   navi_state = FLYING_MODEL;
 }
 
