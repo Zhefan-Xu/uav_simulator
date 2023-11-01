@@ -24,6 +24,10 @@
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan3/floorplan3_box_dynamic_4.world" /> -->
 
   <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_static.world" />
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan4/floorplan4_static.world" /> -->
+
+
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_static.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_dynamic_9.world" /> -->
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_basic_static.world" /> -->
