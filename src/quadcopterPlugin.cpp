@@ -118,7 +118,7 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   // subscrbe command: acceleratioin command
   if (!cmd_acc_topic_.empty()){
     ros::SubscribeOptions ops = ros::SubscribeOptions::create<uav_simulator::CmdInput>(
-      cmd_normal_topic_, 1,
+      cmd_acc_topic_, 1,
       boost::bind(&DroneSimpleController::CmdAccCallback, this, _1),
       ros::VoidPtr(), &callback_queue_);
     cmd_acc_subscriber_ = node_handle_->subscribe(ops);
@@ -456,56 +456,93 @@ void DroneSimpleController::UpdateDynamics(double dt){
     force.Set(0.0, 0.0, 0.0);
     torque.Set(0.0, 0.0, 0.0);
     
-    if( m_posCtrl){
-        //position control
-        if(navi_state == FLYING_MODEL){
-            // double vx = controllers_.pos_x.update(cmd_val.linear.x, position.X(), poschange.X(), dt);
-            // double vy = controllers_.pos_y.update(cmd_val.linear.y, position.Y(), poschange.Y(), dt);
-            // double vz = controllers_.pos_z.update(cmd_val.linear.z, position.Z(), poschange.Z(), dt);
-            // double yaw_rate = controllers_.yaw_angle.update(cmd_val.angular.z, euler.Z(), cmd_val.angular.z - euler.Z(), dt);
+    if (acc_control){
+        // yaw control seperately
+        double yawAngleSetpoint = cmd_acc.yaw;
+        double yaw_rate = controllers_.yaw_angle.update(yawAngleSetpoint, euler.Z(), yawAngleSetpoint - euler.Z(), dt);
+        
 
-            double vx = controllers_.pos_x.update(pose_setpoint.position.x, position.X(), poschange.X(), dt);
-            double vy = controllers_.pos_y.update(pose_setpoint.position.y, position.Y(), poschange.Y(), dt);
-            double vz = controllers_.pos_z.update(pose_setpoint.position.z, position.Z(), poschange.Z(), dt);
-            double yawAngleSetpoint = rpy_from_quaternion(pose_setpoint.orientation);
-            double yaw_rate = controllers_.yaw_angle.update(yawAngleSetpoint, euler.Z(), yawAngleSetpoint - euler.Z(), dt);
+        ignition::math::Vector3d desired_acc (cmd_acc.acceleration.x, cmd_acc.acceleration.y, cmd_acc.acceleration.z);
+        double yaw = euler.Z();
+        ignition::math::Vector3d direction (cos(yaw), sin(yaw), 0.0);
+        ignition::math::Vector3d zDirection = desired_acc/desired_acc.Length();
+        ignition::math::Vector3d yDirection = zDirection.Cross(direction)/(zDirection.Cross(direction)).Length();
+        ignition::math::Vector3d xDirection = yDirection.Cross(zDirection)/(yDirection.Cross(zDirection)).Length();
 
-            ignition::math::Vector3d vb = heading_quaternion.RotateVectorReverse(ignition::math::Vector3d(vx,vy,vz));
-            double pitch_command =  controllers_.velocity_x.update(vb.X(), velocity_xy.X(), acceleration_xy.X(), dt) / gravity;
-            double roll_command  = -controllers_.velocity_y.update(vb.Y(), velocity_xy.Y(), acceleration_xy.Y(), dt) / gravity;
-            torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
-            torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
-            force.Z()  = mass      * (controllers_.velocity_z.update(vz,  velocity.Z(), acceleration.Z(), dt) + load_factor * gravity);
-            torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), 0, dt);
-            if (isnan(torque.Z())){
-              torque.Z() = 0.0; // this means yaw angle target is not valid
-            }
+        Eigen::Matrix3d attitudeRefRot;
+        attitudeRefRot << xDirection[0], yDirection[0], zDirection[0],
+                xDirection[1], yDirection[1], zDirection[1],
+                xDirection[2], yDirection[2], zDirection[2];
+        Eigen::Vector4d attitudeRefQuat = rot2Quaternion(attitudeRefRot);
+        geometry_msgs::Quaternion quatMsg;
+        quatMsg.w = attitudeRefQuat(0);
+        quatMsg.x = attitudeRefQuat(1);
+        quatMsg.y = attitudeRefQuat(2);
+        quatMsg.z = attitudeRefQuat(3);
+
+        double roll_command, pitch_command, yaw_command;
+        rpy_from_quaternion(quatMsg, roll_command, pitch_command, yaw_command);
+
+        torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
+        torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
+        force.Z()  = mass * desired_acc.Length();
+        torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), 0, dt);
+        if (isnan(torque.Z())){
+          torque.Z() = 0.0; // this means yaw angle target is not valid
         }
-    }else{
-        //normal control
-        if( navi_state == FLYING_MODEL )//&& cmd_val.linear.x >= 0 && cmd_val.linear.y >= 0)
-        {
-          //hovering
-          double pitch_command =  controllers_.velocity_x.update(cmd_val.linear.x, velocity_xy.X(), acceleration_xy.X(), dt) / gravity;
-          double roll_command  = -controllers_.velocity_y.update(cmd_val.linear.y, velocity_xy.Y(), acceleration_xy.Y(), dt) / gravity;
-          torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
-          torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);
-        }else{
-          //control by velocity
-          if( m_velMode){
-              double pitch_command =  controllers_.velocity_x.update(cmd_val.angular.x, velocity_xy.X(), velocity_xy.X(), dt) / gravity;
-              double roll_command  = -controllers_.velocity_y.update(cmd_val.angular.y, velocity_xy.Y(), velocity_xy.Y(), dt) / gravity;
+    }
+    else{
+      if( m_posCtrl){
+          //position control
+          if(navi_state == FLYING_MODEL){
+              // double vx = controllers_.pos_x.update(cmd_val.linear.x, position.X(), poschange.X(), dt);
+              // double vy = controllers_.pos_y.update(cmd_val.linear.y, position.Y(), poschange.Y(), dt);
+              // double vz = controllers_.pos_z.update(cmd_val.linear.z, position.Z(), poschange.Z(), dt);
+              // double yaw_rate = controllers_.yaw_angle.update(cmd_val.angular.z, euler.Z(), cmd_val.angular.z - euler.Z(), dt);
+
+              double vx = controllers_.pos_x.update(pose_setpoint.position.x, position.X(), poschange.X(), dt);
+              double vy = controllers_.pos_y.update(pose_setpoint.position.y, position.Y(), poschange.Y(), dt);
+              double vz = controllers_.pos_z.update(pose_setpoint.position.z, position.Z(), poschange.Z(), dt);
+              double yawAngleSetpoint = rpy_from_quaternion(pose_setpoint.orientation);
+              double yaw_rate = controllers_.yaw_angle.update(yawAngleSetpoint, euler.Z(), yawAngleSetpoint - euler.Z(), dt);
+
+              ignition::math::Vector3d vb = heading_quaternion.RotateVectorReverse(ignition::math::Vector3d(vx,vy,vz));
+              double pitch_command =  controllers_.velocity_x.update(vb.X(), velocity_xy.X(), acceleration_xy.X(), dt) / gravity;
+              double roll_command  = -controllers_.velocity_y.update(vb.Y(), velocity_xy.Y(), acceleration_xy.Y(), dt) / gravity;
               torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
-              torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);
-          }else{
-            //control by tilting
-            torque.X() = inertia.X() *  controllers_.roll.update(cmd_val.angular.x, euler.X(), angular_velocity_body.X(), dt);
-            torque.Y() = inertia.Y() *  controllers_.pitch.update(cmd_val.angular.y, euler.Y(), angular_velocity_body.Y(), dt);
+              torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
+              force.Z()  = mass      * (controllers_.velocity_z.update(vz,  velocity.Z(), acceleration.Z(), dt) + load_factor * gravity);
+              torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), 0, dt);
+              if (isnan(torque.Z())){
+                torque.Z() = 0.0; // this means yaw angle target is not valid
+              }
           }
+      }else{
+          //normal control
+          if( navi_state == FLYING_MODEL )//&& cmd_val.linear.x >= 0 && cmd_val.linear.y >= 0)
+          {
+            //hovering
+            double pitch_command =  controllers_.velocity_x.update(cmd_val.linear.x, velocity_xy.X(), acceleration_xy.X(), dt) / gravity;
+            double roll_command  = -controllers_.velocity_y.update(cmd_val.linear.y, velocity_xy.Y(), acceleration_xy.Y(), dt) / gravity;
+            torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
+            torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);
+          }else{
+            //control by velocity
+            if( m_velMode){
+                double pitch_command =  controllers_.velocity_x.update(cmd_val.angular.x, velocity_xy.X(), velocity_xy.X(), dt) / gravity;
+                double roll_command  = -controllers_.velocity_y.update(cmd_val.angular.y, velocity_xy.Y(), velocity_xy.Y(), dt) / gravity;
+                torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
+                torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);
+            }else{
+              //control by tilting
+              torque.X() = inertia.X() *  controllers_.roll.update(cmd_val.angular.x, euler.X(), angular_velocity_body.X(), dt);
+              torque.Y() = inertia.Y() *  controllers_.pitch.update(cmd_val.angular.y, euler.Y(), angular_velocity_body.Y(), dt);
+            }
 
-        }
-        torque.Z() = inertia.Z() *  controllers_.yaw.update(cmd_val.angular.z, angular_velocity.Z(), 0, dt);
-        force.Z()  = mass      * (controllers_.velocity_z.update(cmd_val.linear.z,  velocity.Z(), acceleration.Z(), dt) + load_factor * gravity);
+          }
+          torque.Z() = inertia.Z() *  controllers_.yaw.update(cmd_val.angular.z, angular_velocity.Z(), 0, dt);
+          force.Z()  = mass      * (controllers_.velocity_z.update(cmd_val.linear.z,  velocity.Z(), acceleration.Z(), dt) + load_factor * gravity);
+      }
     }
 
     if (max_force_ > 0.0 && force.Z() > max_force_) force.Z() = max_force_;
