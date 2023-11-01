@@ -117,7 +117,7 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
 
   // subscrbe command: acceleratioin command
   if (!cmd_acc_topic_.empty()){
-    ros::SubscribeOptions ops = ros::SubscribeOptions::create<uav_simulator::CmdInput>(
+    ros::SubscribeOptions ops = ros::SubscribeOptions::create<mavros_msgs::PositionTarget>(
       cmd_acc_topic_, 1,
       boost::bind(&DroneSimpleController::CmdAccCallback, this, _1),
       ros::VoidPtr(), &callback_queue_);
@@ -269,7 +269,7 @@ void DroneSimpleController::CmdCallback(const geometry_msgs::TwistStampedConstPt
   acc_control =  false;
 }
 
-void DroneSimpleController::CmdAccCallback(const uav_simulator::CmdInputConstPtr& cmd_acc_msg)
+void DroneSimpleController::CmdAccCallback(const mavros_msgs::PositionTargetConstPtr& cmd_acc_msg)
 {
   cmd_acc = *cmd_acc_msg;
   m_posCtrl = false;
@@ -462,7 +462,7 @@ void DroneSimpleController::UpdateDynamics(double dt){
         double yaw_rate = controllers_.yaw_angle.update(yawAngleSetpoint, euler.Z(), yawAngleSetpoint - euler.Z(), dt);
         
 
-        ignition::math::Vector3d desired_acc (cmd_acc.acceleration.x, cmd_acc.acceleration.y, cmd_acc.acceleration.z);
+        ignition::math::Vector3d desired_acc (cmd_acc.acceleration_or_force.x, cmd_acc.acceleration_or_force.y, cmd_acc.acceleration_or_force.z+9.8);
         double yaw = euler.Z();
         ignition::math::Vector3d direction (cos(yaw), sin(yaw), 0.0);
         ignition::math::Vector3d zDirection = desired_acc/desired_acc.Length();

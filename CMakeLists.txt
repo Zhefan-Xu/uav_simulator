@@ -61,10 +61,10 @@ qt5_add_resources(RESOURCES include/${PROJECT_NAME}/droneKeyboard.qrc)
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  CmdInput.msg
-)
+# add_message_files(
+#   FILES
+#   CmdInput.msg
+# )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -81,11 +81,11 @@ add_message_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-  geometry_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+#   geometry_msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##

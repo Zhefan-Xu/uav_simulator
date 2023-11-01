@@ -19,7 +19,7 @@
 #include <std_msgs/Empty.h>
 #include <std_msgs/Bool.h>
 #include <nav_msgs/Odometry.h>
-#include <uav_simulator/CmdInput.h>
+#include <mavros_msgs/PositionTarget.h>
 
 #include <uav_simulator/pidController.h>
 #include <tf2/LinearMath/Quaternion.h>
@@ -83,11 +83,11 @@ private:
 
 
   geometry_msgs::Twist cmd_val;
-  uav_simulator::CmdInput cmd_acc;
+  mavros_msgs::PositionTarget cmd_acc;
   geometry_msgs::Pose pose_setpoint;
   // callback functions for subscribers
   void CmdCallback(const geometry_msgs::TwistStampedConstPtr&);
-  void CmdAccCallback(const uav_simulator::CmdInputConstPtr&);
+  void CmdAccCallback(const mavros_msgs::PositionTargetConstPtr&);
   void TargetPoseCallback(const geometry_msgs::PoseStampedConstPtr&);
   void PosCtrlCallback(const std_msgs::BoolConstPtr&);
   void ImuCallback(const sensor_msgs::ImuConstPtr&);
