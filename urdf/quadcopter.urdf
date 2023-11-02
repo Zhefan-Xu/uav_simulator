@@ -28,7 +28,7 @@
   <gazebo>
     <plugin name='quadcopter_gazebo_plugin' filename='libquadcopterPlugin.so'>
         <bodyName>base_link</bodyName>
-        <rollpitchProportionalGain>10.0</rollpitchProportionalGain>
+        <rollpitchProportionalGain>20.0</rollpitchProportionalGain>
         <rollpitchDifferentialGain>5.0</rollpitchDifferentialGain>
         <rollpitchLimit>0.5</rollpitchLimit>
         <yawProportionalGain>2.0</yawProportionalGain>
@@ -49,7 +49,7 @@
         <positionZProportionalGain>1.0</positionZProportionalGain>
         <positionZDifferentialGain>0.2</positionZDifferentialGain>
         <positionZLimit>-1</positionZLimit>
-        <maxForce>30</maxForce>
+        <maxForce>40</maxForce>
         <motionSmallNoise>0.05</motionSmallNoise>
         <motionDriftNoise>0.03</motionDriftNoise>
         <motionDriftNoiseTime>5.0</motionDriftNoiseTime>

@@ -1,6 +1,6 @@
 <launch>
   <arg name="paused" value="false"/>
-  <arg name="verbose" value="false"/>
+  <arg name="verbose" value="true"/>
   <arg name="use_sim_time" value="true"/>
   <arg name="debug" value="false" />
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/square/square_static.world" /> -->
@@ -36,7 +36,7 @@
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_dynamic_1.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_straight_basic_static.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_straight_static.world" /> -->
-<!--   <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_straight_dynamic_5.world" /> -->
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_straight_dynamic_5.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_c_shape_basic_static.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_s_shape_basic_static.world" /> -->
 

@@ -463,6 +463,7 @@ void DroneSimpleController::UpdateDynamics(double dt){
         
 
         ignition::math::Vector3d desired_acc (cmd_acc.acceleration_or_force.x, cmd_acc.acceleration_or_force.y, cmd_acc.acceleration_or_force.z+9.8);
+
         double yaw = euler.Z();
         ignition::math::Vector3d direction (cos(yaw), sin(yaw), 0.0);
         ignition::math::Vector3d zDirection = desired_acc/desired_acc.Length();
@@ -473,6 +474,8 @@ void DroneSimpleController::UpdateDynamics(double dt){
         attitudeRefRot << xDirection[0], yDirection[0], zDirection[0],
                 xDirection[1], yDirection[1], zDirection[1],
                 xDirection[2], yDirection[2], zDirection[2];
+
+
         Eigen::Vector4d attitudeRefQuat = rot2Quaternion(attitudeRefRot);
         geometry_msgs::Quaternion quatMsg;
         quatMsg.w = attitudeRefQuat(0);
@@ -485,8 +488,8 @@ void DroneSimpleController::UpdateDynamics(double dt){
 
         torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
         torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
-        force.Z()  = mass * desired_acc.Length();
         torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), 0, dt);
+        force.Z()  = mass * desired_acc.Length();
         if (isnan(torque.Z())){
           torque.Z() = 0.0; // this means yaw angle target is not valid
         }
@@ -548,7 +551,6 @@ void DroneSimpleController::UpdateDynamics(double dt){
     if (max_force_ > 0.0 && force.Z() > max_force_) force.Z() = max_force_;
     if (force.Z() < 0.0) force.Z() = 0.0;
     // process robot state information
-
     if (navi_state == FLYING_MODEL) {
       link->AddRelativeForce(force);
       link->AddRelativeTorque(torque);
