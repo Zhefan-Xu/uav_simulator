@@ -17,9 +17,9 @@ public:
   double time_constant;
   double limit;
 
-  double input;
-  double dinput;
-  double output;
+  double input=0.0;
+  double dinput=0.0;
+  double output=0.0;
   double p, i, d;
   bool is_yaw;
 

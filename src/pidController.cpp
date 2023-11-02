@@ -33,7 +33,14 @@ double PIDController::update(double new_input, double x, double dx, double dt)
 {
   if (is_yaw){
     dx = wrapAngle(dx);
+    if (isnan(new_input)){
+      new_input = 0.0;
+      // std::cout << "new nan 1" << std::endl;
+    }
     new_input = wrapAngle(new_input);
+    // if (isnan(new_input)){
+    //   std::cout << "new nan 2" << std::endl;
+    // }    
     x = wrapAngle(x);
   }
 
@@ -47,6 +54,13 @@ double PIDController::update(double new_input, double x, double dx, double dt)
       dinput = (new_input - input) / (dt + time_constant);
     }
     else{
+      // if (not isnan(input)){
+      // std::cout << "===========.l" << std::endl;
+      // std::cout << dt << std::endl;
+      // std::cout << new_input << std::endl;
+      // std::cout << time_constant << std::endl;
+      // std::cout << input << std::endl;
+      // }
       input  = wrapAngle(dt * new_input + time_constant * input) / (dt + time_constant);
       dinput = wrapAngle(new_input - input) / (dt + time_constant);      
     }
@@ -60,6 +74,14 @@ double PIDController::update(double new_input, double x, double dx, double dt)
     i = i + dt * p;
   }
   else{
+    // std::cout << "===========." << std::endl;
+    // std::cout << input << std::endl;
+    // std::cout << x << std::endl;
+    // std::cout << dinput << std::endl;
+    // std::cout << dx << std::endl;
+    // std::cout << i << std::endl;
+    // std::cout << dt << std::endl;
+    // std::cout << p << std::endl;
     p = wrapAngle(input - x);
     d = wrapAngle(dinput - dx);
     i = wrapAngle(i + dt * p);
@@ -70,7 +92,14 @@ double PIDController::update(double new_input, double x, double dx, double dt)
     output = gain_p * p + gain_d * d + gain_i * i;
   }
   else{
-    output = gain_p * p + gain_d * d + gain_i * i;
+    output = gain_p * p;// + gain_d * d + gain_i * i;
+    // std::cout << "===========" << std::endl;
+    // std::cout << gain_p << std::endl;
+    // std::cout << p << std::endl;
+    // std::cout << gain_d << std::endl;
+    // std::cout << d << std::endl;
+    // std::cout << gain_i << std::endl;
+    // std::cout << i << std::endl;
   }
   return output;
 }

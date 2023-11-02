@@ -459,6 +459,10 @@ void DroneSimpleController::UpdateDynamics(double dt){
     if (acc_control){
         // yaw control seperately
         double yawAngleSetpoint = cmd_acc.yaw;
+        // if (isnan(cmd_acc.yaw)) 
+        //   std::cout << "input nan" << std::endl;
+        // if (isnan(yawAngleSetpoint)) 
+        //   std::cout << "input nan2" << std::endl;
         double yaw_rate = controllers_.yaw_angle.update(yawAngleSetpoint, euler.Z(), yawAngleSetpoint - euler.Z(), dt);
         
 
@@ -490,6 +494,9 @@ void DroneSimpleController::UpdateDynamics(double dt){
         torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
         torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), 0, dt);
         force.Z()  = mass * desired_acc.Length();
+        std::cout << "current yaw: " << yaw << " target yaw: " << yawAngleSetpoint << std::endl;
+        std::cout << "target yaw rate: " << yaw_rate << std::endl;
+        std::cout << "torque z: " << torque.Z() << std::endl;
         if (isnan(torque.Z())){
           torque.Z() = 0.0; // this means yaw angle target is not valid
         }
