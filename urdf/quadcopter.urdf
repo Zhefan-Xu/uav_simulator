@@ -28,28 +28,28 @@
   <gazebo>
     <plugin name='quadcopter_gazebo_plugin' filename='libquadcopterPlugin.so'>
         <bodyName>base_link</bodyName>
-        <rollpitchProportionalGain>40</rollpitchProportionalGain>
-        <rollpitchDifferentialGain>5.0</rollpitchDifferentialGain>
-        <rollpitchLimit>0.7</rollpitchLimit>
-        <yawProportionalGain>40</yawProportionalGain>
+        <rollpitchProportionalGain>60.0</rollpitchProportionalGain>
+        <rollpitchDifferentialGain>10.0</rollpitchDifferentialGain>
+        <rollpitchLimit>1.0</rollpitchLimit>
+        <yawProportionalGain>10</yawProportionalGain>
         <yawDifferentialGain>5.0</yawDifferentialGain>
         <yawLimit>1.5</yawLimit>
         <yawAngleProportionalGain>3.0</yawAngleProportionalGain>
         <yawAngleLimit>3.15</yawAngleLimit>
         <velocityXYProportionalGain>5.0</velocityXYProportionalGain>
         <velocityXYDifferentialGain>2.3</velocityXYDifferentialGain>
-        <velocityXYLimit>2</velocityXYLimit>
+        <velocityXYLimit>5</velocityXYLimit>
         <velocityZProportionalGain>5.0</velocityZProportionalGain>
         <velocityZDifferentialGain>0.5</velocityZDifferentialGain>
         <velocityZLimit>-1</velocityZLimit>
         <positionXYProportionalGain>1.2</positionXYProportionalGain>
-        <positionXYDifferentialGain>0.1</positionXYDifferentialGain>
+        <positionXYDifferentialGain>0.5</positionXYDifferentialGain>
         <positionXYIntegralGain>0.0</positionXYIntegralGain>
         <positionXYLimit>-1</positionXYLimit>
         <positionZProportionalGain>1.0</positionZProportionalGain>
         <positionZDifferentialGain>0.2</positionZDifferentialGain>
         <positionZLimit>-1</positionZLimit>
-        <maxForce>60</maxForce>
+        <maxForce>100</maxForce>
         <motionSmallNoise>0.05</motionSmallNoise>
         <motionDriftNoise>0.03</motionDriftNoise>
         <motionDriftNoiseTime>5.0</motionDriftNoiseTime>
