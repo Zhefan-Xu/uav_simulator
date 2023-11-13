@@ -257,6 +257,10 @@ void DroneSimpleController::LoadControllerSettings(physics::ModelPtr _model, sdf
     controllers_.pos_x.Load(_sdf, "positionXY");
     controllers_.pos_y.Load(_sdf, "positionXY");
     controllers_.pos_z.Load(_sdf, "positionZ");
+
+    controllers_.acc_x.Load(_sdf, "accelerationXY");
+    controllers_.acc_y.Load(_sdf, "accelerationXY");
+    controllers_.acc_z.Load(_sdf, "accelerationZ");
     
 }
 
@@ -466,37 +470,48 @@ void DroneSimpleController::UpdateDynamics(double dt){
         double yaw_rate = controllers_.yaw_angle.update(yawAngleSetpoint, euler.Z(), yawAngleSetpoint - euler.Z(), dt);
         
 
-        ignition::math::Vector3d desired_acc (cmd_acc.acceleration_or_force.x, cmd_acc.acceleration_or_force.y, cmd_acc.acceleration_or_force.z+9.8);
+        // ignition::math::Vector3d desired_acc (cmd_acc.acceleration_or_force.x, cmd_acc.acceleration_or_force.y, cmd_acc.acceleration_or_force.z+9.8);
 
-        double yaw = euler.Z();
-        ignition::math::Vector3d direction (cos(yaw), sin(yaw), 0.0);
-        ignition::math::Vector3d zDirection = desired_acc/desired_acc.Length();
-        ignition::math::Vector3d yDirection = zDirection.Cross(direction)/(zDirection.Cross(direction)).Length();
-        ignition::math::Vector3d xDirection = yDirection.Cross(zDirection)/(yDirection.Cross(zDirection)).Length();
+        // double yaw = euler.Z();
+        // ignition::math::Vector3d direction (cos(yaw), sin(yaw), 0.0);
+        // ignition::math::Vector3d zDirection = desired_acc/desired_acc.Length();
+        // ignition::math::Vector3d yDirection = zDirection.Cross(direction)/(zDirection.Cross(direction)).Length();
+        // ignition::math::Vector3d xDirection = yDirection.Cross(zDirection)/(yDirection.Cross(zDirection)).Length();
 
-        Eigen::Matrix3d attitudeRefRot;
-        attitudeRefRot << xDirection[0], yDirection[0], zDirection[0],
-                xDirection[1], yDirection[1], zDirection[1],
-                xDirection[2], yDirection[2], zDirection[2];
+        // Eigen::Matrix3d attitudeRefRot;
+        // attitudeRefRot << xDirection[0], yDirection[0], zDirection[0],
+        //         xDirection[1], yDirection[1], zDirection[1],
+        //         xDirection[2], yDirection[2], zDirection[2];
 
 
-        Eigen::Vector4d attitudeRefQuat = rot2Quaternion(attitudeRefRot);
-        geometry_msgs::Quaternion quatMsg;
-        quatMsg.w = attitudeRefQuat(0);
-        quatMsg.x = attitudeRefQuat(1);
-        quatMsg.y = attitudeRefQuat(2);
-        quatMsg.z = attitudeRefQuat(3);
+        // Eigen::Vector4d attitudeRefQuat = rot2Quaternion(attitudeRefRot);
+        // geometry_msgs::Quaternion quatMsg;
+        // quatMsg.w = attitudeRefQuat(0);
+        // quatMsg.x = attitudeRefQuat(1);
+        // quatMsg.y = attitudeRefQuat(2);
+        // quatMsg.z = attitudeRefQuat(3);
 
-        double roll_command, pitch_command, yaw_command;
-        rpy_from_quaternion(quatMsg, roll_command, pitch_command, yaw_command);
+        // double roll_command, pitch_command, yaw_command;
+        // rpy_from_quaternion(quatMsg, roll_command, pitch_command, yaw_command);
 
+        // torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
+        // torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
+        // torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), 0, dt);
+        // force.Z()  = mass * desired_acc.Length();
+        // // std::cout << "current yaw: " << yaw << " target yaw: " << yawAngleSetpoint << std::endl;
+        // // std::cout << "target yaw rate: " << yaw_rate << std::endl;
+        // // std::cout << "torque z: " << torque.Z() << std::endl;
+
+
+
+        ignition::math::Vector3d desired_acc (cmd_acc.acceleration_or_force.x, cmd_acc.acceleration_or_force.y, cmd_acc.acceleration_or_force.z);
+        double pitch_command =  controllers_.acc_x.update(desired_acc.X(), acceleration_xy.X(), desired_acc.X() - acceleration_xy.X(), dt) / gravity;
+        double roll_command  = -controllers_.acc_y.update(desired_acc.Y(), acceleration_xy.Y(), desired_acc.Y() - acceleration_xy.Y(), dt) / gravity;
         torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
         torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
+        force.Z()  = mass      * (controllers_.acc_z.update(desired_acc.Z(),  acceleration_xy.Z(), desired_acc.Z() - acceleration.Z(), dt) + load_factor * gravity);
         torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), 0, dt);
-        force.Z()  = mass * desired_acc.Length();
-        // std::cout << "current yaw: " << yaw << " target yaw: " << yawAngleSetpoint << std::endl;
-        // std::cout << "target yaw rate: " << yaw_rate << std::endl;
-        // std::cout << "torque z: " << torque.Z() << std::endl;
+
         if (isnan(torque.Z())){
           torque.Z() = 0.0; // this means yaw angle target is not valid
         }
@@ -581,6 +596,12 @@ void DroneSimpleController::Reset()
   controllers_.velocity_x.reset();
   controllers_.velocity_y.reset();
   controllers_.velocity_z.reset();
+  controllers_.pos_x.reset();
+  controllers_.pos_y.reset();
+  controllers_.pos_z.reset();
+  controllers_.acc_x.reset();
+  controllers_.acc_y.reset();
+  controllers_.acc_z.reset();
 
   link->SetForce(ignition::math::Vector3d(0,0,0));
   link->SetTorque(ignition::math::Vector3d(0,0,0));

@@ -132,6 +132,9 @@ private:
     PIDController pos_x;
     PIDController pos_y;
     PIDController pos_z;
+    PIDController acc_x;
+    PIDController acc_y;
+    PIDController acc_z;
   } controllers_;
 
   ignition::math::Vector3d inertia;

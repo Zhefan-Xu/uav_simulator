@@ -25,7 +25,7 @@
   	<material>quadcopter/Diffusion</material>
   </gazebo>
 
-  <gazebo>
+<!--   <gazebo>
     <plugin name='quadcopter_gazebo_plugin' filename='libquadcopterPlugin.so'>
         <bodyName>base_link</bodyName>
         <rollpitchProportionalGain>60.0</rollpitchProportionalGain>
@@ -50,6 +50,44 @@
         <positionZDifferentialGain>0.2</positionZDifferentialGain>
         <positionZLimit>-1</positionZLimit>
         <maxForce>100</maxForce>
+        <motionSmallNoise>0.05</motionSmallNoise>
+        <motionDriftNoise>0.03</motionDriftNoise>
+        <motionDriftNoiseTime>5.0</motionDriftNoiseTime>
+    </plugin>
+  </gazebo> -->
+
+  <gazebo>
+    <plugin name='quadcopter_gazebo_plugin' filename='libquadcopterPlugin.so'>
+        <bodyName>base_link</bodyName>
+        <rollpitchProportionalGain>10.0</rollpitchProportionalGain>
+        <rollpitchDifferentialGain>5.0</rollpitchDifferentialGain>
+        <rollpitchLimit>0.5</rollpitchLimit>
+        <yawProportionalGain>2.0</yawProportionalGain>
+        <yawDifferentialGain>1.0</yawDifferentialGain>
+        <yawLimit>1.5</yawLimit>
+        <yawAngleProportionalGain>3.0</yawAngleProportionalGain>
+        <yawAngleLimit>3.15</yawAngleLimit>
+        <velocityXYProportionalGain>5.0</velocityXYProportionalGain>
+        <velocityXYDifferentialGain>2.3</velocityXYDifferentialGain>
+        <velocityXYLimit>2</velocityXYLimit>
+        <velocityZProportionalGain>5.0</velocityZProportionalGain>
+        <velocityZDifferentialGain>0.5</velocityZDifferentialGain>
+        <velocityZLimit>-1</velocityZLimit>
+        <positionXYProportionalGain>1.2</positionXYProportionalGain>
+        <positionXYDifferentialGain>0.1</positionXYDifferentialGain>
+        <positionXYIntegralGain>0.0</positionXYIntegralGain>
+        <positionXYLimit>-1</positionXYLimit>
+        <positionZProportionalGain>1.0</positionZProportionalGain>
+        <positionZDifferentialGain>0.2</positionZDifferentialGain>
+        <positionZLimit>-1</positionZLimit>
+        <accelerationXYProportionalGain>1.5</accelerationXYProportionalGain>
+        <accelerationXYDifferentialGain>0.1</accelerationXYDifferentialGain>
+        <accelerationXYIntegralGain>0.0</accelerationXYIntegralGain>
+        <accelerationXYLimit>-1</accelerationXYLimit>
+        <accelerationZProportionalGain>1.0</accelerationZProportionalGain>
+        <accelerationZDifferentialGain>0.2</accelerationZDifferentialGain>
+        <accelerationZLimit>-1</accelerationZLimit>
+        <maxForce>30</maxForce>
         <motionSmallNoise>0.05</motionSmallNoise>
         <motionDriftNoise>0.03</motionDriftNoise>
         <motionDriftNoiseTime>5.0</motionDriftNoiseTime>
