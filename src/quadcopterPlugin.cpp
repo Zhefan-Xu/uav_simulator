@@ -444,7 +444,10 @@ void DroneSimpleController::UpdateDynamics(double dt){
     ignition::math::Vector3d poschange = pose.Pos() - position;
     position = pose.Pos();
     
-  
+    ignition::math::Vector3d accchange = body_acc - prev_acceleration;
+    prev_acceleration = body_acc;
+
+
     // Get gravity
     ignition::math::Vector3d gravity_body = pose.Rot().RotateVector(world->Gravity());
     double gravity = gravity_body.Length();
@@ -505,13 +508,16 @@ void DroneSimpleController::UpdateDynamics(double dt){
 
 
         ignition::math::Vector3d desired_acc (cmd_acc.acceleration_or_force.x, cmd_acc.acceleration_or_force.y, cmd_acc.acceleration_or_force.z);
-        double pitch_command =  controllers_.acc_x.update(desired_acc.X(), acceleration_xy.X(), desired_acc.X() - acceleration_xy.X(), dt) / gravity;
-        double roll_command  = -controllers_.acc_y.update(desired_acc.Y(), acceleration_xy.Y(), desired_acc.Y() - acceleration_xy.Y(), dt) / gravity;
+        ignition::math::Vector3d desired_body_acc = pose.Rot().RotateVectorReverse(desired_acc);
+        double pitch_command =  controllers_.acc_x.update(desired_body_acc.X(), body_acc.X(), accchange.X(), dt) / gravity;
+        double roll_command  = -controllers_.acc_y.update(desired_body_acc.Y(), body_acc.Y(), accchange.Y(), dt) / gravity;
         torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
         torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
-        force.Z()  = mass      * (controllers_.acc_z.update(desired_acc.Z(),  acceleration_xy.Z(), desired_acc.Z() - acceleration.Z(), dt) + load_factor * gravity);
-        torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), 0, dt);
+        force.Z()  = mass      * (controllers_.acc_z.update(desired_body_acc.Z(),  body_acc.Z(), accchange.Z(), dt) + load_factor * gravity);
+        torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), accchange.Z(), dt);
 
+        // cout << "desired acc x: " << desired_body_acc.X() << " body acc x: " << body_acc.X() << " acc chagne: " << accchange.X() << endl;
+        // cout << "pitch command: " << pitch_command << " degree: " << pitch_command * 57.3 << endl;
         if (isnan(torque.Z())){
           torque.Z() = 0.0; // this means yaw angle target is not valid
         }

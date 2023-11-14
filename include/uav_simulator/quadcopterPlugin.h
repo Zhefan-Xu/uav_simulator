@@ -29,6 +29,7 @@
 #define FLYING_MODEL        1
 #define TAKINGOFF_MODEL     2
 #define LANDING_MODEL       3
+using std::cout; using std::endl;
 
 #define EPS 1E-6
 namespace gazebo
@@ -99,7 +100,7 @@ private:
  
   ros::Time state_stamp;
   ignition::math::Pose3d pose;
-  ignition::math::Vector3d euler, velocity, acceleration, angular_velocity, position;
+  ignition::math::Vector3d euler, velocity, acceleration, angular_velocity, position, prev_acceleration;
 
   std::string link_name_;
   std::string cmd_normal_topic_;

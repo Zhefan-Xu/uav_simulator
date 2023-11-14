@@ -61,7 +61,7 @@
         <bodyName>base_link</bodyName>
         <rollpitchProportionalGain>10.0</rollpitchProportionalGain>
         <rollpitchDifferentialGain>5.0</rollpitchDifferentialGain>
-        <rollpitchLimit>0.5</rollpitchLimit>
+        <rollpitchLimit>1.0</rollpitchLimit>
         <yawProportionalGain>2.0</yawProportionalGain>
         <yawDifferentialGain>1.0</yawDifferentialGain>
         <yawLimit>1.5</yawLimit>
@@ -80,14 +80,14 @@
         <positionZProportionalGain>1.0</positionZProportionalGain>
         <positionZDifferentialGain>0.2</positionZDifferentialGain>
         <positionZLimit>-1</positionZLimit>
-        <accelerationXYProportionalGain>1.5</accelerationXYProportionalGain>
-        <accelerationXYDifferentialGain>0.1</accelerationXYDifferentialGain>
+        <accelerationXYProportionalGain>5.0</accelerationXYProportionalGain>
+        <accelerationXYDifferentialGain>0.2</accelerationXYDifferentialGain>
         <accelerationXYIntegralGain>0.0</accelerationXYIntegralGain>
         <accelerationXYLimit>-1</accelerationXYLimit>
-        <accelerationZProportionalGain>1.0</accelerationZProportionalGain>
+        <accelerationZProportionalGain>0.5</accelerationZProportionalGain>
         <accelerationZDifferentialGain>0.2</accelerationZDifferentialGain>
         <accelerationZLimit>-1</accelerationZLimit>
-        <maxForce>30</maxForce>
+        <maxForce>60</maxForce>
         <motionSmallNoise>0.05</motionSmallNoise>
         <motionDriftNoise>0.03</motionDriftNoise>
         <motionDriftNoiseTime>5.0</motionDriftNoiseTime>
