@@ -80,7 +80,7 @@
         <positionZProportionalGain>1.0</positionZProportionalGain>
         <positionZDifferentialGain>0.2</positionZDifferentialGain>
         <positionZLimit>-1</positionZLimit>
-        <accelerationXYProportionalGain>5.0</accelerationXYProportionalGain>
+        <accelerationXYProportionalGain>20.0</accelerationXYProportionalGain>
         <accelerationXYDifferentialGain>0.2</accelerationXYDifferentialGain>
         <accelerationXYIntegralGain>0.0</accelerationXYIntegralGain>
         <accelerationXYLimit>-1</accelerationXYLimit>
