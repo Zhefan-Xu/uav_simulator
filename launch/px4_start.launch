@@ -14,6 +14,7 @@
     <arg name="vehicle" default="iris"/>
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/square/square_box.world" /> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan2/floorplan2_static.world"/> -->
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan2/floorplan2_dynamic_12.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan3/floorplan3_dynamic_8.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/test/test.world"/> -->
     <arg name="world" default="$(find uav_simulator)/worlds/test/test2.world"/>
