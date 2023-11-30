@@ -521,6 +521,7 @@ void DroneSimpleController::UpdateDynamics(double dt){
         if (isnan(torque.Z())){
           torque.Z() = 0.0; // this means yaw angle target is not valid
         }
+        // cout << "yaw angle set: " << yawAngleSetpoint << "current yaw: " << euler.Z()  << " yaw rate: " << yaw_rate << " torque z: " << torque.Z() << endl; 
     }
     else{
       if( m_posCtrl){

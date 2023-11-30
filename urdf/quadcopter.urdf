@@ -62,7 +62,7 @@
         <rollpitchProportionalGain>10.0</rollpitchProportionalGain>
         <rollpitchDifferentialGain>5.0</rollpitchDifferentialGain>
         <rollpitchLimit>1.0</rollpitchLimit>
-        <yawProportionalGain>2.0</yawProportionalGain>
+        <yawProportionalGain>1.5</yawProportionalGain>
         <yawDifferentialGain>1.0</yawDifferentialGain>
         <yawLimit>1.5</yawLimit>
         <yawAngleProportionalGain>3.0</yawAngleProportionalGain>
@@ -80,12 +80,12 @@
         <positionZProportionalGain>1.0</positionZProportionalGain>
         <positionZDifferentialGain>0.2</positionZDifferentialGain>
         <positionZLimit>-1</positionZLimit>
-        <accelerationXYProportionalGain>20.0</accelerationXYProportionalGain>
-        <accelerationXYDifferentialGain>0.2</accelerationXYDifferentialGain>
+        <accelerationXYProportionalGain>15.0</accelerationXYProportionalGain>
+        <accelerationXYDifferentialGain>0.0</accelerationXYDifferentialGain>
         <accelerationXYIntegralGain>0.0</accelerationXYIntegralGain>
         <accelerationXYLimit>-1</accelerationXYLimit>
         <accelerationZProportionalGain>0.5</accelerationZProportionalGain>
-        <accelerationZDifferentialGain>0.2</accelerationZDifferentialGain>
+        <accelerationZDifferentialGain>0.0</accelerationZDifferentialGain>
         <accelerationZLimit>-1</accelerationZLimit>
         <maxForce>60</maxForce>
         <motionSmallNoise>0.05</motionSmallNoise>
