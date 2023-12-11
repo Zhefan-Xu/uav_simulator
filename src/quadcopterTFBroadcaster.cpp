@@ -32,7 +32,7 @@ int main(int argc, char** argv){
 	ros::NodeHandle nh;
 	std::string poseTopic = "/CERLAB/quadcopter/pose";
 	if (argc > 1)  poseTopic = argv[1];
-	cout << "poseTopic: " << poseTopic << endl;
+	// cout << "poseTopic: " << poseTopic << endl;
 	ros::Subscriber sub = nh.subscribe(poseTopic, 1, &poseCallback);
 	ros::spin();
 	return 0;
