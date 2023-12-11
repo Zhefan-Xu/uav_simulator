@@ -13,7 +13,7 @@
     <arg name="est" default="ekf2"/>
     <arg name="vehicle" default="iris"/>
 
-    <arg name="world" default="$(find uav_simulator)/worlds/square/square_box.world" />
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/square/square_box.world" /> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/square/square_static.world" /> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/square/square_test.world" /> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/square/square_dynamic_7.world" /> -->
@@ -40,7 +40,7 @@
 
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_basic_static.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_c_shape_basic_static.world"/> -->
-    <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_dynamic_1.world"/> -->
+    <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_dynamic_1.world"/>
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_s_shape_basic_static.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_static.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_static_long.world"/> -->
