@@ -1,4 +1,5 @@
-# Lightweight ROS-based Simulator for Unmanned Aerial Vehicles (UAVs)
+# Lightweight Gazebo/ROS-based Simulator for Unmanned Aerial Vehicles (UAVs)
+This package implements a lightweight quadcopter unmanned aerial vehicles (UAVs) simulator including various static and dynamic based on Gazebo/ROS. It also includes an optional PX4-based quadcopter simulation wrapper.
 
 ### Install
 build the package:
