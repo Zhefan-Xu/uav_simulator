@@ -17,7 +17,7 @@ setup environment variable. Add following to your ```~/.bashrc```
 source path/to/uav_simulator/gazeboSetup.bash
 ```
 
-### Run
+### Quick Start
 ```
 roslaunch uav_simulator start.launch
 ```
