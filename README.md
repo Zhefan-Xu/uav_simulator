@@ -1,4 +1,4 @@
-# Lightweight ROS Simulator for Unmanned Aerial Vehicles (UAVs)
+# Lightweight ROS-based Simulator for Unmanned Aerial Vehicles (UAVs)
 
 ### Install
 build the package:
