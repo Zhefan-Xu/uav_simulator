@@ -45,8 +45,25 @@ sudo bash ./install_geographiclib_datasets.sh
 
 
 
-### II. Quick Start
+## II. Quick Start
+a. To launch the non-PX4 simulator with a quadcopter:
 ```
 roslaunch uav_simulator start.launch
 ```
+TODO: demo pic
+
+b. To launch the PX4 simulator with a quadcopter:
+```
+roslaunch uav_simulator px4_start.launch
+```
+TODO: demo pic
+
+## III. Keyboard Control
+
+
+## IV. Simulation Environments
+
+## V. ROS Topics
+
+
 
