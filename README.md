@@ -28,7 +28,9 @@ Please make sure that you have follow the previous steps to build the non-px4 si
 cd directory/to/install # this should not be your catkin workspace
 
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive --branch v1.12.0
-bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
+bash ./PX4-Autopilot/Tools/setup/ubuntu.sh # this step will ask you to reboot
+
+# Please make sure you reboot after the previous step
 cd /path/to/PX4-Autopilot
 DONT_RUN=1 make px4_sitl_default gazebo
 ```
