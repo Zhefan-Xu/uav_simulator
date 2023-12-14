@@ -25,6 +25,8 @@ Please make sure that you have follow the previous steps to build the non-px4 si
 
 &#x1F34E; Current PX4 version has some problems with offboard mode, please use v1.12.0 as modified in the following lines:&#x1F34E;
 ```
+cd directory/to/install # this should not be your catkin workspace
+
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive --branch v1.12.0
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
 cd /path/to/PX4-Autopilot
