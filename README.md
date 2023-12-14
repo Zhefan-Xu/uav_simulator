@@ -66,7 +66,7 @@ You should be able to see a PX4 IRIS quadcopter in a predefined gazebo environme
 ![px4_simulator](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/fbcb0100-51cf-445a-bfa0-25dc96ab022e)
 
 ## III. Keyboard Control
-Our non-px4 customized simulator supports the keyboard control function. You are able to control the quadcopter **when you click the keyboard controller panel**:
+Our non-px4 customized simulator supports the keyboard control function. You are able to control the quadcopter motion **when you click the keyboard controller panel** shown as below:
 ![keboard_control](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/989fd8eb-28d6-4927-a021-2b191765ed82)
 
 
