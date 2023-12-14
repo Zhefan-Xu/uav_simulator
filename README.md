@@ -63,7 +63,7 @@ b. To launch the PX4 simulator with a quadcopter:
 roslaunch uav_simulator px4_start.launch
 ```
 You should be able to see a PX4 IRIS quadcopter in a predefined gazebo environment as shown below: 
-![px4_simulator](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/d4199016-88f7-459c-9330-52dabd23d542)
+![px4_simulator](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/fbcb0100-51cf-445a-bfa0-25dc96ab022e)
 
 ## III. Keyboard Control
 
