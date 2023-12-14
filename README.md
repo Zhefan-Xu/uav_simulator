@@ -8,6 +8,7 @@ This repo has been tested on [ROS Melodic](http://wiki.ros.org/ROS/Installation)
 #### a. Non-PX4 Simulator (Required)
 To install the non-px4 simulator, please follow the standard catkin package make process as follows:
 ```
+sudo apt-get install ros-[melodic/noetic]-mavros ros-[melodic/noetic]-mavros-extras # this package depends on mavros related ROS packages
 git clone https://github.com/Zhefan-Xu/uav_simulator.git
 
 cd ~/catkin_ws
@@ -25,8 +26,12 @@ Please make sure that you have follow the previous steps to build the non-px4 si
 
 &#x1F34E; Current PX4 version has some problems with offboard mode, please use v1.12.0 as modified in the following lines:&#x1F34E;
 ```
+cd directory/to/install # this should not be your catkin workspace
+
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive --branch v1.12.0
-bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
+bash ./PX4-Autopilot/Tools/setup/ubuntu.sh # this step will ask you to reboot
+
+# Please make sure you reboot after the previous step
 cd /path/to/PX4-Autopilot
 DONT_RUN=1 make px4_sitl_default gazebo
 ```
@@ -36,9 +41,8 @@ source <PX4-Autopilot_clone>/Tools/setup_gazebo.bash <PX4-Autopilot_clone> <PX4-
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:<PX4-Autopilot_clone>
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:<PX4-Autopilot_clone>/Tools/sitl_gazebo
 ```
-**Step 3**: Install [MAVROS](https://docs.px4.io/master/en/ros/mavros_installation.html) for communication.
+**Step 3**: Install geographiclib datasets for PX4 simulation.
 ```
-sudo apt-get install ros-[melodic/noetic]-mavros ros-[melodic/noetic]-mavros-extras
 wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh
 sudo bash ./install_geographiclib_datasets.sh  
 ```
@@ -50,20 +54,49 @@ a. To launch the non-PX4 simulator with a quadcopter:
 ```
 roslaunch uav_simulator start.launch
 ```
-TODO: demo pic
+
+You should be able to see a customized quadcopter in a predefined gazebo environment as shown below: 
+
+![simulator](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/32f1a2d1-becb-4854-b6e1-161118b319f4)
+
 
 b. To launch the PX4 simulator with a quadcopter:
 ```
 roslaunch uav_simulator px4_start.launch
 ```
-TODO: demo pic
+
+You should be able to see a PX4 IRIS quadcopter in a predefined gazebo environment as shown below: 
+
+![px4_simulator](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/fbcb0100-51cf-445a-bfa0-25dc96ab022e)
 
 ## III. Keyboard Control
+Our non-px4 customized simulator supports the keyboard control function. You are able to control the quadcopter motion **when you click the keyboard controller panel** shown as below:
+
+![keboard_control](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/989fd8eb-28d6-4927-a021-2b191765ed82)
 
 
 ## IV. Simulation Environments
+- There are various predefined environments in this package and you can easily switch environment when you modify the launch file located in ```uav_simululator/launch/start.launch``` or ```uav_simululator/launch/px4_start.launch```. All the predifined environments are listed in the lanuch files.
+- There are some environments which contains dynamic objects (e.g. moving persons). You can distinguish those dynamic environments by the environments' names. For example, the environment name ```floorplan1_dynamic_16.world``` indicates that there are 16 dynamic objects in the floorplan1 environment.
+
 
 ## V. ROS Topics
-
+Here lists some important ROS topics related to the simulator:
+- **Non-px4 Simulator:**
+  - ```/CERLAB/quadcopter/cmd_acc```: The command acceleration to the quadcopter.
+  - ```/CERLAB/quadcopter/pose```: The ground truth pose of the quadcopter.
+  - ```/CERLAB/quadcopter/odom```: The ground truth odom of the quadcopter.
+  - ```/CERLAB/quadcopter/setpoint_pose```: The command pose to the quadcopter.
+  - ```/camera/color/image_raw```: The color image from the onboard camera.
+  - ```/camera/depth/image_raw```: The depth image from the onboard camera.
+  - ```/camera/depth/points```: The depth cloud from the onboard camera.
+- **PX4 Simulator**
+  - ```/mavros/setpoint_raw/attitude```: The command to the quadcopter.
+  - ```/mavros/local_position/pose```: The ground truth pose of the quadcopter.
+  - ```/mavros/local_position/odom```: The ground truth odom of the quadcopter.
+  - ```/mavros/setpoint_position/local```: The command pose to the quadcopter.
+  - ```/camera/color/image_raw```: The color image from the onboard camera.
+  - ```/camera/depth/image_raw```: The depth image from the onboard camera.
+  - ```/camera/depth/points```: The depth cloud from the onboard camera.
 
 
