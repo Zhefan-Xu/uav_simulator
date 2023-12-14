@@ -54,7 +54,9 @@ a. To launch the non-PX4 simulator with a quadcopter:
 ```
 roslaunch uav_simulator start.launch
 ```
-TODO: demo pic
+You should be able to see a quadcopter in a predefined gazebo environment as shown below: 
+![simulator](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/77e321c7-93be-483e-b4ed-8e45ecc4bafe)
+
 
 b. To launch the PX4 simulator with a quadcopter:
 ```
