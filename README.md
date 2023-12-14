@@ -54,7 +54,9 @@ a. To launch the non-PX4 simulator with a quadcopter:
 ```
 roslaunch uav_simulator start.launch
 ```
+
 You should be able to see a customized quadcopter in a predefined gazebo environment as shown below: 
+
 ![simulator](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/32f1a2d1-becb-4854-b6e1-161118b319f4)
 
 
@@ -62,15 +64,21 @@ b. To launch the PX4 simulator with a quadcopter:
 ```
 roslaunch uav_simulator px4_start.launch
 ```
+
 You should be able to see a PX4 IRIS quadcopter in a predefined gazebo environment as shown below: 
+
 ![px4_simulator](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/fbcb0100-51cf-445a-bfa0-25dc96ab022e)
 
 ## III. Keyboard Control
 Our non-px4 customized simulator supports the keyboard control function. You are able to control the quadcopter motion **when you click the keyboard controller panel** shown as below:
+
 ![keboard_control](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/989fd8eb-28d6-4927-a021-2b191765ed82)
 
 
 ## IV. Simulation Environments
+- There are various predefined environments in this package and you can easily switch environment when you modify the launch file located in ```uav_simululator/launch/start.launch``` or ```uav_simululator/launch/px4_start.launch```. All the predifined environments are listed in the lanuch files.
+- There are some environments which contains dynamic objects (e.g. moving persons) and we call those dynamic environments. You can distinguish those dynamic environments by the environments' names. For example, the environment name ```floorplan1_dynamic_16.world``` indicates that there are 16 dynamic objects in the floorplan1 environment.
+
 
 ## V. ROS Topics
 
