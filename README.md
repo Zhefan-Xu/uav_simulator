@@ -8,6 +8,7 @@ This repo has been tested on [ROS Melodic](http://wiki.ros.org/ROS/Installation)
 #### a. Non-PX4 Simulator (Required)
 To install the non-px4 simulator, please follow the standard catkin package make process as follows:
 ```
+sudo apt-get install ros-[melodic/noetic]-mavros ros-[melodic/noetic]-mavros-extras
 git clone https://github.com/Zhefan-Xu/uav_simulator.git
 
 cd ~/catkin_ws
@@ -40,9 +41,8 @@ source <PX4-Autopilot_clone>/Tools/setup_gazebo.bash <PX4-Autopilot_clone> <PX4-
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:<PX4-Autopilot_clone>
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:<PX4-Autopilot_clone>/Tools/sitl_gazebo
 ```
-**Step 3**: Install [MAVROS](https://docs.px4.io/master/en/ros/mavros_installation.html) for communication.
+**Step 3**: Install geographiclib datasets for PX4 simulation.
 ```
-sudo apt-get install ros-[melodic/noetic]-mavros ros-[melodic/noetic]-mavros-extras
 wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh
 sudo bash ./install_geographiclib_datasets.sh  
 ```
