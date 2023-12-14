@@ -81,6 +81,22 @@ Our non-px4 customized simulator supports the keyboard control function. You are
 
 
 ## V. ROS Topics
-
+Here lists some important ROS topics related to the simulator:
+- **Non-px4 Simulator:**
+  - ```/CERLAB/quadcopter/cmd_acc```: The command acceleration to the quadcopter.
+  - ```/CERLAB/quadcopter/pose```: The ground truth pose of the quadcopter.
+  - ```/CERLAB/quadcopter/odom```: The ground truth odom of the quadcopter.
+  - ```/CERLAB/quadcopter/setpoint_pose```: The command pose to the quadcopter.
+  - ```/camera/color/image_raw```: The color image from the onboard camera.
+  - ```/camera/depth/image_raw```: The depth image from the onboard camera.
+  - ```/camera/depth/points```: The depth cloud from the onboard camera.
+- **PX4 Simulator**
+  - ```/mavros/setpoint_raw/attitude```: The command to the quadcopter.
+  - ```/mavros/local_position/pose```: The ground truth pose of the quadcopter.
+  - ```/mavros/local_position/odom```: The ground truth odom of the quadcopter.
+  - ```/mavros/setpoint_position/local```: The command pose to the quadcopter.
+  - ```/camera/color/image_raw```: The color image from the onboard camera.
+  - ```/camera/depth/image_raw```: The depth image from the onboard camera.
+  - ```/camera/depth/points```: The depth cloud from the onboard camera.
 
 
