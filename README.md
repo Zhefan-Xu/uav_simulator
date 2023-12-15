@@ -6,7 +6,7 @@ This package implements a lightweight quadcopter unmanned aerial vehicles (UAVs)
 ## I. Installation Guide
 This repo has been tested on [ROS Melodic](http://wiki.ros.org/ROS/Installation) with Ubuntu 18.04 and [ROS Noetic](http://wiki.ros.org/ROS/Installation) with Ubuntu 20.04.
 #### a. Non-PX4 Simulator (Required)
-To install the non-px4 simulator, please follow the standard catkin package make process as follows:
+To install the non-PX4 simulator, please follow the standard catkin package make process as follows:
 ```
 sudo apt-get install ros-[melodic/noetic]-mavros ros-[melodic/noetic]-mavros-extras # this package depends on mavros related ROS packages
 git clone https://github.com/Zhefan-Xu/uav_simulator.git
@@ -70,7 +70,7 @@ You should be able to see a PX4 IRIS quadcopter in a predefined gazebo environme
 ![px4_simulator](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/fbcb0100-51cf-445a-bfa0-25dc96ab022e)
 
 ## III. Keyboard Control
-Our non-px4 customized simulator supports the keyboard control function. You are able to control the quadcopter motion **when you click the keyboard controller panel** shown as below:
+Our non-PX4 customized simulator supports the keyboard control function. You are able to control the quadcopter motion **when you click the keyboard controller panel** shown as below:
 
 ![keboard_control](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/989fd8eb-28d6-4927-a021-2b191765ed82)
 
@@ -82,7 +82,7 @@ Our non-px4 customized simulator supports the keyboard control function. You are
 
 ## V. ROS Topics
 Here lists some important ROS topics related to the simulator:
-- **Non-px4 Simulator:**
+- **Non-PX4 Simulator:**
   - ```/CERLAB/quadcopter/cmd_acc```: The command acceleration to the quadcopter.
   - ```/CERLAB/quadcopter/pose```: The ground truth pose of the quadcopter.
   - ```/CERLAB/quadcopter/odom```: The ground truth odom of the quadcopter.
