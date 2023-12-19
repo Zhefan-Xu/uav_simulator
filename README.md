@@ -79,6 +79,10 @@ Our non-PX4 customized simulator supports the keyboard control function. You are
 - There are various predefined environments in this package and you can easily switch environment when you modify the launch file located in ```uav_simululator/launch/start.launch``` or ```uav_simululator/launch/px4_start.launch```. All the predifined environments are listed in the lanuch files.
 - There are some environments which contains dynamic objects (e.g. moving persons). You can distinguish those dynamic environments by the environments' names. For example, the environment name ```floorplan1_dynamic_16.world``` indicates that there are 16 dynamic objects in the floorplan1 environment.
 
+One example of the dynamic environment is shown as below:
+
+![Screenshot from 2023-12-18 20-36-34](https://github.com/Zhefan-Xu/uav_simulator/assets/55560905/4792edb1-1920-4097-b5aa-b8be64fe7b4e)
+
 
 ## V. ROS Topics
 Here lists some important ROS topics related to the simulator:
