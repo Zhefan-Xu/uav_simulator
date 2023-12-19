@@ -1,7 +1,7 @@
 # Lightweight Gazebo/ROS-based Simulator for Unmanned Aerial Vehicles (UAVs)
 This package implements a lightweight quadcopter unmanned aerial vehicles (UAVs) simulator including various static and dynamic based on Gazebo/ROS. It also includes an optional PX4-based quadcopter simulation wrapper.
 
-**Author**: [Zhefan Xu](https://zhefanxu.com/) from the Computational Engineering & Robotics Lab (CERLAB) at Carnegie Mellon University (CMU).
+**Author**: [Zhefan Xu](https://zhefanxu.com/), Computational Engineering & Robotics Lab (CERLAB) at Carnegie Mellon University (CMU).
 
 ## I. Installation Guide
 This repo has been tested on [ROS Melodic](http://wiki.ros.org/ROS/Installation) with Ubuntu 18.04 and [ROS Noetic](http://wiki.ros.org/ROS/Installation) with Ubuntu 20.04.
