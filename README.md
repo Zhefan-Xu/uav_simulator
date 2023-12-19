@@ -8,7 +8,7 @@ This repo has been tested on [ROS Melodic](http://wiki.ros.org/ROS/Installation)
 #### a. Non-PX4 Simulator (Required)
 To install the non-PX4 simulator, please follow the standard catkin package make process as follows:
 ```
-sudo apt-get install ros-[melodic/noetic]-mavros ros-[melodic/noetic]-mavros-extras # this package depends on mavros related ROS packages
+sudo apt-get install ros-[melodic/noetic]-mavros* # this package depends on mavros related ROS packages
 git clone https://github.com/Zhefan-Xu/uav_simulator.git
 
 cd ~/catkin_ws
