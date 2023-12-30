@@ -25,7 +25,7 @@
         <velocity>0.5</velocity>
         <angular_velocity>0.8</angular_velocity>
         <path>
-          <waypoint>1.0 0.0 0.0</waypoint>
+          <waypoint>2.0 0.0 0.0</waypoint>
           <waypoint>7.0 0.0 0.0</waypoint>
         </path>
       </plugin>

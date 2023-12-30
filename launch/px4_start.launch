@@ -24,7 +24,7 @@
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan1/floorplan1_dynamic_6.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan1/floorplan1_dynamic_16.world"/> -->
 
-    <arg name="world" default="$(find uav_simulator)/worlds/floorplan2/floorplan2_static.world"/>
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan2/floorplan2_static.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan2/floorplan2_dynamic_5.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan2/floorplan2_dynamic_12.world"/> -->
 
@@ -35,7 +35,7 @@
 
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/floorplan4/floorplan4_static.world"/> -->
 
-    <!-- <arg name="world" default="$(find uav_simulator)/worlds/corridor/corridor_static.world"/> -->
+    <arg name="world" default="$(find uav_simulator)/worlds/corridor/corridor_static.world"/>
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/corridor/corridor_dynamic_9.world"/> -->
 
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_basic_static.world"/> -->
