@@ -12,7 +12,7 @@
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/square/square_box_dynamic_14.world" /> -->
   
 
-  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan1/floorplan1_static.world" /> -->
+  <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan1/floorplan1_static.world" />
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan1/floorplan1_dynamic_6.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan1/floorplan1_dynamic_16.world" /> -->
 
@@ -27,7 +27,7 @@
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan4/floorplan4_static.world" /> -->
 
-  <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_static.world" />
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_static.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_dynamic_9.world" /> -->
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_basic_static.world" /> -->
