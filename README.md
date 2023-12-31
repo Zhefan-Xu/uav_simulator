@@ -3,6 +3,10 @@ This package implements a lightweight quadcopter unmanned aerial vehicles (UAVs)
 
 **Author**: [Zhefan Xu](https://zhefanxu.com/), Computational Engineering & Robotics Lab (CERLAB) at Carnegie Mellon University (CMU).
 
+If you find this work helpful, kindly show your support by giving us a free ⭐️. Your recognition is truly valued.
+
+This work can be used as a standalone package and also comes as a module of our [autonomy framework](https://github.com/Zhefan-Xu/CERLAB-UAV-Autonomy).
+
 ## I. Installation Guide
 This repo has been tested on [ROS Melodic](http://wiki.ros.org/ROS/Installation) with Ubuntu 18.04 and [ROS Noetic](http://wiki.ros.org/ROS/Installation) with Ubuntu 20.04.
 #### a. Non-PX4 Simulator (Required)
