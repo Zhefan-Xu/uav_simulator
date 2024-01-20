@@ -60,6 +60,10 @@
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/simple_box/simple_box_dynamic_3.world"/> -->
 
 
+    <arg name="world" default="$(find uav_simulator)/worlds/room/room_empty.world"/>
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/room/room_static.world"/> -->
+
+
     <arg name="sdf" default="$(find uav_simulator)/urdf/px4_iris.sdf"/>
     <!-- <arg name="sdf" default="$(find mavlink_sitl_gazebo)/models/$(arg vehicle)/$(arg vehicle).sdf"/> -->
 
