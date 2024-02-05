@@ -48,6 +48,8 @@
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_straight_dynamic_5.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/tunnel/tunnel_straight_static.world"/> -->
 
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/building/building_static.world"/> -->
+
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/test/empty.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/test/test.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/test/test2.world"/> -->
@@ -60,7 +62,7 @@
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/simple_box/simple_box_dynamic_3.world"/> -->
 
 
-    <arg name="world" default="$(find uav_simulator)/worlds/room/room_empty.world"/>
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/room/room_empty.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/room/room_static.world"/> -->
 
 
