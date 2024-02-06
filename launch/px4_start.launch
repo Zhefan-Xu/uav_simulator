@@ -50,6 +50,8 @@
 
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/building/building_static.world"/> -->
 
+    <!-- <arg name="world" default="$(find uav_simulator)/worlds/bridge/bridge_static.world"/> -->
+
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/test/empty.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/test/test.world"/> -->
     <!-- <arg name="world" default="$(find uav_simulator)/worlds/test/test2.world"/> -->
