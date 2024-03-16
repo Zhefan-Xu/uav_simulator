@@ -572,7 +572,7 @@ void DroneSimpleController::UpdateDynamics(double dt){
             }
 
           }
-          torque.Z() = inertia.Z() *  controllers_.yaw.update(cmd_val.angular.z, angular_velocity.Z(), 0, dt);
+          torque.Z() = inertia.Z() *  controllers_.yaw.update(cmd_val.angular.z, angular_velocity_body.Z(), 0, dt);
           force.Z()  = mass      * (controllers_.velocity_z.update(cmd_val.linear.z,  velocity.Z(), acceleration.Z(), dt) + load_factor * gravity);
       }
     }
