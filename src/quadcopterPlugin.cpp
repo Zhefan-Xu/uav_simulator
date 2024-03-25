@@ -47,10 +47,10 @@ void DroneSimpleController::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   land_topic_ = "/CERLAB/quadcopter/land";
   reset_topic_ = "/CERLAB/quadcopter/reset";
   posctrl_topic_ = "/CERLAB/quadcopter/posctrl";
-  gt_pose_topic_ = "/CERLAB/quadcopter/pose";
-  gt_vel_topic_ = "/CERLAB/quadcopter/vel";
-  gt_acc_topic_ = "/CERLAB/quadcopter/acc";
-  gt_odom_topic_ = "/CERLAB/quadcopter/odom";
+  gt_pose_topic_ = "/CERLAB/quadcopter/pose_raw";
+  gt_vel_topic_ = "/CERLAB/quadcopter/vel_raw";
+  gt_acc_topic_ = "/CERLAB/quadcopter/acc_raw";
+  gt_odom_topic_ = "/CERLAB/quadcopter/odom_raw";
   switch_mode_topic_ = "/CERLAB/quadcopter/vel_mode";
   // imu_topic_ = "/CERLAB/quadcopter/imu";
   
@@ -514,7 +514,7 @@ void DroneSimpleController::UpdateDynamics(double dt){
         torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
         torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
         force.Z()  = mass      * (controllers_.acc_z.update(desired_body_acc.Z(),  body_acc.Z(), accchange.Z(), dt) + load_factor * gravity);
-        torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), accchange.Z(), dt);
+        torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity_body.Z(), 0, dt);
 
         // cout << "desired acc x: " << desired_body_acc.X() << " body acc x: " << body_acc.X() << " acc chagne: " << accchange.X() << endl;
         // cout << "pitch command: " << pitch_command << " degree: " << pitch_command * 57.3 << endl;
@@ -544,7 +544,7 @@ void DroneSimpleController::UpdateDynamics(double dt){
               torque.X() = inertia.X() *  controllers_.roll.update(roll_command, euler.X(), angular_velocity_body.X(), dt);
               torque.Y() = inertia.Y() *  controllers_.pitch.update(pitch_command, euler.Y(), angular_velocity_body.Y(), dt);            
               force.Z()  = mass      * (controllers_.velocity_z.update(vz,  velocity.Z(), acceleration.Z(), dt) + load_factor * gravity);
-              torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity.Z(), 0, dt);
+              torque.Z() = inertia.Z() *  controllers_.yaw.update(yaw_rate, angular_velocity_body.Z(), 0, dt);
               if (isnan(torque.Z())){
                 torque.Z() = 0.0; // this means yaw angle target is not valid
               }

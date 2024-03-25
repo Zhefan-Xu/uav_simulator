@@ -74,6 +74,10 @@
   <!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
   <!-- <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model quadcopter -x 0 -y 0 -z 0.1" respawn="false" /> -->
 
+  <node pkg="topic_tools" type="throttle" name="gt_pose_throttle" args="messages /CERLAB/quadcopter/pose_raw 30 /CERLAB/quadcopter/pose"/>
+  <node pkg="topic_tools" type="throttle" name="gt_vel_throttle" args="messages /CERLAB/quadcopter/vel_raw 30 /CERLAB/quadcopter/vel"/>
+  <node pkg="topic_tools" type="throttle" name="gt_acc_throttle" args="messages /CERLAB/quadcopter/acc_raw 30 /CERLAB/quadcopter/acc"/>
+  <node pkg="topic_tools" type="throttle" name="gt_odom_throttle" args="messages /CERLAB/quadcopter/odom_raw 30 /CERLAB/quadcopter/odom"/>
   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model quadcopter -x -0.0 -y 0.0 -z 0.1 -Y 0.0" respawn="false" />
 
   <!-- TF -->
