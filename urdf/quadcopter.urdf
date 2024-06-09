@@ -107,7 +107,7 @@
 
   <gazebo reference="base_link">
     <sensor type="ray" name="laser_livox">
-        <pose>0 0 0.05 0 0 0</pose>
+        <pose>0 0 0.13 0 0 0</pose>
         <visualize>true</visualize>
         <always_on>True</always_on>
         <update_rate>10</update_rate>
@@ -139,11 +139,11 @@
 				  <stddev>0.0</stddev>
 			  </noise>
 			  </ray>
-          <visualize>True</visualize>
+          <visualize>False</visualize>
 		      <samples>20000</samples>
 		      <downsample>1</downsample>
 		      <csv_file_name>mid360-real-centr.csv</csv_file_name>
-          <publish_pointcloud_type>3</publish_pointcloud_type>
+          <publish_pointcloud_type>2</publish_pointcloud_type>
 		      <ros_topic>/livox/lidar</ros_topic>
           <frameName>base_link</frameName>
         </plugin>

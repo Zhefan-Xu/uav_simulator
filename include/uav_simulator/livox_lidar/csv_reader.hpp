@@ -40,6 +40,7 @@ class CsvReader {
             return true;
         } else {
             std::cerr << "cannot read csv file!" << file_name << "\n";
+            std::cerr << "Error code: " << std::strerror(errno) << std::endl;
         }
         return false;
     }
