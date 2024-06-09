@@ -159,7 +159,7 @@ add_library(quadcopterPlugin SHARED
 
 add_library(obstaclePathPlugin src/obstaclePathPlugin.cc)
 
-add_library(livox_laser_simulation SHARED src/livox_lidar/livox_points_plugin.cpp src/livox_lidar/livox_ode_multiray_shape.cpp)
+add_library(livox_laser SHARED src/livox_lidar/livox_points_plugin.cpp src/livox_lidar/livox_ode_multiray_shape.cpp)
 
 
 ## Add cmake target dependencies of the library
@@ -198,7 +198,7 @@ set_target_properties(obstaclePathPlugin
     ${PROJECT_SOURCE_DIR}/plugins
 )
 
-set_target_properties(livox_laser_simulation
+set_target_properties(livox_laser
     PROPERTIES 
     LIBRARY_OUTPUT_DIRECTORY
     ${PROJECT_SOURCE_DIR}/plugins
@@ -230,7 +230,7 @@ target_link_libraries(obstaclePathPlugin
    ${GAZEBO_LIBRARIES}
 )
 
-target_link_libraries(livox_laser_simulation ${catkin_LIBRARIES} RayPlugin libprotobuf.so.9)
+target_link_libraries(livox_laser ${catkin_LIBRARIES} RayPlugin libprotobuf.so.9)
 
 
 
