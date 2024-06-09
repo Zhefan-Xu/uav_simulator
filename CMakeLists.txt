@@ -21,6 +21,8 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(gazebo REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(Protobuf REQUIRED)
+find_package(PCL REQUIRED)
+
 
 set(CMAKE_AUTOUIC ON)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
@@ -61,10 +63,12 @@ qt5_add_resources(RESOURCES include/${PROJECT_NAME}/droneKeyboard.qrc)
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   CmdInput.msg
-# )
+add_message_files(
+  FILES
+  # CmdInput.msg
+  CustomPoint.msg
+  LivoxCustomMsg.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -81,11 +85,11 @@ qt5_add_resources(RESOURCES include/${PROJECT_NAME}/droneKeyboard.qrc)
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-#   geometry_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+  # geometry_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -139,7 +143,10 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${GAZEBO_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIR}
+  ${PCL_INCLUDE_DIRS}
 )
+link_directories(${GAZEBO_LIBRARY_DIRS})
+
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -151,6 +158,9 @@ add_library(quadcopterPlugin SHARED
 )
 
 add_library(obstaclePathPlugin src/obstaclePathPlugin.cc)
+
+add_library(livox_laser_simulation SHARED src/livox_lidar/livox_points_plugin.cpp src/livox_lidar/livox_ode_multiray_shape.cpp)
+
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -188,6 +198,12 @@ set_target_properties(obstaclePathPlugin
     ${PROJECT_SOURCE_DIR}/plugins
 )
 
+set_target_properties(livox_laser_simulation
+    PROPERTIES 
+    LIBRARY_OUTPUT_DIRECTORY
+    ${PROJECT_SOURCE_DIR}/plugins
+)
+
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -213,6 +229,10 @@ target_link_libraries(obstaclePathPlugin
    ${catkin_LIBRARIES}
    ${GAZEBO_LIBRARIES}
 )
+
+target_link_libraries(livox_laser_simulation ${catkin_LIBRARIES} RayPlugin libprotobuf.so.9)
+
+
 
 #############
 ## Install ##

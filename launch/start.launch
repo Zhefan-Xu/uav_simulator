@@ -1,6 +1,6 @@
 <launch>
   <arg name="paused" value="false"/>
-  <arg name="verbose" value="false"/>
+  <arg name="verbose" value="true"/>
   <arg name="use_sim_time" value="true"/>
   <arg name="debug" value="false" />
 
@@ -28,7 +28,7 @@
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan4/floorplan4_static.world" /> -->
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_static.world" /> -->
-  <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_dynamic_9.world" />
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_dynamic_9.world" /> -->
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_basic_static.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_c_shape_basic_static.world" /> -->
@@ -47,7 +47,7 @@
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/test/empty.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/test/test.world" /> -->
-  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/test/test2.world" /> -->
+  <arg name="world_name" value="$(find uav_simulator)/worlds/test/test2.world" />
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/test/test_mill19_1.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/test/test_mill19_2.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/test/test_mill19_3.world" /> -->
