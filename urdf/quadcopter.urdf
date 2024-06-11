@@ -139,7 +139,7 @@
 				  <stddev>0.0</stddev>
 			  </noise>
 			  </ray>
-          <visualize>False</visualize>
+          <visualize>false</visualize>
 		      <samples>20000</samples>
 		      <downsample>1</downsample>
 		      <csv_file_name>mid360-real-centr.csv</csv_file_name>
