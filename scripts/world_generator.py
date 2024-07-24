@@ -74,14 +74,14 @@ class worldGenerator:
                     ob_size = (np.random.uniform(low=width_x_range[0], high=width_x_range[1]), np.random.uniform(low=width_y_range[0], high=width_y_range[1]))
                     static_models.append(
                             f"""
-                            <model name='box_{i}'>
+                            <model name='box_{i}_{ob_size[0]:.1f}_{ob_size[1]:.1f}_{height:.1f}'>
                             <static>true</static>
                             <pose>{ox} {oy} {oz+height/2.} 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
                                 <visual name='visual'>
                                 <geometry>
                                     <box>
-                                        <size>{ob_size[0]} {ob_size[1]} {height}</size> <!-- Width, Depth, Height -->
+                                        <size>{ob_size[0]:.1f} {ob_size[1]:.1f} {height:.1f}</size> <!-- Width, Depth, Height -->
                                     </box>
                                 </geometry>
                                 </visual>
@@ -93,7 +93,7 @@ class worldGenerator:
                     ob_size = (np.random.uniform(low=radius_range[0], high=radius_range[1]))
                     static_models.append(
                             f"""
-                            <model name='cylinder_{i}'>
+                            <model name='cylinder_{i}_{2*ob_size:.1f}_{2*ob_size:.1f}_{height:.1f}'>
                             <static>true</static>
                             <pose>{ox} {oy} {oz+height/2.} 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -165,7 +165,7 @@ class worldGenerator:
                     ob_size = (np.random.uniform(low=width_x_range[0], high=width_x_range[1]), np.random.uniform(low=width_y_range[0], high=width_y_range[1]))
                     dynamic_models.append(
                             f"""
-                            <model name='dynamic_box_{i}'>
+                            <model name='dynamic_box_{i}_{ob_size[0]:.1f}_{ob_size[1]:.1f}_{height:.1f}'>
                             <static>true</static>
                             <pose>{ox} {oy} {oz+height/2.} 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -198,7 +198,7 @@ class worldGenerator:
                     ob_size = (np.random.uniform(low=radius_range[0], high=radius_range[1]))
                     dynamic_models.append(
                             f"""
-                            <model name='dynamic_cylinder_{i}'>
+                            <model name='dynamic_cylinder_{i}_{2*ob_size:.1f}_{2*ob_size:.1f}_{height:.1f}'>
                             <static>true</static>
                             <pose>{ox} {oy} {oz+height/2.} 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
