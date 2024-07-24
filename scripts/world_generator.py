@@ -13,7 +13,7 @@ class worldGenerator:
         self.curr_obstacle_dist = self.obstacle_dist
 
     def write_world_file(self):
-        static_models = self.load_static_obstacles()
+        static_models, points = self.load_static_obstacles()
         dynamic_models = self.load_dyanmic_obtacles()
         world_models = self.create_world_file(static_models+dynamic_models)
         curr_path = os.path.dirname(os.path.abspath(__file__))
@@ -21,6 +21,27 @@ class worldGenerator:
         os.makedirs(os.path.join(parent_path, "worlds/generated_env"), exist_ok=True)
         with open(os.path.join(parent_path, "worlds/generated_env/generated_env.world"), "w") as f:
             f.write(world_models)
+        self.create_pcd(points, os.path.join(parent_path, "worlds/generated_env/generated_env.pcd"))
+
+    def create_pcd(self, points, filename):
+        header = (
+            "# .PCD v0.7 - Point Cloud Data file format\n"
+            "VERSION 0.7\n"
+            "FIELDS x y z\n"
+            "SIZE 4 4 4\n"
+            "TYPE F F F\n"
+            "COUNT 1 1 1\n"
+            f"WIDTH {len(points)}\n"
+            "HEIGHT 1\n"
+            "VIEWPOINT 0 0 0 1 0 0 0\n"
+            f"POINTS {len(points)}\n"
+            "DATA ascii\n"
+        )
+
+        with open(filename, 'w') as file:
+            file.write(header)
+            for point in points:
+                file.write(f"{point[0]} {point[1]} {point[2]}\n")        
 
     def check_pos_validity(self, prev_pos_list, curr_pos):
         for prev_pos in prev_pos_list:
@@ -33,6 +54,7 @@ class worldGenerator:
         
         static_models = []
         prev_pos_list = [] # 2d
+        points = [] # a list of points
         for obstacle_type in static_obstacles:
             obstacle_info = static_obstacles[obstacle_type]
             num_obstacles = obstacle_info["num"]
@@ -111,8 +133,30 @@ class worldGenerator:
                     )
                 prev_pos_list.append(curr_pos)
                 i += 1
+
+                # map generation
+                if (obstacle_type == "box"):
+                    start_x = ox - ob_size[0]/2.
+                    start_y = oy - ob_size[1]/2.
+                    start_z = oz
+                    end_x = ox + ob_size[0]/2.
+                    end_y = oy + ob_size[1]/2.
+                    end_z = oz + height
+                else:
+                    start_x = ox - ob_size
+                    start_y = oy - ob_size
+                    start_z = oz
+                    end_x = ox + ob_size
+                    end_y = oy + ob_size
+                    end_z = oz + height
+                
+                for px in np.arange(start_x, end_x+0.1, step=0.1):
+                    for py in np.arange(start_y, end_y+0.1, step=0.1):
+                        for pz in np.arange(start_z, end_z+0.1, step=0.1):
+                            points.append([px, py, pz])
         self.curr_obstacle_dist = self.obstacle_dist
-        return static_models 
+        points = np.array(points)
+        return static_models, points
 
     def load_dyanmic_obtacles(self):
         dynamic_obstacles = self.cfg["dynamic_objects"]
