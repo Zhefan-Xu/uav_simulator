@@ -1,4 +1,9 @@
+map:
+  generate_map: True
+  save_directory: "default" # same as the world: worlds/generated_env
+
 even_distribution: True
+
 static_objects:
   cylinder: # 2D
     num: 50

@@ -21,7 +21,11 @@ class worldGenerator:
         os.makedirs(os.path.join(parent_path, "worlds/generated_env"), exist_ok=True)
         with open(os.path.join(parent_path, "worlds/generated_env/generated_env.world"), "w") as f:
             f.write(world_models)
-        self.create_pcd(points, os.path.join(parent_path, "worlds/generated_env/generated_env.pcd"))
+        if (self.cfg["map"]["generate_map"]):
+            if (self.cfg["map"]["save_directory"] == "default"):
+                self.create_pcd(points, os.path.join(parent_path, "worlds/generated_env/generated_env.pcd"))
+            else:
+                self.create_pcd(points, self.cfg["map"]["save_directory"])
 
     def create_pcd(self, points, filename):
         header = (
