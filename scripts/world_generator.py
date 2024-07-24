@@ -4,24 +4,35 @@
 '''
 import numpy as np
 import os
+import time
+
 class worldGenerator:
     def __init__(self, cfg):
         self.cfg = cfg
-        self.write_world_file()
+        self.obstacle_dist = 2.0
+        self.curr_obstacle_dist = self.obstacle_dist
 
     def write_world_file(self):
         static_models = self.load_static_obstacles()
-        world_models = self.create_world_file(static_models)
+        dynamic_models = self.load_dyanmic_obtacles()
+        world_models = self.create_world_file(static_models+dynamic_models)
         curr_path = os.path.dirname(os.path.abspath(__file__))
         parent_path = os.path.dirname(curr_path)
         os.makedirs(os.path.join(parent_path, "worlds/generated_env"), exist_ok=True)
         with open(os.path.join(parent_path, "worlds/generated_env/generated_env.world"), "w") as f:
             f.write(world_models)
 
+    def check_pos_validity(self, prev_pos_list, curr_pos):
+        for prev_pos in prev_pos_list:
+            if (np.linalg.norm(curr_pos - prev_pos) <= self.curr_obstacle_dist):
+                return False
+        return True
+
     def load_static_obstacles(self):
         static_obstacles = self.cfg["static_objects"]
         
         static_models = []
+        prev_pos_list = [] # 2d
         for obstacle_type in static_obstacles:
             obstacle_info = static_obstacles[obstacle_type]
             num_obstacles = obstacle_info["num"]
@@ -38,12 +49,26 @@ class worldGenerator:
 
 
             obstacle_height_range = obstacle_info["height"]        
+            check_validity = self.cfg["even_distribution"]
 
-            for i in range(num_obstacles):
+            i = 0
+            start_time = time.time()
+            while i < num_obstacles:
                 ox = np.random.uniform(low=range_x[0], high=range_x[1])
                 oy = np.random.uniform(low=range_y[0], high=range_y[1])
                 oz = np.random.uniform(low=range_z[0], high=range_z[1])
                 height = np.random.uniform(low=obstacle_height_range[0], high=obstacle_height_range[1])
+                
+                if (check_validity):
+                    curr_pos = np.array([ox, oy])
+                    valid = self.check_pos_validity(prev_pos_list, curr_pos)
+                    curr_time = time.time()
+                    if (valid):
+                        start_time = time.time()
+                    else:
+                        if ((curr_time - start_time > 0.1)):
+                            self.curr_obstacle_dist *= 0.8
+                        continue
 
                 if (obstacle_type == "box"):
                     ob_size = (np.random.uniform(low=width_x_range[0], high=width_x_range[1]), np.random.uniform(low=width_y_range[0], high=width_y_range[1]))
@@ -84,9 +109,130 @@ class worldGenerator:
                             </model> 
                             """
                     )
+                prev_pos_list.append(curr_pos)
+                i += 1
+        self.curr_obstacle_dist = self.obstacle_dist
         return static_models 
 
+    def load_dyanmic_obtacles(self):
+        dynamic_obstacles = self.cfg["dynamic_objects"]
+        
+        dynamic_models = []
+        prev_pos_list = [] # 2d
+        for obstacle_type in dynamic_obstacles:
+            obstacle_info = dynamic_obstacles[obstacle_type]
+            num_obstacles = obstacle_info["num"]
+            range_x = obstacle_info["range_x"]
+            range_y = obstacle_info["range_y"]
+            
+            if (obstacle_type == "box"):
+                range_z = obstacle_info["range_z"]
+                width_x_range = obstacle_info["width_x"]
+                width_y_range = obstacle_info["width_y"]
+            else:
+                range_z = [0.0, 0.0]
+                radius_range = obstacle_info["radius"]
 
+
+            obstacle_height_range = obstacle_info["height"]
+            velocity_range = obstacle_info["velocity"]        
+            check_validity = self.cfg["even_distribution"]
+
+            i = 0
+            start_time = time.time()
+            while i < num_obstacles:
+                ox = np.random.uniform(low=range_x[0], high=range_x[1])
+                oy = np.random.uniform(low=range_y[0], high=range_y[1])
+                oz = np.random.uniform(low=range_z[0], high=range_z[1])
+                gx = np.random.uniform(low=range_x[0], high=range_x[1])
+                gy = np.random.uniform(low=range_y[0], high=range_y[1])
+                gz = np.random.uniform(low=range_z[0], high=range_z[1])                
+                height = np.random.uniform(low=obstacle_height_range[0], high=obstacle_height_range[1])
+                velocity = np.random.uniform(low=velocity_range[0], high=velocity_range[1])
+
+                if (check_validity):
+                    curr_pos = np.array([ox, oy])
+                    valid = self.check_pos_validity(prev_pos_list, curr_pos)
+                    curr_time = time.time()
+                    if (valid):
+                        start_time = time.time()
+                    else:
+                        if ((curr_time - start_time > 0.1)):
+                            self.curr_obstacle_dist *= 0.8
+                        continue
+
+                if (obstacle_type == "box"):
+                    ob_size = (np.random.uniform(low=width_x_range[0], high=width_x_range[1]), np.random.uniform(low=width_y_range[0], high=width_y_range[1]))
+                    dynamic_models.append(
+                            f"""
+                            <model name='dynamic_box_{i}'>
+                            <static>true</static>
+                            <pose>{ox} {oy} {oz+height/2.} 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <link name='link'>
+                                <visual name='visual'>
+                                    <geometry>
+                                        <box>
+                                            <size>{ob_size[0]} {ob_size[1]} {height}</size> <!-- Width, Depth, Height -->
+                                        </box>
+                                    </geometry>
+                                    <material>
+                                        <ambient>1 0 0 1</ambient> <!-- Red color -->
+                                        <diffuse>1 0 0 1</diffuse> <!-- Red color -->
+                                        <specular>0.5 0.5 0.5 1</specular> <!-- Specular highlight -->
+                                    </material>
+                                </visual>
+                            </link>
+                            <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
+                                <orientation>false</orientation>
+                                <loop>0</loop>
+                                <velocity>{velocity}</velocity>
+                                <path>
+                                <waypoint>{ox} {oy} {oz}</waypoint>
+                                <waypoint>{gx} {gy} {gz}</waypoint>
+                                </path>
+                            </plugin>
+                            </model> 
+                            """
+                    )
+                else:
+                    ob_size = (np.random.uniform(low=radius_range[0], high=radius_range[1]))
+                    dynamic_models.append(
+                            f"""
+                            <model name='dynamic_cylinder_{i}'>
+                            <static>true</static>
+                            <pose>{ox} {oy} {oz+height/2.} 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <link name='link'>
+                                <visual name='visual'>
+                                    <geometry>
+                                        <cylinder>
+                                            <radius>{ob_size}</radius>
+                                            <length>{height}</length>
+                                        </cylinder>
+                                    </geometry>
+                                    <material>
+                                        <ambient>1 0 0 1</ambient> <!-- Red color -->
+                                        <diffuse>1 0 0 1</diffuse> <!-- Red color -->
+                                        <specular>0.5 0.5 0.5 1</specular> <!-- Specular highlight -->
+                                    </material>
+                                </visual>
+                            </link>
+                            <plugin name="obstacle_motion" filename="libobstaclePathPlugin.so">
+                                <orientation>false</orientation>
+                                <loop>0</loop>
+                                <velocity>{velocity}</velocity>
+                                <path>
+                                <waypoint>{ox} {oy} {oz}</waypoint>
+                                <waypoint>{gx} {gy} {gz}</waypoint>
+                                </path>
+                            </plugin>
+                            </model> 
+                            """
+                    )
+                prev_pos_list.append(curr_pos)
+                i += 1
+        self.curr_obstacle_dist = self.obstacle_dist
+        return dynamic_models 
+    
     def create_world_file(self, models):
         # print(models)
         # models = "\n".join(models)
