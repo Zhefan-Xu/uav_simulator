@@ -28,7 +28,7 @@
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/floorplan4/floorplan4_static.world" /> -->
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_static.world" /> -->
-  <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_dynamic_9.world" />
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/corridor/corridor_dynamic_9.world" /> -->
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_basic_static.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/tunnel/tunnel_c_shape_basic_static.world" /> -->
@@ -57,7 +57,7 @@
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/room/room_empty.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/room/room_static.world" /> -->
-
+  <arg name="world_name" value="$(find uav_simulator)/worlds/generated_env/generated_env.world" />
   <!-- launch the custom world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch" >
         <arg name="paused" value="$(arg paused)"/>

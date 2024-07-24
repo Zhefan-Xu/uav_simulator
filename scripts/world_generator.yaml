@@ -1,0 +1,38 @@
+static_objects:
+  cylinder: # 2D
+    num: 20
+    range_x: [-10, 10]
+    range_y: [-10, 10]
+    radius: [0.2, 0.5] 
+    height: [0.3, 2.0] 
+  box: # 3D
+    num: 20
+    range_x: [-10, 10]
+    range_y: [-10, 10]
+    range_z: [0, 4]
+    width_x: [0.2, 0.5]
+    width_y: [0.2, 0.5]
+    height: [0.2, 0.5]
+
+dynamic_objects:
+  cylinder: # 2D
+    num: 10
+    range_x: [-20, 20]
+    range_y: [-20, 20]
+    radius: [0.2, 0.5] 
+    height: [0.3, 2.0] 
+    velocity: [0.5, 1.0]
+  box: # 3D
+    num: 10
+    range_x: [-20, 20]
+    range_y: [-20, 20]
+    range_z: [0, 4]
+    width_x: [0.2, 0.5]
+    width_y: [0.2, 0.5]
+    height: [0.2, 0.5]
+    velocity: [0.5, 1.0]
+  person:
+    num: 10
+    range_x: [-20, 20]
+    range_y: [-20, 20]
+    velocity: [0.5, 1.0]
