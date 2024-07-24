@@ -1,6 +1,7 @@
 map:
   generate_map: True
   save_directory: "default" # same as the world: worlds/generated_env
+  # save_directory: "/home/zhefan/catkin_ws/test.pcd"
 
 even_distribution: True
 
