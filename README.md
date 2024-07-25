@@ -120,7 +120,7 @@ The parameter configuration file is in ```uav_simulator/scripts/world_generator.
 
 
 By default, the generated world will be saved under ```uav_simulator/worlds/generated_env/generated_env.world```. Please add this to ```start.launch``` file to launch it for experiments.
-The example generated environment is visualized below:
+The example generated environment is visualized:
 
 
 https://github.com/user-attachments/assets/b6f2c4a0-5868-4f07-ab32-48e59bbc814f
