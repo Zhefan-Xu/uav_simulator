@@ -1,3 +1,4 @@
+random_seed: 0
 map:
   generate_map: True
   save_directory: "default" # same as the world: worlds/generated_env
@@ -38,3 +39,4 @@ dynamic_objects:
     width_y: [0.2, 0.5]
     height: [0.5, 1.5]
     velocity: [0.5, 1.0]
+  

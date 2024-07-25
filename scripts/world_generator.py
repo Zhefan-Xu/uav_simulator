@@ -11,6 +11,7 @@ class worldGenerator:
         self.cfg = cfg
         self.obstacle_dist = 2.0
         self.curr_obstacle_dist = self.obstacle_dist
+        np.random.seed(self.cfg["random_seed"])
 
     def write_world_file(self):
         static_models, points = self.load_static_obstacles()
@@ -157,7 +158,12 @@ class worldGenerator:
                 for px in np.arange(start_x, end_x+0.1, step=0.1):
                     for py in np.arange(start_y, end_y+0.1, step=0.1):
                         for pz in np.arange(start_z, end_z+0.1, step=0.1):
-                            points.append([px, py, pz])
+                            if (obstacle_type == "box"):
+                                points.append([px, py, pz])
+                            else:
+                                dist = ((px - ox)**2 + (py - oy)**2)**0.5
+                                if (dist < ob_size):
+                                    points.append([px, py, pz])
         self.curr_obstacle_dist = self.obstacle_dist
         points = np.array(points)
         return static_models, points
