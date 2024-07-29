@@ -95,6 +95,7 @@ class worldGenerator:
                     else:
                         if ((curr_time - start_time > 0.1)):
                             self.curr_obstacle_dist *= 0.8
+                            start_time = time.time()
                         continue
 
                 if (obstacle_type == "box"):
