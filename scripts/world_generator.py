@@ -242,8 +242,8 @@ class worldGenerator:
                                 <loop>0</loop>
                                 <velocity>{velocity}</velocity>
                                 <path>
-                                <waypoint>{ox} {oy} {oz}</waypoint>
-                                <waypoint>{gx} {gy} {gz}</waypoint>
+                                <waypoint>{ox} {oy} {oz+height/2.}</waypoint>
+                                <waypoint>{gx} {gy} {gz+height/2.}</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -276,8 +276,8 @@ class worldGenerator:
                                 <loop>0</loop>
                                 <velocity>{velocity}</velocity>
                                 <path>
-                                <waypoint>{ox} {oy} {oz}</waypoint>
-                                <waypoint>{gx} {gy} {gz}</waypoint>
+                                <waypoint>{ox} {oy} {oz+height/2.}</waypoint>
+                                <waypoint>{gx} {gy} {gz+height/2.}</waypoint>
                                 </path>
                             </plugin>
                             </model> 
