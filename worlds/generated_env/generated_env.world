@@ -1147,77 +1147,21 @@
                             </link>
                             </model> 
                             
-                            <model name='box_22_0.3_0.2_1.8'>
+                            <model name='box_22_0.4_0.4_1.9'>
                             <static>true</static>
-                            <pose>-0.9458826161228053 -0.5434586469412945 0.8754316247819357 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <pose>4.916316481088979 -3.06732546911781 0.9431091384338327 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
                                 <visual name='visual'>
                                 <geometry>
                                     <box>
-                                        <size>0.3 0.2 1.8</size> <!-- Width, Depth, Height -->
+                                        <size>0.4 0.4 1.9</size> <!-- Width, Depth, Height -->
                                     </box>
                                 </geometry>
                                 </visual>
                             </link>
                             </model> 
                             
-                            <model name='box_23_0.3_0.3_1.1'>
-                            <static>true</static>
-                            <pose>0.6916876098611286 2.407284994914596 0.565568759506941 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
-                            <link name='link'>
-                                <visual name='visual'>
-                                <geometry>
-                                    <box>
-                                        <size>0.3 0.3 1.1</size> <!-- Width, Depth, Height -->
-                                    </box>
-                                </geometry>
-                                </visual>
-                            </link>
-                            </model> 
-                            
-                            <model name='box_24_0.3_0.3_2.0'>
-                            <static>true</static>
-                            <pose>3.283349364190107 0.9338701604053767 0.9833429611268821 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
-                            <link name='link'>
-                                <visual name='visual'>
-                                <geometry>
-                                    <box>
-                                        <size>0.3 0.3 2.0</size> <!-- Width, Depth, Height -->
-                                    </box>
-                                </geometry>
-                                </visual>
-                            </link>
-                            </model> 
-                            
-                            <model name='box_25_0.4_0.2_2.4'>
-                            <static>true</static>
-                            <pose>4.768833226021682 -2.63232025318173 1.2049012504757939 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
-                            <link name='link'>
-                                <visual name='visual'>
-                                <geometry>
-                                    <box>
-                                        <size>0.4 0.2 2.4</size> <!-- Width, Depth, Height -->
-                                    </box>
-                                </geometry>
-                                </visual>
-                            </link>
-                            </model> 
-                            
-                            <model name='box_26_0.3_0.4_1.7'>
-                            <static>true</static>
-                            <pose>5.476309593974696 6.195698196143024 0.8419387903495165 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
-                            <link name='link'>
-                                <visual name='visual'>
-                                <geometry>
-                                    <box>
-                                        <size>0.3 0.4 1.7</size> <!-- Width, Depth, Height -->
-                                    </box>
-                                </geometry>
-                                </visual>
-                            </link>
-                            </model> 
-                            
-                            <model name='box_27_0.3_0.4_2.7'>
+                            <model name='box_23_0.3_0.4_2.7'>
                             <static>true</static>
                             <pose>8.251180174632044 -6.294542089488548 1.3540108435810847 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -1231,7 +1175,7 @@
                             </link>
                             </model> 
                             
-                            <model name='box_28_0.4_0.3_2.9'>
+                            <model name='box_24_0.4_0.3_2.9'>
                             <static>true</static>
                             <pose>-9.944964788957398 -8.931717491716105 1.4606041954213376 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -1245,7 +1189,7 @@
                             </link>
                             </model> 
                             
-                            <model name='box_29_0.5_0.4_2.3'>
+                            <model name='box_25_0.5_0.4_2.3'>
                             <static>true</static>
                             <pose>-8.043336452672714 -2.5017627369362705 1.1710141986535172 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -1259,7 +1203,7 @@
                             </link>
                             </model> 
                             
-                            <model name='box_30_0.5_0.3_2.4'>
+                            <model name='box_26_0.5_0.3_2.4'>
                             <static>true</static>
                             <pose>9.985173173623767 -5.231209022415011 1.191066005473369 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -1273,7 +1217,7 @@
                             </link>
                             </model> 
                             
-                            <model name='box_31_0.3_0.3_1.7'>
+                            <model name='box_27_0.3_0.3_1.7'>
                             <static>true</static>
                             <pose>-9.81548659659477 1.6040256090564409 0.8456759265950236 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -1287,7 +1231,7 @@
                             </link>
                             </model> 
                             
-                            <model name='box_32_0.2_0.3_2.2'>
+                            <model name='box_28_0.2_0.3_2.2'>
                             <static>true</static>
                             <pose>0.9291258212460001 -3.7348301979196563 1.0775940791907155 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -1301,7 +1245,7 @@
                             </link>
                             </model> 
                             
-                            <model name='box_33_0.5_0.4_1.9'>
+                            <model name='box_29_0.5_0.4_1.9'>
                             <static>true</static>
                             <pose>-6.23356783516183 -5.010171223266466 0.9426799621635172 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -1315,7 +1259,35 @@
                             </link>
                             </model> 
                             
-                            <model name='box_34_0.3_0.4_2.2'>
+                            <model name='box_30_0.5_0.2_1.0'>
+                            <static>true</static>
+                            <pose>4.464506109105033 1.4159431969696623 0.5181416660316917 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <link name='link'>
+                                <visual name='visual'>
+                                <geometry>
+                                    <box>
+                                        <size>0.5 0.2 1.0</size> <!-- Width, Depth, Height -->
+                                    </box>
+                                </geometry>
+                                </visual>
+                            </link>
+                            </model> 
+                            
+                            <model name='box_31_0.4_0.5_2.2'>
+                            <static>true</static>
+                            <pose>7.974628296723637 6.859594398046497 1.099133273781051 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <link name='link'>
+                                <visual name='visual'>
+                                <geometry>
+                                    <box>
+                                        <size>0.4 0.5 2.2</size> <!-- Width, Depth, Height -->
+                                    </box>
+                                </geometry>
+                                </visual>
+                            </link>
+                            </model> 
+                            
+                            <model name='box_32_0.3_0.4_2.2'>
                             <static>true</static>
                             <pose>5.184814316852012 -7.960496348768085 1.1236370299125114 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -1329,7 +1301,7 @@
                             </link>
                             </model> 
                             
-                            <model name='box_35_0.5_0.3_1.2'>
+                            <model name='box_33_0.5_0.3_1.2'>
                             <static>true</static>
                             <pose>4.672418581388806 -1.0200588335684948 0.597226469354613 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -1343,7 +1315,7 @@
                             </link>
                             </model> 
                             
-                            <model name='box_36_0.4_0.4_1.3'>
+                            <model name='box_34_0.4_0.4_1.3'>
                             <static>true</static>
                             <pose>-1.247919934143214 4.86622578327642 0.6558907168274684 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -1357,14 +1329,42 @@
                             </link>
                             </model> 
                             
-                            <model name='box_37_0.2_0.3_1.8'>
+                            <model name='box_35_0.5_0.2_1.8'>
                             <static>true</static>
-                            <pose>9.876321876469678 0.32439675033390714 0.8766341429395524 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <pose>0.7252978011621849 2.27458122753273 0.9199412609170742 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
                                 <visual name='visual'>
                                 <geometry>
                                     <box>
-                                        <size>0.2 0.3 1.8</size> <!-- Width, Depth, Height -->
+                                        <size>0.5 0.2 1.8</size> <!-- Width, Depth, Height -->
+                                    </box>
+                                </geometry>
+                                </visual>
+                            </link>
+                            </model> 
+                            
+                            <model name='box_36_0.3_0.3_2.9'>
+                            <static>true</static>
+                            <pose>5.201484331148096 5.479809423767648 1.4358155739227114 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <link name='link'>
+                                <visual name='visual'>
+                                <geometry>
+                                    <box>
+                                        <size>0.3 0.3 2.9</size> <!-- Width, Depth, Height -->
+                                    </box>
+                                </geometry>
+                                </visual>
+                            </link>
+                            </model> 
+                            
+                            <model name='box_37_0.2_0.3_2.7'>
+                            <static>true</static>
+                            <pose>-1.355811067008446 -2.0894462399592717 1.3683394874879498 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <link name='link'>
+                                <visual name='visual'>
+                                <geometry>
+                                    <box>
+                                        <size>0.2 0.3 2.7</size> <!-- Width, Depth, Height -->
                                     </box>
                                 </geometry>
                                 </visual>
@@ -1385,35 +1385,63 @@
                             </link>
                             </model> 
                             
-                            <model name='box_39_0.3_0.4_1.1'>
+                            <model name='box_39_0.2_0.4_1.5'>
                             <static>true</static>
-                            <pose>5.845322653583381 8.841705069054 0.5468789604707117 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <pose>2.000524343217922 0.6195940721407105 0.7742883198308734 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
                                 <visual name='visual'>
                                 <geometry>
                                     <box>
-                                        <size>0.3 0.4 1.1</size> <!-- Width, Depth, Height -->
+                                        <size>0.2 0.4 1.5</size> <!-- Width, Depth, Height -->
                                     </box>
                                 </geometry>
                                 </visual>
                             </link>
                             </model> 
                             
-                            <model name='box_40_0.4_0.3_2.1'>
+                            <model name='box_40_0.3_0.2_1.1'>
                             <static>true</static>
-                            <pose>6.988252281646325 7.378836687145757 1.0731596276715922 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <pose>5.724461195852832 9.31487798306052 0.5492064219019676 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
                                 <visual name='visual'>
                                 <geometry>
                                     <box>
-                                        <size>0.4 0.3 2.1</size> <!-- Width, Depth, Height -->
+                                        <size>0.3 0.2 1.1</size> <!-- Width, Depth, Height -->
                                     </box>
                                 </geometry>
                                 </visual>
                             </link>
                             </model> 
                             
-                            <model name='box_41_0.4_0.3_1.7'>
+                            <model name='box_41_0.4_0.5_1.5'>
+                            <static>true</static>
+                            <pose>-6.190466080296835 -3.245384968703018 0.7520502579032302 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <link name='link'>
+                                <visual name='visual'>
+                                <geometry>
+                                    <box>
+                                        <size>0.4 0.5 1.5</size> <!-- Width, Depth, Height -->
+                                    </box>
+                                </geometry>
+                                </visual>
+                            </link>
+                            </model> 
+                            
+                            <model name='box_42_0.4_0.5_1.6'>
+                            <static>true</static>
+                            <pose>-0.24273102037785144 -9.561484550656079 0.7993470625613613 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <link name='link'>
+                                <visual name='visual'>
+                                <geometry>
+                                    <box>
+                                        <size>0.4 0.5 1.6</size> <!-- Width, Depth, Height -->
+                                    </box>
+                                </geometry>
+                                </visual>
+                            </link>
+                            </model> 
+                            
+                            <model name='box_43_0.4_0.3_1.7'>
                             <static>true</static>
                             <pose>-7.107458978783933 -8.33153465129136 0.8622480430375891 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
@@ -1427,37 +1455,23 @@
                             </link>
                             </model> 
                             
-                            <model name='box_42_0.3_0.4_2.6'>
+                            <model name='box_44_0.4_0.3_2.4'>
                             <static>true</static>
-                            <pose>4.343233756544105 2.922492209836527 1.2916222847323762 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <pose>-6.805519472667054 0.3228358296442231 1.1940169308993989 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
                                 <visual name='visual'>
                                 <geometry>
                                     <box>
-                                        <size>0.3 0.4 2.6</size> <!-- Width, Depth, Height -->
+                                        <size>0.4 0.3 2.4</size> <!-- Width, Depth, Height -->
                                     </box>
                                 </geometry>
                                 </visual>
                             </link>
                             </model> 
                             
-                            <model name='box_43_0.2_0.5_2.0'>
+                            <model name='box_45_0.3_0.3_2.7'>
                             <static>true</static>
-                            <pose>-6.989201179238038 -0.3570747649535413 1.011076018309355 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
-                            <link name='link'>
-                                <visual name='visual'>
-                                <geometry>
-                                    <box>
-                                        <size>0.2 0.5 2.0</size> <!-- Width, Depth, Height -->
-                                    </box>
-                                </geometry>
-                                </visual>
-                            </link>
-                            </model> 
-                            
-                            <model name='box_44_0.3_0.3_2.7'>
-                            <static>true</static>
-                            <pose>1.5348644456211815 -0.27181405051425855 1.3441606838942857 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <pose>6.265884355617651 7.218252823575828 1.3251748287476706 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
                                 <visual name='visual'>
                                 <geometry>
@@ -1469,28 +1483,14 @@
                             </link>
                             </model> 
                             
-                            <model name='box_45_0.3_0.2_2.5'>
+                            <model name='box_46_0.4_0.3_2.9'>
                             <static>true</static>
-                            <pose>-1.0079035067144062 -7.192921868707645 1.2314213067361015 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
+                            <pose>-7.243078954028864 2.9558203995658676 1.4282018079894847 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
                             <link name='link'>
                                 <visual name='visual'>
                                 <geometry>
                                     <box>
-                                        <size>0.3 0.2 2.5</size> <!-- Width, Depth, Height -->
-                                    </box>
-                                </geometry>
-                                </visual>
-                            </link>
-                            </model> 
-                            
-                            <model name='box_46_0.4_0.4_1.2'>
-                            <static>true</static>
-                            <pose>-0.4276852988759767 -9.975638309251522 0.586679267174187 0 0 0</pose> <!-- X, Y, Z, Roll, Pitch, Yaw -->
-                            <link name='link'>
-                                <visual name='visual'>
-                                <geometry>
-                                    <box>
-                                        <size>0.4 0.4 1.2</size> <!-- Width, Depth, Height -->
+                                        <size>0.4 0.3 2.9</size> <!-- Width, Depth, Height -->
                                     </box>
                                 </geometry>
                                 </visual>
@@ -1562,8 +1562,8 @@
                                 <loop>0</loop>
                                 <velocity>0.9441818211455691</velocity>
                                 <path>
-                                <waypoint>-2.9946536448126686 2.1934232710004764 0.0</waypoint>
-                                <waypoint>7.7701436804043915 3.133102733647588 0.0</waypoint>
+                                <waypoint>-2.9946536448126686 2.1934232710004764 0.7857869475825525</waypoint>
+                                <waypoint>7.7701436804043915 3.133102733647588 0.7857869475825525</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1591,8 +1591,8 @@
                                 <loop>0</loop>
                                 <velocity>0.5596992337409327</velocity>
                                 <path>
-                                <waypoint>-2.797294724296271 -4.646734892248996 0.0</waypoint>
-                                <waypoint>-9.231721088843495 7.669628419277412 0.0</waypoint>
+                                <waypoint>-2.797294724296271 -4.646734892248996 0.9311371469944523</waypoint>
+                                <waypoint>-9.231721088843495 7.669628419277412 0.9311371469944523</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1620,8 +1620,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7189668581646967</velocity>
                                 <path>
-                                <waypoint>-8.752672901204477 -9.359087332678333 0.0</waypoint>
-                                <waypoint>3.686140291273876 -4.832874192580865 0.0</waypoint>
+                                <waypoint>-8.752672901204477 -9.359087332678333 0.6185733309827979</waypoint>
+                                <waypoint>3.686140291273876 -4.832874192580865 0.6185733309827979</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1649,8 +1649,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7043768180558272</velocity>
                                 <path>
-                                <waypoint>-0.7442642711546288 -3.0412325565278575 0.0</waypoint>
-                                <waypoint>-6.583994029169982 -2.9642028622316214 0.0</waypoint>
+                                <waypoint>-0.7442642711546288 -3.0412325565278575 0.9493577862690079</waypoint>
+                                <waypoint>-6.583994029169982 -2.9642028622316214 0.9493577862690079</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1678,8 +1678,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8337976086851988</velocity>
                                 <path>
-                                <waypoint>0.21400537389405017 6.917719763160221 0.0</waypoint>
-                                <waypoint>-7.70718385352795 -2.0739144139536876 0.0</waypoint>
+                                <waypoint>0.21400537389405017 6.917719763160221 0.8542814393454243</waypoint>
+                                <waypoint>-7.70718385352795 -2.0739144139536876 0.8542814393454243</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1707,8 +1707,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7414905329440913</velocity>
                                 <path>
-                                <waypoint>6.297661325660062 0.2210966656323734 0.0</waypoint>
-                                <waypoint>0.37458115457321917 -7.934001220834432 0.0</waypoint>
+                                <waypoint>6.297661325660062 0.2210966656323734 0.5894975918375169</waypoint>
+                                <waypoint>0.37458115457321917 -7.934001220834432 0.5894975918375169</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1736,8 +1736,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8070301342298187</velocity>
                                 <path>
-                                <waypoint>5.452413702680756 6.637807491611564 0.0</waypoint>
-                                <waypoint>1.532083345849669 -2.4152492190575847 0.0</waypoint>
+                                <waypoint>5.452413702680756 6.637807491611564 0.997973667701636</waypoint>
+                                <waypoint>1.532083345849669 -2.4152492190575847 0.997973667701636</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1765,8 +1765,8 @@
                                 <loop>0</loop>
                                 <velocity>0.9172747771711054</velocity>
                                 <path>
-                                <waypoint>9.662125916906742 -8.015224961391734 0.0</waypoint>
-                                <waypoint>8.37827457308584 1.5977071266989977 0.0</waypoint>
+                                <waypoint>9.662125916906742 -8.015224961391734 0.5091434854413361</waypoint>
+                                <waypoint>8.37827457308584 1.5977071266989977 0.5091434854413361</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1794,8 +1794,8 @@
                                 <loop>0</loop>
                                 <velocity>0.6695731374930598</velocity>
                                 <path>
-                                <waypoint>-0.806948716413503 9.272259774025894 0.0</waypoint>
-                                <waypoint>4.359488631030297 -8.281599608517691 0.0</waypoint>
+                                <waypoint>-0.806948716413503 9.272259774025894 0.8246066625524421</waypoint>
+                                <waypoint>4.359488631030297 -8.281599608517691 0.8246066625524421</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1823,8 +1823,8 @@
                                 <loop>0</loop>
                                 <velocity>0.58518211343875</velocity>
                                 <path>
-                                <waypoint>-8.600344715515543 -0.3748403446893427 0.0</waypoint>
-                                <waypoint>-2.3322796241295958 9.620871966132366 0.0</waypoint>
+                                <waypoint>-8.600344715515543 -0.3748403446893427 0.6898753794291742</waypoint>
+                                <waypoint>-2.3322796241295958 9.620871966132366 0.6898753794291742</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1852,8 +1852,8 @@
                                 <loop>0</loop>
                                 <velocity>0.6928920416409474</velocity>
                                 <path>
-                                <waypoint>-3.937515791268204 -0.46207247195070167 0.0</waypoint>
-                                <waypoint>4.000648212438945 -6.927215493583638 0.0</waypoint>
+                                <waypoint>-3.937515791268204 -0.46207247195070167 0.8885212608367177</waypoint>
+                                <waypoint>4.000648212438945 -6.927215493583638 0.8885212608367177</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1881,8 +1881,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7067186057070365</velocity>
                                 <path>
-                                <waypoint>-5.039294308971738 -6.586045592135292 0.0</waypoint>
-                                <waypoint>5.431214568626173 -9.889000706318086 0.0</waypoint>
+                                <waypoint>-5.039294308971738 -6.586045592135292 0.6941667012276227</waypoint>
+                                <waypoint>5.431214568626173 -9.889000706318086 0.6941667012276227</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1910,8 +1910,8 @@
                                 <loop>0</loop>
                                 <velocity>0.6685466222720038</velocity>
                                 <path>
-                                <waypoint>-0.03313739504593194 -8.307926275295603 0.0</waypoint>
-                                <waypoint>4.955671322190886 7.3340045475578215 0.0</waypoint>
+                                <waypoint>-0.03313739504593194 -8.307926275295603 0.8423087695764755</waypoint>
+                                <waypoint>4.955671322190886 7.3340045475578215 0.8423087695764755</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1939,8 +1939,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8190071357972519</velocity>
                                 <path>
-                                <waypoint>-9.114254204013076 4.036940158234938 0.0</waypoint>
-                                <waypoint>-4.373615121968744 -4.191682977190656 0.0</waypoint>
+                                <waypoint>-9.114254204013076 4.036940158234938 0.9223426306562905</waypoint>
+                                <waypoint>-4.373615121968744 -4.191682977190656 0.9223426306562905</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1968,8 +1968,8 @@
                                 <loop>0</loop>
                                 <velocity>0.6832440035333034</velocity>
                                 <path>
-                                <waypoint>8.780451880371793 -1.645748314403919 0.0</waypoint>
-                                <waypoint>5.156840683199507 -6.9120256739938934 0.0</waypoint>
+                                <waypoint>8.780451880371793 -1.645748314403919 0.6793686942938111</waypoint>
+                                <waypoint>5.156840683199507 -6.9120256739938934 0.6793686942938111</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -1997,8 +1997,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7007083571162734</velocity>
                                 <path>
-                                <waypoint>2.056826924923513 -5.548848179001951 0.0</waypoint>
-                                <waypoint>6.065057460442063 8.545398217016967 0.0</waypoint>
+                                <waypoint>2.056826924923513 -5.548848179001951 0.7930708071076422</waypoint>
+                                <waypoint>6.065057460442063 8.545398217016967 0.7930708071076422</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2026,8 +2026,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8466830503100422</velocity>
                                 <path>
-                                <waypoint>0.7855122462073894 4.377357266246214 0.0</waypoint>
-                                <waypoint>0.8972539509822575 -4.732949260121513 0.0</waypoint>
+                                <waypoint>0.7855122462073894 4.377357266246214 0.7631757451365173</waypoint>
+                                <waypoint>0.8972539509822575 -4.732949260121513 0.7631757451365173</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2055,8 +2055,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8705349690329867</velocity>
                                 <path>
-                                <waypoint>5.890897788736744 8.766211433187518 0.0</waypoint>
-                                <waypoint>1.5188812178735063 -0.6685808850023207 0.0</waypoint>
+                                <waypoint>5.890897788736744 8.766211433187518 0.7617658675277468</waypoint>
+                                <waypoint>1.5188812178735063 -0.6685808850023207 0.7617658675277468</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2084,8 +2084,8 @@
                                 <loop>0</loop>
                                 <velocity>0.6452513464367264</velocity>
                                 <path>
-                                <waypoint>-2.2763704601041956 -6.648038739755961 0.0</waypoint>
-                                <waypoint>-2.4044790826909868 3.688379859848421 0.0</waypoint>
+                                <waypoint>-2.2763704601041956 -6.648038739755961 0.9920732479728819</waypoint>
+                                <waypoint>-2.4044790826909868 3.688379859848421 0.9920732479728819</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2113,8 +2113,8 @@
                                 <loop>0</loop>
                                 <velocity>0.5993417638163043</velocity>
                                 <path>
-                                <waypoint>9.684144362698515 -5.081362810360397 0.0</waypoint>
-                                <waypoint>2.3091507570010528 6.900263761218525 0.0</waypoint>
+                                <waypoint>9.684144362698515 -5.081362810360397 0.9107967928670899</waypoint>
+                                <waypoint>2.3091507570010528 6.900263761218525 0.9107967928670899</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2142,8 +2142,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7775714090103019</velocity>
                                 <path>
-                                <waypoint>1.358653010111901 8.76867987519011 0.0</waypoint>
-                                <waypoint>-3.358276405319966 -7.374000136256518 0.0</waypoint>
+                                <waypoint>1.358653010111901 8.76867987519011 0.7601549653474703</waypoint>
+                                <waypoint>-3.358276405319966 -7.374000136256518 0.7601549653474703</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2171,8 +2171,8 @@
                                 <loop>0</loop>
                                 <velocity>0.6115982853561949</velocity>
                                 <path>
-                                <waypoint>-7.599756123427657 8.938922802333181 0.0</waypoint>
-                                <waypoint>-5.45962955535712 -0.13866804182834613 0.0</waypoint>
+                                <waypoint>-7.599756123427657 8.938922802333181 0.7880838394894973</waypoint>
+                                <waypoint>-5.45962955535712 -0.13866804182834613 0.7880838394894973</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2200,8 +2200,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7060865998975373</velocity>
                                 <path>
-                                <waypoint>-6.108963466743756 -0.8083860053793241 0.0</waypoint>
-                                <waypoint>7.618527705298391 1.8491715246373808 0.0</waypoint>
+                                <waypoint>-6.108963466743756 -0.8083860053793241 0.7157791085026937</waypoint>
+                                <waypoint>7.618527705298391 1.8491715246373808 0.7157791085026937</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2229,8 +2229,8 @@
                                 <loop>0</loop>
                                 <velocity>0.6898432348365251</velocity>
                                 <path>
-                                <waypoint>-9.13024537370654 -4.25105586774956 0.0</waypoint>
-                                <waypoint>0.08375673479962309 -6.341737393633496 0.0</waypoint>
+                                <waypoint>-9.13024537370654 -4.25105586774956 0.7732210200748559</waypoint>
+                                <waypoint>0.08375673479962309 -6.341737393633496 0.7732210200748559</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2258,8 +2258,8 @@
                                 <loop>0</loop>
                                 <velocity>0.9338420620787471</velocity>
                                 <path>
-                                <waypoint>3.287410722508117 7.098281181925255 0.0</waypoint>
-                                <waypoint>-0.45447946112519944 0.07911881899287465 0.0</waypoint>
+                                <waypoint>3.287410722508117 7.098281181925255 0.8814873789001918</waypoint>
+                                <waypoint>-0.45447946112519944 0.07911881899287465 0.8814873789001918</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2287,8 +2287,8 @@
                                 <loop>0</loop>
                                 <velocity>0.772105574804078</velocity>
                                 <path>
-                                <waypoint>5.7794554687079405 -6.521257688632427 0.0</waypoint>
-                                <waypoint>3.5525913510006077 -1.829889458110694 0.0</waypoint>
+                                <waypoint>5.7794554687079405 -6.521257688632427 0.8768919061593095</waypoint>
+                                <waypoint>3.5525913510006077 -1.829889458110694 0.8768919061593095</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2316,8 +2316,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7136428245405051</velocity>
                                 <path>
-                                <waypoint>-4.281928218892881 7.518459555235147 0.0</waypoint>
-                                <waypoint>6.456063380309676 7.357408076397231 0.0</waypoint>
+                                <waypoint>-4.281928218892881 7.518459555235147 0.54878663846558</waypoint>
+                                <waypoint>6.456063380309676 7.357408076397231 0.54878663846558</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2345,8 +2345,8 @@
                                 <loop>0</loop>
                                 <velocity>0.5393587072344521</velocity>
                                 <path>
-                                <waypoint>3.186537886977817 2.5733640891092513 0.0</waypoint>
-                                <waypoint>8.323761386493018 -7.227517745884575 0.0</waypoint>
+                                <waypoint>3.186537886977817 2.5733640891092513 0.5663459130917383</waypoint>
+                                <waypoint>8.323761386493018 -7.227517745884575 0.5663459130917383</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2374,8 +2374,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8409769660280078</velocity>
                                 <path>
-                                <waypoint>8.211885138993168 7.400087123730174 0.0</waypoint>
-                                <waypoint>-2.9045968465146537 -9.488550507513043 0.0</waypoint>
+                                <waypoint>8.211885138993168 7.400087123730174 0.7507621885254498</waypoint>
+                                <waypoint>-2.9045968465146537 -9.488550507513043 0.7507621885254498</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2403,8 +2403,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8596395898085847</velocity>
                                 <path>
-                                <waypoint>-6.23389393422805 5.80458916413315 0.0</waypoint>
-                                <waypoint>3.898914775413246 -0.5848224940045625 0.0</waypoint>
+                                <waypoint>-6.23389393422805 5.80458916413315 0.8078738462882097</waypoint>
+                                <waypoint>3.898914775413246 -0.5848224940045625 0.8078738462882097</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2431,8 +2431,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7507523104014125</velocity>
                                 <path>
-                                <waypoint>9.42103710834552 5.732841602385459 0.2626616368210657</waypoint>
-                                <waypoint>-3.9271907396492995 -7.442138335853315 0.831772837856062</waypoint>
+                                <waypoint>9.42103710834552 5.732841602385459 0.8806676692077008</waypoint>
+                                <waypoint>-3.9271907396492995 -7.442138335853315 1.4497788702426972</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2459,8 +2459,8 @@
                                 <loop>0</loop>
                                 <velocity>0.663339712981367</velocity>
                                 <path>
-                                <waypoint>1.373606283478308 -1.7382147720256107 0.34311954526680233</waypoint>
-                                <waypoint>6.5938005274865255 -9.611868846224755 0.6124623883606806</waypoint>
+                                <waypoint>1.373606283478308 -1.7382147720256107 0.599659964622127</waypoint>
+                                <waypoint>6.5938005274865255 -9.611868846224755 0.8690028077160052</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2487,8 +2487,8 @@
                                 <loop>0</loop>
                                 <velocity>0.9583325160033617</velocity>
                                 <path>
-                                <waypoint>-5.2961770738697345 9.686709931389409 0.5665094025466848</waypoint>
-                                <waypoint>6.563629856170348 -6.576741011339027 1.8444077589194712</waypoint>
+                                <waypoint>-5.2961770738697345 9.686709931389409 1.073283037505261</waypoint>
+                                <waypoint>6.563629856170348 -6.576741011339027 2.3511813938780475</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2515,8 +2515,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8118517795598468</velocity>
                                 <path>
-                                <waypoint>-9.330957222071813 6.758114796565714 1.551075164866132</waypoint>
-                                <waypoint>3.3793319246861326 9.140586262792038 1.2109099894310007</waypoint>
+                                <waypoint>-9.330957222071813 6.758114796565714 2.030430614421514</waypoint>
+                                <waypoint>3.3793319246861326 9.140586262792038 1.6902654389863827</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2543,8 +2543,8 @@
                                 <loop>0</loop>
                                 <velocity>0.5312182331577227</velocity>
                                 <path>
-                                <waypoint>5.414341581890502 -2.80681251233426 0.3688771488203417</waypoint>
-                                <waypoint>-9.276237230640106 -3.263452051214564 1.0773518472426196</waypoint>
+                                <waypoint>5.414341581890502 -2.80681251233426 0.8554692496256865</waypoint>
+                                <waypoint>-9.276237230640106 -3.263452051214564 1.5639439480479642</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2571,8 +2571,8 @@
                                 <loop>0</loop>
                                 <velocity>0.5213632721695889</velocity>
                                 <path>
-                                <waypoint>-2.13298382259397 7.637516702559836 0.47201946549865514</waypoint>
-                                <waypoint>-5.643828726858306 5.64998420039873 0.7317752294485556</waypoint>
+                                <waypoint>-2.13298382259397 7.637516702559836 1.107118934204692</waypoint>
+                                <waypoint>-5.643828726858306 5.64998420039873 1.3668746981545925</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2599,8 +2599,8 @@
                                 <loop>0</loop>
                                 <velocity>0.9282993695601172</velocity>
                                 <path>
-                                <waypoint>-6.349277368790236 -3.612185019291056 0.493092556160335</waypoint>
-                                <waypoint>-1.355891999426948 3.4534538131573793 1.5897519374778442</waypoint>
+                                <waypoint>-6.349277368790236 -3.612185019291056 1.1978299819081597</waypoint>
+                                <waypoint>-1.355891999426948 3.4534538131573793 2.2944893632256687</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2627,8 +2627,8 @@
                                 <loop>0</loop>
                                 <velocity>0.6554260282422725</velocity>
                                 <path>
-                                <waypoint>-2.464910674984358 4.996080583674585 1.2685421383693372</waypoint>
-                                <waypoint>4.450669148785224 -8.064212682156864 0.19670230868152871</waypoint>
+                                <waypoint>-2.464910674984358 4.996080583674585 1.6269235409979816</waypoint>
+                                <waypoint>4.450669148785224 -8.064212682156864 0.5550837113101732</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2655,8 +2655,8 @@
                                 <loop>0</loop>
                                 <velocity>0.574483825927533</velocity>
                                 <path>
-                                <waypoint>-5.602220229872772 3.3291668562789045 1.000803373857086</waypoint>
-                                <waypoint>-1.5860541542348834 -1.975872665031254 1.5736775472254148</waypoint>
+                                <waypoint>-5.602220229872772 3.3291668562789045 1.4066066852728651</waypoint>
+                                <waypoint>-1.5860541542348834 -1.975872665031254 1.9794808586411938</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2683,8 +2683,8 @@
                                 <loop>0</loop>
                                 <velocity>0.9638152427706254</velocity>
                                 <path>
-                                <waypoint>0.7285261849534859 1.9442001830950986 1.9076919262296426</waypoint>
-                                <waypoint>-3.470358788563363 6.389981041194854 1.0906921076403404</waypoint>
+                                <waypoint>0.7285261849534859 1.9442001830950986 2.492408064485497</waypoint>
+                                <waypoint>-3.470358788563363 6.389981041194854 1.675408245896195</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2711,8 +2711,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7533941311370116</velocity>
                                 <path>
-                                <waypoint>6.9577646844110035 -4.492943657493176 0.719117986363498</waypoint>
-                                <waypoint>0.46856297875437747 -1.7814346043683322 1.6128810056210467</waypoint>
+                                <waypoint>6.9577646844110035 -4.492943657493176 1.4680818598592402</waypoint>
+                                <waypoint>0.46856297875437747 -1.7814346043683322 2.3618448791167888</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2739,8 +2739,8 @@
                                 <loop>0</loop>
                                 <velocity>0.6146978184950871</velocity>
                                 <path>
-                                <waypoint>3.8925746645530346 -9.810389410348437 1.7254370358105768</waypoint>
-                                <waypoint>2.191677585656267 1.109905233812265 1.1648961959261</waypoint>
+                                <waypoint>3.8925746645530346 -9.810389410348437 2.096819241193511</waypoint>
+                                <waypoint>2.191677585656267 1.109905233812265 1.5362784013090343</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2767,8 +2767,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8490108988324302</velocity>
                                 <path>
-                                <waypoint>6.8624819752445205 2.7172605698786327 0.9427349458824292</waypoint>
-                                <waypoint>-5.0666191738947886 7.56761333298245 0.9457738382852379</waypoint>
+                                <waypoint>6.8624819752445205 2.7172605698786327 1.5647983678861157</waypoint>
+                                <waypoint>-5.0666191738947886 7.56761333298245 1.5678372602889243</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2795,8 +2795,8 @@
                                 <loop>0</loop>
                                 <velocity>0.5702653970098273</velocity>
                                 <path>
-                                <waypoint>8.271560590751353 -9.485145635090895 1.316515557105382</waypoint>
-                                <waypoint>-9.256419335562558 -3.1162707644523335 0.5340301102161562</waypoint>
+                                <waypoint>8.271560590751353 -9.485145635090895 2.0099045125521218</waypoint>
+                                <waypoint>-9.256419335562558 -3.1162707644523335 1.227419065662896</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2823,8 +2823,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8874100716761621</velocity>
                                 <path>
-                                <waypoint>9.559105720986537 9.414024132572983 0.04302319896747342</waypoint>
-                                <waypoint>-1.785865975527921 9.969726511929643 0.7049514506560588</waypoint>
+                                <waypoint>9.559105720986537 9.414024132572983 0.5245703830108006</waypoint>
+                                <waypoint>-1.785865975527921 9.969726511929643 1.186498634699386</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2851,8 +2851,8 @@
                                 <loop>0</loop>
                                 <velocity>0.5562784580253493</velocity>
                                 <path>
-                                <waypoint>-4.6964738698309 -9.588322420553844 1.2521034138089349</waypoint>
-                                <waypoint>3.80855544607655 0.7517058492122111 0.2779480621868482</waypoint>
+                                <waypoint>-4.6964738698309 -9.588322420553844 1.6423602068612468</waypoint>
+                                <waypoint>3.80855544607655 0.7517058492122111 0.6682048552391602</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2879,8 +2879,8 @@
                                 <loop>0</loop>
                                 <velocity>0.5378542502736708</velocity>
                                 <path>
-                                <waypoint>2.558456562346711 -3.437800377987024 1.5617498618945924</waypoint>
-                                <waypoint>-9.915253364551994 -0.8856896341425582 1.7857032986343515</waypoint>
+                                <waypoint>2.558456562346711 -3.437800377987024 1.9465736094540858</waypoint>
+                                <waypoint>-9.915253364551994 -0.8856896341425582 2.170527046193845</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2907,8 +2907,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7617472479305889</velocity>
                                 <path>
-                                <waypoint>6.220744854414818 -9.312375674425503 1.570867794975905</waypoint>
-                                <waypoint>6.7437150431412185 6.467588710552338 1.657866689776408</waypoint>
+                                <waypoint>6.220744854414818 -9.312375674425503 2.278021922072138</waypoint>
+                                <waypoint>6.7437150431412185 6.467588710552338 2.3650208168726414</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2935,8 +2935,8 @@
                                 <loop>0</loop>
                                 <velocity>0.605550980705911</velocity>
                                 <path>
-                                <waypoint>-7.961899957655767 -7.3458339141365725 1.4355659761153758</waypoint>
-                                <waypoint>7.98161519833911 -0.6814347313669895 1.8198434131782126</waypoint>
+                                <waypoint>-7.961899957655767 -7.3458339141365725 2.1575699260485823</waypoint>
+                                <waypoint>7.98161519833911 -0.6814347313669895 2.541847363111419</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2963,8 +2963,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8110413289806009</velocity>
                                 <path>
-                                <waypoint>7.985143159606771 -6.562563944772213 0.4509358088903035</waypoint>
-                                <waypoint>-8.216222437209183 -0.9668778000891578 0.8658969151124476</waypoint>
+                                <waypoint>7.985143159606771 -6.562563944772213 0.9221859743315751</waypoint>
+                                <waypoint>-8.216222437209183 -0.9668778000891578 1.3371470805537191</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -2991,8 +2991,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7481958929051509</velocity>
                                 <path>
-                                <waypoint>-1.7680918422856866 -0.9111421342217909 0.3078008558572829</waypoint>
-                                <waypoint>-8.765765392361967 0.20468414915677258 0.23060782716231332</waypoint>
+                                <waypoint>-1.7680918422856866 -0.9111421342217909 0.9075737312565388</waypoint>
+                                <waypoint>-8.765765392361967 0.20468414915677258 0.8303807025615693</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -3019,8 +3019,8 @@
                                 <loop>0</loop>
                                 <velocity>0.550463289818544</velocity>
                                 <path>
-                                <waypoint>4.190408162788486 -0.06541744674206029 1.9039605742205035</waypoint>
-                                <waypoint>-8.08984742825884 0.362207740525168 1.9092205820663803</waypoint>
+                                <waypoint>4.190408162788486 -0.06541744674206029 2.402395697469707</waypoint>
+                                <waypoint>-8.08984742825884 0.362207740525168 2.407655705315584</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -3047,8 +3047,8 @@
                                 <loop>0</loop>
                                 <velocity>0.6962323921513552</velocity>
                                 <path>
-                                <waypoint>-6.68637978883301 -9.206782465550562 1.3498161539595983</waypoint>
-                                <waypoint>-6.992061196290749 3.9590863949734274 1.1404444994985583</waypoint>
+                                <waypoint>-6.68637978883301 -9.206782465550562 1.7076059803505896</waypoint>
+                                <waypoint>-6.992061196290749 3.9590863949734274 1.4982343258895496</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -3075,8 +3075,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8326855890372049</velocity>
                                 <path>
-                                <waypoint>9.245443446353676 1.9808672760774275 0.5308935285496164</waypoint>
-                                <waypoint>-4.75810225988006 5.825322176627854 1.1886617158839903</waypoint>
+                                <waypoint>9.245443446353676 1.9808672760774275 1.0013385269188082</waypoint>
+                                <waypoint>-4.75810225988006 5.825322176627854 1.6591067142531821</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -3103,8 +3103,8 @@
                                 <loop>0</loop>
                                 <velocity>0.5780119073989908</velocity>
                                 <path>
-                                <waypoint>-9.802644638926052 9.152231596823693 1.5289908265355647</waypoint>
-                                <waypoint>4.625463746117031 -9.912948464400754 1.2835262814525452</waypoint>
+                                <waypoint>-9.802644638926052 9.152231596823693 1.9635712269796937</waypoint>
+                                <waypoint>4.625463746117031 -9.912948464400754 1.7181066818966744</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -3131,8 +3131,8 @@
                                 <loop>0</loop>
                                 <velocity>0.9797393496880995</velocity>
                                 <path>
-                                <waypoint>-0.44881861615331786 -5.095211229656376 0.6105316466457096</waypoint>
-                                <waypoint>4.693643498794529 3.4291678076267633 0.5050229133641113</waypoint>
+                                <waypoint>-0.44881861615331786 -5.095211229656376 1.288521820323377</waypoint>
+                                <waypoint>4.693643498794529 3.4291678076267633 1.1830130870417788</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -3159,8 +3159,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8647973155917649</velocity>
                                 <path>
-                                <waypoint>4.54475844901677 4.636098265112004 1.2006981837719182</waypoint>
-                                <waypoint>-1.2821719334695132 9.628423416467733 0.6123758314258838</waypoint>
+                                <waypoint>4.54475844901677 4.636098265112004 1.9274453888489673</waypoint>
+                                <waypoint>-1.2821719334695132 9.628423416467733 1.339123036502933</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -3187,8 +3187,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7692682783408609</velocity>
                                 <path>
-                                <waypoint>-1.0875972310569892 2.930229933934317 1.832800460234592</waypoint>
-                                <waypoint>7.37079274514134 3.0503978667121583 1.7166189933758447</waypoint>
+                                <waypoint>-1.0875972310569892 2.930229933934317 2.459191218638721</waypoint>
+                                <waypoint>7.37079274514134 3.0503978667121583 2.3430097517799737</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -3215,8 +3215,8 @@
                                 <loop>0</loop>
                                 <velocity>0.8298606661569242</velocity>
                                 <path>
-                                <waypoint>-9.75626336772731 1.856150388737447 0.34255601827877347</waypoint>
-                                <waypoint>5.475957485132543 5.5643369878165 0.5673066521096912</waypoint>
+                                <waypoint>-9.75626336772731 1.856150388737447 1.0135045674126333</waypoint>
+                                <waypoint>5.475957485132543 5.5643369878165 1.238255201243551</waypoint>
                                 </path>
                             </plugin>
                             </model> 
@@ -3243,8 +3243,8 @@
                                 <loop>0</loop>
                                 <velocity>0.7695732244700864</velocity>
                                 <path>
-                                <waypoint>-3.223453382397155 9.777625322406806 0.5129443273613565</waypoint>
-                                <waypoint>-3.227661513745053 4.167693196069859 1.7720176312871103</waypoint>
+                                <waypoint>-3.223453382397155 9.777625322406806 0.8828729433965923</waypoint>
+                                <waypoint>-3.227661513745053 4.167693196069859 2.141946247322346</waypoint>
                                 </path>
                             </plugin>
                             </model> 
