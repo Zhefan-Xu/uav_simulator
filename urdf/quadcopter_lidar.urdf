@@ -106,4 +106,126 @@
           </plugin>
     </sensor>
   </gazebo>
+
+  <gazebo reference="base_link">
+    <sensor type="ray" name="laser_livox">
+        <pose>0 0 0.13 0 0 0</pose>
+        <visualize>true</visualize>
+        <always_on>True</always_on>
+        <update_rate>10</update_rate>
+        <!-- This ray plgin is only for visualization. -->
+        <plugin name="gazebo_ros_laser_controller" filename="liblivox_laser.so">
+			  <ray>
+			  <scan>
+				  <horizontal>
+				    <samples>100</samples>
+				    <resolution>1</resolution>
+				    <min_angle>-3.1415926535897931</min_angle>
+            <max_angle>3.1415926535897931</max_angle>
+				  </horizontal>
+				  <vertical>
+				    <samples>50</samples>
+				    <resolution>1</resolution>
+				    <min_angle>-3.1415926535897931</min_angle>
+            <max_angle>3.1415926535897931</max_angle>
+				  </vertical>
+			  </scan>
+			  <range>
+				  <min>0.1</min>
+				  <max>40</max>
+				  <resolution>1</resolution>
+			  </range>
+			  <noise>
+				  <type>gaussian</type>
+				  <mean>0.0</mean>
+				  <stddev>0.0</stddev>
+			  </noise>
+			  </ray>
+          <visualize>false</visualize>
+		      <samples>20000</samples>
+		      <downsample>2</downsample>
+		      <csv_file_name>mid360-real-centr.csv</csv_file_name>
+          <publish_pointcloud_type>2</publish_pointcloud_type>
+		      <!-- <ros_topic>/livox/lidar</ros_topic> -->
+          <ros_topic>/cloud_registered_body</ros_topic>
+          <frameName>base_link</frameName>
+        </plugin>
+      </sensor>  
+  </gazebo>
+
+  <gazebo reference="base_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <ros>
+          <namespace>/</namespace>
+          <remapping>~/out:=/livox/imu</remapping>
+        </ros>
+        <updateRateHZ>300.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>base_link</frameName>
+        <topicName>/livox/imu</topicName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <always_on>true</always_on>
+      <update_rate>300</update_rate>
+      <visualize>false</visualize>
+      <imu>
+        <angular_velocity>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </z>
+        </angular_velocity>
+        <linear_acceleration>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </z>
+        </linear_acceleration>
+      </imu>
+    </sensor>
+  </gazebo>
 </robot>

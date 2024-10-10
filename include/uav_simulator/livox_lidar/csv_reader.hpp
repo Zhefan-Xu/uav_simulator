@@ -31,16 +31,16 @@ class CsvReader {
                         data.push_back(std::stod(value));
                     }
                 } catch (...) {
-                    std::cerr << "cannot convert str:" << line_str << "\n";
+                    // std::cerr << "cannot convert str:" << line_str << "\n";
                     continue;
                 }
                 datas.push_back(data);
             }
-            std::cerr << "data size:" << datas.size() << "\n";
+            // std::cerr << "data size:" << datas.size() << "\n";
             return true;
         } else {
-            std::cerr << "cannot read csv file!" << file_name << "\n";
-            std::cerr << "Error code: " << std::strerror(errno) << std::endl;
+            // std::cerr << "cannot read csv file!" << file_name << "\n";
+            // std::cerr << "Error code: " << std::strerror(errno) << std::endl;
         }
         return false;
     }
