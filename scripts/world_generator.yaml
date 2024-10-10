@@ -1,0 +1,42 @@
+random_seed: 0
+map:
+  generate_map: True
+  save_directory: "default" # same as the world: worlds/generated_env
+  # save_directory: "/home/zhefan/catkin_ws/test.pcd"
+
+even_distribution: True
+
+static_objects:
+  cylinder: # 2D
+    num: 50
+    range_x: [-10, 10]
+    range_y: [-10, 10]
+    radius: [0.2, 0.5] 
+    height: [1.0, 3.0] 
+  box: # 3D
+    num: 50
+    range_x: [-10, 10]
+    range_y: [-10, 10]
+    range_z: [0.0, 0.0]
+    width_x: [0.2, 0.5]
+    width_y: [0.2, 0.5]
+    height: [1.0, 3.0]
+
+dynamic_objects:
+  cylinder: # 2D
+    num: 30
+    range_x: [-10, 10]
+    range_y: [-10, 10]
+    radius: [0.2, 0.5] 
+    height: [1.0, 2.0] 
+    velocity: [0.5, 1.0]
+  box: # 3D
+    num: 30
+    range_x: [-10, 10]
+    range_y: [-10, 10]
+    range_z: [0, 2]
+    width_x: [0.2, 0.5]
+    width_y: [0.2, 0.5]
+    height: [0.5, 1.5]
+    velocity: [0.5, 1.0]
+  

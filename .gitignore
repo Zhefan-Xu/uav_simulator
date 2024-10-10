@@ -1,1 +1,4 @@
 *.so
+*.pyc
+*.pcd
+__pycache__/

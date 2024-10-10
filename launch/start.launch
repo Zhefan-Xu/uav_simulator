@@ -3,7 +3,7 @@
   <arg name="verbose" value="false"/>
   <arg name="use_sim_time" value="true"/>
   <arg name="debug" value="false" />
-  <arg name="lidar" value="true" />
+  <arg name="lidar" value="false" />
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/square/square_box.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/square/square_static.world" /> -->
@@ -58,7 +58,8 @@
 
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/room/room_empty.world" /> -->
   <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/room/room_static.world" /> -->
-
+  <!-- <arg name="world_name" value="$(find uav_simulator)/worlds/generated_env/generated_env.world" /> -->
+  
   <!-- launch the custom world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch" >
         <arg name="paused" value="$(arg paused)"/>
